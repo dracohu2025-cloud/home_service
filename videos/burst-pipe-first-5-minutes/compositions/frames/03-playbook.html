@@ -1,0 +1,322 @@
+<template>
+  <div id="root" data-composition-id="03-playbook" data-start="0" data-duration="4.03" data-width="1920" data-height="1080">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+    <style>
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        container-type: size;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+      [data-composition-id="03-playbook"] .p03-ground {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+        z-index: 0;
+      }
+      [data-composition-id="03-playbook"] .p03-abs { position: absolute; z-index: 2; }
+
+      /* shared chrome */
+      [data-composition-id="03-playbook"] .p03-eyebrow {
+        left: 5cqw;
+        top: 4.4cqh;
+        display: flex;
+        align-items: center;
+        gap: 0.9cqw;
+      }
+      [data-composition-id="03-playbook"] .p03-accent-line {
+        width: 60px;
+        height: 4px;
+        border-radius: 2px;
+        background: #1e2bfa;
+      }
+      [data-composition-id="03-playbook"] .p03-eyebrow-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 0.8cqw;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-playbook"] .p03-tag {
+        right: 5cqw;
+        top: 4cqh;
+        padding: 0.45cqw 1.1cqw;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 0.8cqw;
+        letter-spacing: 0.06em;
+        color: #1e2bfa;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-playbook"] .p03-progress {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background: #1e2bfa;
+        transform-origin: 0 50%;
+        z-index: 3;
+      }
+
+      /* headline group: timer ring + h2 */
+      [data-composition-id="03-playbook"] .p03-head {
+        left: 0;
+        right: 0;
+        top: 25cqh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2.4cqw;
+      }
+      [data-composition-id="03-playbook"] .p03-ring {
+        position: relative;
+        width: 8.4cqw;
+        height: 8.4cqw;
+        flex: 0 0 auto;
+      }
+      [data-composition-id="03-playbook"] .p03-ring svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+      }
+      [data-composition-id="03-playbook"] .p03-ring-track {
+        fill: none;
+        stroke: rgba(30, 43, 250, 0.12);
+        stroke-width: 5;
+      }
+      [data-composition-id="03-playbook"] .p03-ring-arc {
+        fill: none;
+        stroke: #1e2bfa;
+        stroke-width: 5;
+        stroke-linecap: round;
+      }
+      [data-composition-id="03-playbook"] .p03-ring-time {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 1.9cqw;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        font-variant-numeric: tabular-nums;
+        color: #1e2bfa;
+      }
+      [data-composition-id="03-playbook"] .p03-h2 {
+        margin: 0;
+        display: flex;
+        gap: 0.28em;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 4.2cqw;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        color: #111111;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-playbook"] .p03-word { display: inline-block; }
+      [data-composition-id="03-playbook"] .p03-num {
+        color: #1e2bfa;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* step chip row */
+      [data-composition-id="03-playbook"] .p03-row {
+        left: 8.4cqw;
+        top: 58cqh;
+        width: 83.2cqw;
+        height: 4.2cqw;
+        display: flex;
+        align-items: center;
+      }
+      [data-composition-id="03-playbook"] .p03-chip {
+        width: 13.6cqw;
+        height: 4.2cqw;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 0.95cqw;
+        padding: 0 1.2cqw 0 0.65cqw;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+      }
+      [data-composition-id="03-playbook"] .p03-step {
+        width: 2.9cqw;
+        height: 2.9cqw;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: #1e2bfa;
+        color: #fdfae7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 1.4cqw;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+      [data-composition-id="03-playbook"] .p03-label {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 1.6cqw;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: #111111;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-playbook"] .p03-arrow {
+        width: 3.8cqw;
+        height: 1.2cqw;
+        flex: 0 0 auto;
+        display: block;
+        overflow: visible;
+      }
+      [data-composition-id="03-playbook"] .p03-arrow path {
+        fill: none;
+        stroke: #1e2bfa;
+        stroke-width: 2.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+
+    <div id="p03-ground" class="clip p03-ground" data-start="0" data-duration="4.03" data-track-index="0"></div>
+
+    <!-- shared chrome -->
+    <div id="p03-eyebrow" class="p03-abs p03-eyebrow">
+      <div class="p03-accent-line"></div>
+      <div class="p03-eyebrow-text">Pipe Burst Playbook</div>
+    </div>
+    <div id="p03-tag" class="p03-abs p03-tag">5-MINUTE PLAYBOOK</div>
+    <div id="p03-progress" class="p03-abs p03-progress"></div>
+
+    <!-- Scene 1: timer ring + headline -->
+    <div id="p03-head" class="p03-abs p03-head">
+      <div id="p03-ring" class="p03-ring">
+        <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <circle class="p03-ring-track" cx="80" cy="80" r="74" />
+          <circle id="p03-ring-arc" class="p03-ring-arc" cx="80" cy="80" r="74" transform="rotate(-90 80 80)" />
+        </svg>
+        <div id="p03-ring-time" class="p03-ring-time">5:00</div>
+      </div>
+      <h2 id="p03-h2" class="p03-h2">
+        <span class="p03-word">Your</span>
+        <span class="p03-word"><span class="p03-num">5</span>-minute</span>
+        <span class="p03-word">playbook</span>
+      </h2>
+    </div>
+
+    <!-- Scene 2: five step chips + connecting arrows -->
+    <div id="p03-row" class="p03-abs p03-row">
+      <div id="p03-chip-1" class="p03-chip"><div class="p03-step">1</div><div class="p03-label">Valve</div></div>
+      <svg id="p03-arrow-1" class="p03-arrow" viewBox="0 0 73 23" xmlns="http://www.w3.org/2000/svg">
+        <path class="p03-shaft" d="M 8 11.5 L 63 11.5" />
+        <path class="p03-headp" d="M 56 5 L 64 11.5 L 56 18" />
+      </svg>
+      <div id="p03-chip-2" class="p03-chip"><div class="p03-step">2</div><div class="p03-label">Power</div></div>
+      <svg id="p03-arrow-2" class="p03-arrow" viewBox="0 0 73 23" xmlns="http://www.w3.org/2000/svg">
+        <path class="p03-shaft" d="M 8 11.5 L 63 11.5" />
+        <path class="p03-headp" d="M 56 5 L 64 11.5 L 56 18" />
+      </svg>
+      <div id="p03-chip-3" class="p03-chip"><div class="p03-step">3</div><div class="p03-label">Drain</div></div>
+      <svg id="p03-arrow-3" class="p03-arrow" viewBox="0 0 73 23" xmlns="http://www.w3.org/2000/svg">
+        <path class="p03-shaft" d="M 8 11.5 L 63 11.5" />
+        <path class="p03-headp" d="M 56 5 L 64 11.5 L 56 18" />
+      </svg>
+      <div id="p03-chip-4" class="p03-chip"><div class="p03-step">4</div><div class="p03-label">Document</div></div>
+      <svg id="p03-arrow-4" class="p03-arrow" viewBox="0 0 73 23" xmlns="http://www.w3.org/2000/svg">
+        <path class="p03-shaft" d="M 8 11.5 L 63 11.5" />
+        <path class="p03-headp" d="M 56 5 L 64 11.5 L 56 18" />
+      </svg>
+      <div id="p03-chip-5" class="p03-chip"><div class="p03-step">5</div><div class="p03-label">Call</div></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var ID = "03-playbook";
+        var root = document.querySelector('[data-composition-id="' + ID + '"]');
+        var q = function (sel) { return root.querySelector(sel); };
+        var qa = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+        var CW = 19.2, CH = 10.8;
+
+        // svg-path-draw setup: measured lengths
+        var arc = q("#p03-ring-arc");
+        var arcLen = arc.getTotalLength ? arc.getTotalLength() : 2 * Math.PI * 74;
+        arc.style.strokeDasharray = arcLen + " " + arcLen;
+        arc.style.strokeDashoffset = String(arcLen);
+
+        var arrowParts = [];
+        for (var a = 1; a <= 4; a++) {
+          var svg = q("#p03-arrow-" + a);
+          var shaft = svg.querySelector(".p03-shaft");
+          var head = svg.querySelector(".p03-headp");
+          [shaft, head].forEach(function (p) {
+            var len = p.getTotalLength() * 1.05;
+            p.style.strokeDasharray = len + " " + len;
+            p.style.strokeDashoffset = String(len);
+            p.__len = len;
+          });
+          arrowParts.push({ shaft: shaft, head: head });
+        }
+
+        var tl = gsap.timeline({ paused: true });
+
+        // chrome: progress bar grows from 2/9 to 3/9
+        tl.fromTo("#p03-progress", { scaleX: 2 / 9 }, { scaleX: 3 / 9, duration: 0.6, ease: "power2.out" }, 0);
+
+        // Scene 1 (0.0–1.6s): ring appears and draws 0 → full; headline rises in at 0.16s
+        tl.fromTo("#p03-ring", { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 0.1);
+        tl.fromTo(arc, { strokeDashoffset: arcLen }, { strokeDashoffset: 0, duration: 1.15, ease: "power2.out" }, 0.16);
+        tl.fromTo("#p03-ring-time", { opacity: 0, y: 1.2 * CH }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+
+        tl.fromTo(qa("#p03-h2 .p03-word"),
+          { opacity: 0, y: 2.6 * CH },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.07 },
+          0.16);
+
+        // Scene 2 (1.6–3.53s): chips cascade left → right on the "five moves" beat
+        var chipTimes = [1.72, 1.9, 2.1, 2.3, 2.5];
+        chipTimes.forEach(function (t, i) {
+          var chip = q("#p03-chip-" + (i + 1));
+          tl.fromTo(chip,
+            { opacity: 0, x: -1.2 * CW, scale: 0.96 },
+            { opacity: 1, x: 0, scale: 1, duration: 0.42, ease: "expo.out" },
+            t);
+          tl.fromTo(chip.querySelector(".p03-step"),
+            { scale: 0.6 },
+            { scale: 1, duration: 0.35, ease: "power3.out" },
+            t + 0.03);
+        });
+
+        // arrows draw in behind the cascade, landing on each next chip as it arrives
+        arrowParts.forEach(function (ap, i) {
+          var start = chipTimes[i + 1] - 0.1;
+          tl.fromTo(ap.shaft, { strokeDashoffset: ap.shaft.__len }, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out" }, start);
+          tl.fromTo(ap.head, { strokeDashoffset: ap.head.__len }, { strokeDashoffset: 0, duration: 0.12, ease: "power2.out" }, start + 0.15);
+        });
+
+        // hold to the frame end
+        tl.set({}, {}, 3.53);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>

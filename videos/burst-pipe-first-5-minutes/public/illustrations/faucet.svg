@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <path d="M30 214 H210" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="76" y="196" width="88" height="18" rx="9" fill="#1e2bfa" fill-opacity="0.12" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 196 V104 C120 44 196 44 196 104 V118" fill="none" stroke="#1e2bfa" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="handle-hot"><path d="M100 150 H64" stroke="#dc2626" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="104" cy="150" r="9" fill="#fdfae7" stroke="#dc2626" stroke-width="6"/></g>
+  <g id="handle-cold"><path d="M140 150 H176" stroke="#1e2bfa" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="136" cy="150" r="9" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <path id="stream" d="M196 128 V192" stroke="#1e2bfa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.55" stroke-dasharray="10 12"/></svg>

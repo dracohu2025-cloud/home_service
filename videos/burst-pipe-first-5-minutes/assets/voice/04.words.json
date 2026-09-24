@@ -1,0 +1,278 @@
+[
+  {
+    "text": "One,",
+    "start": 0.15,
+    "end": 0.43,
+    "id": "w0"
+  },
+  {
+    "text": "shut",
+    "start": 0.43,
+    "end": 0.45,
+    "id": "w1"
+  },
+  {
+    "text": "off",
+    "start": 0.87,
+    "end": 1.04,
+    "id": "w2"
+  },
+  {
+    "text": "the",
+    "start": 1.04,
+    "end": 1.22,
+    "id": "w3"
+  },
+  {
+    "text": "main",
+    "start": 1.32,
+    "end": 1.65,
+    "id": "w4"
+  },
+  {
+    "text": "water",
+    "start": 1.65,
+    "end": 2.09,
+    "id": "w5"
+  },
+  {
+    "text": "valve.",
+    "start": 2.09,
+    "end": 2.56,
+    "id": "w6"
+  },
+  {
+    "text": "It's",
+    "start": 2.67,
+    "end": 2.78,
+    "id": "w7"
+  },
+  {
+    "text": "usually",
+    "start": 2.78,
+    "end": 3.01,
+    "id": "w8"
+  },
+  {
+    "text": "where",
+    "start": 3.42,
+    "end": 3.43,
+    "id": "w9"
+  },
+  {
+    "text": "the",
+    "start": 3.43,
+    "end": 3.59,
+    "id": "w10"
+  },
+  {
+    "text": "water",
+    "start": 3.59,
+    "end": 3.78,
+    "id": "w11"
+  },
+  {
+    "text": "line",
+    "start": 3.88,
+    "end": 4.08,
+    "id": "w12"
+  },
+  {
+    "text": "enters",
+    "start": 4.08,
+    "end": 4.41,
+    "id": "w13"
+  },
+  {
+    "text": "your",
+    "start": 4.41,
+    "end": 4.63,
+    "id": "w14"
+  },
+  {
+    "text": "home.",
+    "start": 4.63,
+    "end": 4.88,
+    "id": "w15"
+  },
+  {
+    "text": "The",
+    "start": 5.03,
+    "end": 5.06,
+    "id": "w16"
+  },
+  {
+    "text": "basement,",
+    "start": 5.06,
+    "end": 5.68,
+    "id": "w17"
+  },
+  {
+    "text": "a",
+    "start": 5.75,
+    "end": 5.76,
+    "id": "w18"
+  },
+  {
+    "text": "crawl",
+    "start": 5.76,
+    "end": 6.11,
+    "id": "w19"
+  },
+  {
+    "text": "space,",
+    "start": 6.2,
+    "end": 6.72,
+    "id": "w20"
+  },
+  {
+    "text": "a",
+    "start": 6.72,
+    "end": 6.74,
+    "id": "w21"
+  },
+  {
+    "text": "utility",
+    "start": 6.77,
+    "end": 7.1,
+    "id": "w22"
+  },
+  {
+    "text": "room",
+    "start": 7.61,
+    "end": 7.74,
+    "id": "w23"
+  },
+  {
+    "text": "or",
+    "start": 7.76,
+    "end": 7.91,
+    "id": "w24"
+  },
+  {
+    "text": "near",
+    "start": 7.91,
+    "end": 8.21,
+    "id": "w25"
+  },
+  {
+    "text": "the",
+    "start": 8.21,
+    "end": 8.43,
+    "id": "w26"
+  },
+  {
+    "text": "water",
+    "start": 8.43,
+    "end": 8.79,
+    "id": "w27"
+  },
+  {
+    "text": "meter.",
+    "start": 8.8,
+    "end": 9.2,
+    "id": "w28"
+  },
+  {
+    "text": "A",
+    "start": 9.2,
+    "end": 9.35,
+    "id": "w29"
+  },
+  {
+    "text": "round",
+    "start": 9.35,
+    "end": 9.65,
+    "id": "w30"
+  },
+  {
+    "text": "wheel",
+    "start": 9.65,
+    "end": 10.07,
+    "id": "w31"
+  },
+  {
+    "text": "turns",
+    "start": 10.07,
+    "end": 10.41,
+    "id": "w32"
+  },
+  {
+    "text": "clockwise.",
+    "start": 10.41,
+    "end": 11.12,
+    "id": "w33"
+  },
+  {
+    "text": "A",
+    "start": 11.12,
+    "end": 11.27,
+    "id": "w34"
+  },
+  {
+    "text": "lever",
+    "start": 11.27,
+    "end": 11.57,
+    "id": "w35"
+  },
+  {
+    "text": "turns",
+    "start": 11.99,
+    "end": 12.02,
+    "id": "w36"
+  },
+  {
+    "text": "a",
+    "start": 12.02,
+    "end": 12.1,
+    "id": "w37"
+  },
+  {
+    "text": "quarter",
+    "start": 12.1,
+    "end": 12.68,
+    "id": "w38"
+  },
+  {
+    "text": "turn",
+    "start": 12.68,
+    "end": 12.97,
+    "id": "w39"
+  },
+  {
+    "text": "until",
+    "start": 13.05,
+    "end": 13.34,
+    "id": "w40"
+  },
+  {
+    "text": "it",
+    "start": 13.42,
+    "end": 13.45,
+    "id": "w41"
+  },
+  {
+    "text": "sits",
+    "start": 13.85,
+    "end": 13.87,
+    "id": "w42"
+  },
+  {
+    "text": "across",
+    "start": 13.87,
+    "end": 14.32,
+    "id": "w43"
+  },
+  {
+    "text": "the",
+    "start": 14.32,
+    "end": 14.55,
+    "id": "w44"
+  },
+  {
+    "text": "pipe.",
+    "start": 14.55,
+    "end": 15.12,
+    "id": "w45"
+  }
+]

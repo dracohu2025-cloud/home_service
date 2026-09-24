@@ -1,0 +1,301 @@
+<template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+  <div id="root" data-composition-id="09-today" data-start="0" data-duration="9.6" data-width="1920" data-height="1080">
+    <style>
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #root .clip { position: absolute; inset: 0; }
+      #f09-bg {
+        background: #fdfae7;
+        container-type: size;
+      }
+      #f09-stage {
+        container-type: size;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+
+      /* atmosphere: concentric closing rings */
+      #f09-rings { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+      /* shared chrome */
+      #f09-eyebrow {
+        position: absolute; left: 5cqw; top: 4.4cqh;
+        display: flex; align-items: center; gap: 14px;
+      }
+      #f09-eyebrow-line { width: 60px; height: 4px; border-radius: 2px; background: #1e2bfa; }
+      #f09-eyebrow-text {
+        font-family: "Space Grotesk", sans-serif; font-weight: 600;
+        font-size: 0.8cqw; letter-spacing: 0.08em; text-transform: uppercase;
+        color: #1e2bfa; line-height: 1;
+      }
+      #f09-tag {
+        position: absolute; right: 5cqw; top: 4cqh;
+        background: rgba(30,43,250,0.08); color: #1e2bfa;
+        border-radius: 100px; padding: 6px 14px;
+        font-family: "Space Grotesk", sans-serif; font-weight: 500;
+        font-size: 12px; letter-spacing: 0.08em; line-height: 1.2;
+      }
+      #f09-progress {
+        position: absolute; left: 0; bottom: 0;
+        width: 100%; height: 3px;
+        background: #1e2bfa;
+        transform-origin: 0 50%;
+      }
+
+      /* headline states (all share one anchor) */
+      .f09-h1 {
+        position: absolute; left: 5cqw; top: 27cqh;
+        font-family: "Space Grotesk", sans-serif; font-weight: 700;
+        font-size: 4.8cqw; line-height: 1.08; letter-spacing: -0.02em;
+        color: #111111;
+      }
+      .f09-line { display: block; white-space: nowrap; }
+      .f09-w { display: inline-block; }
+      .f09-accent { color: #1e2bfa; }
+
+      /* recap row */
+      #f09-recap {
+        position: absolute; left: 5cqw; top: 54cqh;
+        display: flex; gap: 0.7cqw; white-space: nowrap;
+      }
+      .f09-pill {
+        display: flex; align-items: center; gap: 0.5cqw;
+        padding: 0.7cqw 1.1cqw;
+        background: rgba(30,43,250,0.04);
+        border: 1.5px solid rgba(30,43,250,0.2);
+        border-radius: 100px;
+        font-family: "Space Grotesk", sans-serif; font-weight: 500;
+        font-size: 1.4cqw; line-height: 1; color: #111111;
+      }
+      .f09-pn {
+        color: #1e2bfa; font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* CTA */
+      #f09-cta-wrap {
+        position: absolute; left: 5cqw; top: 65cqh;
+      }
+      #f09-cta {
+        position: relative;
+        display: flex; align-items: center; gap: 0.9cqw;
+        padding: 1.25cqw 2.6cqw;
+        background: #1e2bfa; color: #fdfae7;
+        border-radius: 100px;
+        font-family: "Space Grotesk", sans-serif; font-weight: 600;
+        font-size: 1.9cqw; line-height: 1; letter-spacing: -0.01em;
+        white-space: nowrap;
+      }
+      #f09-cta svg { width: 1.7cqw; height: 1.7cqw; overflow: visible; }
+      #f09-cta-ring {
+        position: absolute; inset: 0;
+        border: 2px solid rgba(30,43,250,0.35);
+        border-radius: 100px;
+      }
+
+      /* valve group (right) */
+      #f09-valve {
+        position: absolute; left: 58.85cqw; top: 18.5cqh;
+        width: 26cqw; height: 26cqw;
+      }
+      #f09-valve > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+      #f09-hanger {
+        position: absolute;
+        left: 13cqw; top: 13.87cqw;   /* valve stem at (120,128) of the 240 viewBox */
+        width: 0; height: 0;
+        transform-origin: 0 0;
+      }
+      #f09-string {
+        position: absolute; left: -1px; top: 0;
+        width: 2px; height: 10.83cqw;
+        background: #1e2bfa; border-radius: 1px;
+      }
+      #f09-tagsvg {
+        position: absolute;
+        left: -2.08cqw; top: calc(10.83cqw - 3.2cqw);
+        width: 12cqw; height: 6.4cqw;
+        transform-origin: 2.08cqw 3.2cqw;   /* the tag's string hole */
+        transform: rotate(18deg);
+        overflow: visible;
+      }
+    </style>
+
+    <div id="f09-bg" class="clip" data-start="0" data-duration="9.6" data-track-index="0"></div>
+
+    <div id="f09-stage" class="clip" data-start="0" data-duration="9.6" data-track-index="1">
+
+      <svg id="f09-rings" viewBox="0 0 1920 1080">
+        <g fill="none" stroke="#1e2bfa" stroke-width="1.5">
+          <circle class="f09-ring" cx="1380" cy="470" r="170" stroke-opacity="0.16"/>
+          <circle class="f09-ring" cx="1380" cy="470" r="290" stroke-opacity="0.12"/>
+          <circle class="f09-ring" cx="1380" cy="470" r="410" stroke-opacity="0.09"/>
+          <circle class="f09-ring" cx="1380" cy="470" r="530" stroke-opacity="0.07"/>
+          <circle class="f09-ring" cx="1380" cy="470" r="650" stroke-opacity="0.05"/>
+        </g>
+      </svg>
+
+      <!-- chrome -->
+      <div id="f09-eyebrow">
+        <div id="f09-eyebrow-line"></div>
+        <div id="f09-eyebrow-text">PIPE BURST PLAYBOOK</div>
+      </div>
+      <div id="f09-tag">DO IT TODAY</div>
+
+      <!-- headline states -->
+      <div class="f09-h1" id="f09-s1">
+        <span class="f09-line"><span class="f09-w">The</span> <span class="f09-w">best</span> <span class="f09-w">move?</span></span>
+      </div>
+      <div class="f09-h1" id="f09-s2">
+        <span class="f09-line"><span class="f09-w">Do</span> <span class="f09-w">it</span> <span class="f09-w">today.</span></span>
+      </div>
+      <div class="f09-h1" id="f09-s3">
+        <span class="f09-line"><span class="f09-w">Find</span> <span class="f09-w">your</span></span>
+        <span class="f09-line"><span class="f09-w f09-accent">shut-off</span> <span class="f09-w f09-accent">valve.</span></span>
+      </div>
+
+      <!-- recap row -->
+      <div id="f09-recap">
+        <div class="f09-pill"><span class="f09-pn">1</span>Valve</div>
+        <div class="f09-pill"><span class="f09-pn">2</span>Power</div>
+        <div class="f09-pill"><span class="f09-pn">3</span>Drain</div>
+        <div class="f09-pill"><span class="f09-pn">4</span>Document</div>
+        <div class="f09-pill"><span class="f09-pn">5</span>Call</div>
+      </div>
+
+      <!-- CTA -->
+      <div id="f09-cta-wrap">
+        <div id="f09-cta-ring"></div>
+        <div id="f09-cta">
+          <svg viewBox="0 0 24 24"><path d="M6.5 3.5 H17.5 V20.5 L12 16.5 L6.5 20.5 Z" fill="none" stroke="#fdfae7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Save &amp; share this playbook</span>
+        </div>
+      </div>
+
+      <!-- valve + swinging tag -->
+      <div id="f09-valve">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+          <path d="M10 178 H230" stroke="#1e2bfa" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.14"/>
+          <path id="f09-flow" d="M14 178 H226" fill="none" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-opacity="0.55" stroke-dasharray="12 16" stroke-dashoffset="0"/>
+          <path d="M10 170 H80 M160 170 H230 M10 186 H80 M160 186 H230" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M80 150 H160 L172 178 L160 206 H80 L68 178 Z" fill="#1e2bfa" fill-opacity="0.1" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M120 150 V92" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <g id="f09-wheel">
+            <circle cx="120" cy="70" r="52" fill="#fdfae7" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="120" cy="70" r="10" fill="#1e2bfa"/>
+            <path d="M120 22 V118 M72 70 H168 M86 36 L154 104 M154 36 L86 104" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g></svg>
+        <div id="f09-hanger">
+          <div id="f09-string"></div>
+          <svg id="f09-tagsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 160" data-layout-allow-overlap>
+            <path d="M60 20 H270 a14 14 0 0 1 14 14 V126 a14 14 0 0 1 -14 14 H60 L16 80 Z" fill="#1e2bfa"/>
+            <circle cx="52" cy="80" r="10" fill="#fdfae7"/>
+            <text data-layout-allow-overlap x="170" y="74" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="28" letter-spacing="2" fill="#fdfae7">MAIN</text>
+            <text data-layout-allow-overlap x="170" y="108" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="28" letter-spacing="2" fill="#fdfae7">SHUT-OFF</text></svg>
+        </div>
+      </div>
+
+      <div id="f09-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var ID = "09-today";
+        var root = document.querySelector('[data-composition-id="' + ID + '"]');
+        var q = function (sel) { return root.querySelector(sel); };
+        var qa = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+        var CH = 10.8;
+
+        var tl = gsap.timeline({ paused: true });
+
+        // progress bar: 8/9 -> 9/9
+        tl.fromTo(q("#f09-progress"),
+          { scaleX: 8 / 9 },
+          { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0);
+
+        // closing rings settle in
+        qa(".f09-ring").forEach(function (ring, i) {
+          tl.fromTo(ring,
+            { scale: 0.9, opacity: 0, transformOrigin: "50% 50%" },
+            { scale: 1, opacity: 1, duration: 1.0, ease: "expo.out", transformOrigin: "50% 50%" }, 0.05 + i * 0.08);
+        });
+
+        // waterfall cut helpers
+        function enterLine(words, t) {
+          var gap = 0.05, at = t;
+          words.forEach(function (w) {
+            tl.fromTo(w,
+              { x: 230, opacity: 0 },
+              { x: 0, opacity: 1, duration: 0.3, ease: "power4.out" }, at);
+            at += gap;
+            gap *= 0.84;
+          });
+        }
+        function exitLine(words, cut) {
+          var n = words.length;
+          words.forEach(function (w, i) {
+            var s = cut - 0.18 - (n - 1 - i) * 0.022;
+            tl.fromTo(w, { x: 0 }, { x: -230, duration: 0.34, ease: "power4.in", immediateRender: false }, s);
+            tl.fromTo(w, { opacity: 1 }, { opacity: 0, duration: 0.18, ease: "power1.in", immediateRender: false }, s);
+          });
+        }
+        var w1 = qa("#f09-s1 .f09-w");
+        var w2 = qa("#f09-s2 .f09-w");
+        var w3 = qa("#f09-s3 .f09-w");
+
+        // Scene 1: "The best move?" -> "Do it today."
+        enterLine(w1, 0.11);
+        exitLine(w1, 1.14);
+        enterLine(w2, 1.14);
+        exitLine(w2, 2.15);
+
+        // Scene 2: "Find your shut-off valve." + valve settles in
+        enterLine(w3, 2.15);
+        tl.fromTo(q("#f09-valve"),
+          { y: 3 * CH, scale: 0.96, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 2.15);
+        tl.fromTo(q("#f09-flow"),
+          { attr: { "stroke-dashoffset": 0 } },
+          { attr: { "stroke-dashoffset": -210 }, duration: 7.45, ease: "none" }, 2.15);
+
+        // "tag": the tag swings in on its string and damps to rest
+        var hanger = q("#f09-hanger");
+        tl.fromTo(hanger, { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power1.out" }, 3.34);
+        tl.fromTo(hanger, { rotation: -75 }, { rotation: 18, duration: 0.55, ease: "sine.inOut" }, 3.34);
+        tl.fromTo(hanger, { rotation: 18 }, { rotation: -8, duration: 0.5, ease: "sine.inOut", immediateRender: false }, 3.89);
+        tl.fromTo(hanger, { rotation: -8 }, { rotation: 3.5, duration: 0.45, ease: "sine.inOut", immediateRender: false }, 4.39);
+        tl.fromTo(hanger, { rotation: 3.5 }, { rotation: -1.2, duration: 0.4, ease: "sine.inOut", immediateRender: false }, 4.84);
+        tl.fromTo(hanger, { rotation: -1.2 }, { rotation: 0, duration: 0.35, ease: "sine.out", immediateRender: false }, 5.24);
+
+        // "show everyone": recap pills pop in
+        qa(".f09-pill").forEach(function (pill, i) {
+          tl.fromTo(pill,
+            { y: 1.6 * CH, scale: 0.7, opacity: 0 },
+            { y: 0, scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 4.0 + i * 0.2);
+        });
+
+        // Scene 3: "Save": the CTA springs up, one-shot ring pulse
+        tl.fromTo(q("#f09-cta"),
+          { y: 4 * CH, scale: 0.9, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.3)" }, 5.47);
+        tl.set(q("#f09-cta-ring"), { scale: 1, opacity: 0 }, 0);
+        tl.fromTo(q("#f09-cta-ring"),
+          { scale: 1, opacity: 0.9 },
+          { scale: 1.16, opacity: 0, duration: 0.75, ease: "power2.out", immediateRender: false }, 5.72);
+
+        // final frame: fade the whole frame to cream over the last 0.5s
+        tl.fromTo(q("#f09-stage"),
+          { opacity: 1 },
+          { opacity: 0, duration: 0.5, ease: "power1.inOut", immediateRender: false }, 9.1);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>

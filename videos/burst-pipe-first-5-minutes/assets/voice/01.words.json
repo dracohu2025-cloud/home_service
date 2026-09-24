@@ -1,0 +1,104 @@
+[
+  {
+    "text": "It's",
+    "start": 0.14,
+    "end": 0.72,
+    "id": "w0"
+  },
+  {
+    "text": "2am.",
+    "start": 0.72,
+    "end": 1.67,
+    "id": "w1"
+  },
+  {
+    "text": "You",
+    "start": 1.78,
+    "end": 1.93,
+    "id": "w2"
+  },
+  {
+    "text": "hear",
+    "start": 1.93,
+    "end": 2.27,
+    "id": "w3"
+  },
+  {
+    "text": "a",
+    "start": 2.27,
+    "end": 2.34,
+    "id": "w4"
+  },
+  {
+    "text": "hiss?",
+    "start": 2.34,
+    "end": 2.94,
+    "id": "w5"
+  },
+  {
+    "text": "Then",
+    "start": 3.08,
+    "end": 3.38,
+    "id": "w6"
+  },
+  {
+    "text": "water.",
+    "start": 3.53,
+    "end": 4.39,
+    "id": "w7"
+  },
+  {
+    "text": "A",
+    "start": 4.4,
+    "end": 4.47,
+    "id": "w8"
+  },
+  {
+    "text": "pipe",
+    "start": 4.63,
+    "end": 4.77,
+    "id": "w9"
+  },
+  {
+    "text": "just",
+    "start": 4.77,
+    "end": 5.02,
+    "id": "w10"
+  },
+  {
+    "text": "burst.",
+    "start": 5.09,
+    "end": 5.62,
+    "id": "w11"
+  },
+  {
+    "text": "What",
+    "start": 5.67,
+    "end": 5.75,
+    "id": "w12"
+  },
+  {
+    "text": "do",
+    "start": 6,
+    "end": 6.17,
+    "id": "w13"
+  },
+  {
+    "text": "you",
+    "start": 6.17,
+    "end": 6.52,
+    "id": "w14"
+  },
+  {
+    "text": "do",
+    "start": 6.52,
+    "end": 6.58,
+    "id": "w15"
+  },
+  {
+    "text": "first?",
+    "start": 6.58,
+    "end": 7.23,
+    "id": "w16"
+  }
+]

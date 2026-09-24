@@ -1,0 +1,69 @@
+---
+workflow: faceless-explainer
+flow: automation
+storyboard: no
+message: "When a pipe bursts, five calm moves in the right order save your home: valve, power, drain, document, call."
+destination: youtube
+aspect: 1920x1080
+language: en
+audience: Homeowners and renters on YouTube, Facebook and X who want practical home know-how
+length: 75s
+angle: how-to
+narration: yes
+voice: English_expressive_narrator (MiniMax speech-2.8-hd)
+---
+
+## Intent
+
+An English, premium, upbeat know-how explainer: "Pipe Burst? Your First 5 Minutes." The viewer should walk away knowing exactly what to do — in order — if a pipe bursts at home, and do one thing today (find and tag the main shut-off valve). Polished and high-end (not cheap/cartoony), lively and fast-paced. Published to YouTube, Facebook and X. Direct MP4 delivery, no review stops.
+
+## Customizations
+
+- English voiceover via MiniMax TTS (`speech-2.8-hd`, `English_expressive_narrator`), word-timed captions.
+- Upbeat instrumental BGM via MiniMax music generation.
+- Refined SFX synthesized procedurally.
+- Hero visual: a clean cobalt line-art house cross-section with water in motion; count-up on the $15,400 stat.
+
+## Notes
+
+Facts (all on-screen figures trace here):
+- Triple-I (Insurance Information Institute), ISO/Verisk data 2019–2023: about 1 in 67 insured homes has a water damage or freezing claim each year; average claim severity $15,400.
+- Guidance synthesized from Red Cross, Forbes Home and licensed plumbers: shut off the main valve first (usually where the main line enters: basement, crawl space, utility room, near the water meter; gate/wheel valve clockwise, ball/lever valve a quarter turn so the handle crosses the pipe); cut power to affected areas at the breaker only if you can reach it dry — never stand in water (Red Cross); open faucets hot & cold and flush toilets to drain lines; turn off the water heater; photograph/video damage before cleanup; move valuables; call a licensed plumber and the insurer; tape/clamps won't hold at full pressure.
+- Deliberately NOT used: the "1/8-inch crack leaks 250 gallons a day" claim (sources disagree by >10×).
+# SCRIPT — Pipe Burst? Your First 5 Minutes
+
+## Hook (Frame 1)
+
+    It's 2 a.m. You hear a hiss... then water. A pipe just burst. What do you do first?
+
+## Stakes (Frame 2)
+
+    Don't panic, but move fast. About one in sixty-seven insured U.S. homes files a water damage claim every year. And the average claim? More than fifteen thousand dollars.
+
+## Playbook (Frame 3)
+
+    Here's your five-minute playbook. Five moves, in this order.
+
+## Step 1 — Valve (Frame 4)
+
+    One. Shut off the main water valve. It's usually where the water line enters your home: the basement, a crawl space, a utility room, or near the water meter. A round wheel turns clockwise. A lever turns a quarter turn, until it sits across the pipe.
+
+## Step 2 — Power (Frame 5)
+
+    Two. Kill the power, safely. If water is near outlets or appliances, switch that area off at the breaker. But never stand in water to reach the panel. If you can't get there dry, call an electrician.
+
+## Step 3 — Drain (Frame 6)
+
+    Three. Drain the lines. Open your faucets, hot and cold, and flush the toilets to empty what's left in the pipes. Then switch off the water heater.
+
+## Step 4 — Document (Frame 7)
+
+    Four. Document everything. Take photos and video before you clean up. Then move your valuables and start soaking up the water.
+
+## Step 5 — Call (Frame 8)
+
+    Five. Call the pros: a licensed plumber for the repair, and your insurance company to start the claim. And skip the tape. It won't hold against full water pressure.
+
+## Do it today (Frame 9)
+
+    The best move? Do it today. Find your shut-off valve, tag it, and show everyone at home. Save this video, and share it with someone who needs it.

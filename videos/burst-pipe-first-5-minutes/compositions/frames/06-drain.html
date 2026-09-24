@@ -1,0 +1,420 @@
+<template>
+  <div id="root" data-composition-id="06-drain" data-width="1920" data-height="1080" data-start="0" data-duration="8.71">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+    <style>
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Inter", sans-serif;
+      }
+      #d06-ground {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+        container-type: size;
+      }
+      #d06-ground * { box-sizing: border-box; }
+
+      /* shared chrome */
+      #d06-eyebrow {
+        position: absolute;
+        left: 5cqw;
+        top: 4.4cqh;
+        display: flex;
+        align-items: center;
+        gap: 0.9cqw;
+      }
+      .d06-accent-line {
+        width: 60px;
+        height: 4px;
+        border-radius: 2px;
+        background: #1e2bfa;
+      }
+      .d06-eyebrow-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.8cqw;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+      }
+      #d06-tag {
+        position: absolute;
+        right: 5cqw;
+        top: 4cqh;
+        padding: 0.5cqw 1.1cqw;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.8cqw;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: #1e2bfa;
+      }
+      #d06-progress {
+        position: absolute;
+        left: 0;
+        top: 1077px;
+        height: 3px;
+        width: 66.6667%;
+        background: #1e2bfa;
+        transform-origin: 0 50%;
+      }
+
+      /* left step column */
+      #d06-step-col {
+        position: absolute;
+        left: 5cqw;
+        top: 22cqh;
+        width: 39cqw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      #d06-step-circle {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #1e2bfa;
+        color: #fdfae7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      #d06-step-eyebrow {
+        margin-top: 2.6cqh;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.8cqw;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+        font-variant-numeric: tabular-nums;
+      }
+      #d06-title {
+        margin: 1.2cqh 0 0 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 2.6cqw;
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #111111;
+      }
+      #d06-chips {
+        margin-top: 5cqh;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6cqh;
+        align-items: flex-start;
+      }
+      .d06-chip {
+        display: flex;
+        align-items: center;
+        gap: 0.8cqw;
+        padding: 1.1cqh 1.3cqw 1.1cqh 1.1cqw;
+        border-radius: 12px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        font-family: "Inter", sans-serif;
+        font-size: 1.4cqw;
+        font-weight: 500;
+        color: #111111;
+        white-space: nowrap;
+      }
+      .d06-chip-dot {
+        width: 0.6cqw;
+        height: 0.6cqw;
+        border-radius: 50%;
+        background: #1e2bfa;
+        flex: none;
+      }
+      .d06-chip-strong {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        color: #1e2bfa;
+      }
+
+      /* right stage: three fixture cards */
+      #d06-stage {
+        position: absolute;
+        left: 50cqw;
+        top: 16cqh;
+        width: 45cqw;
+        height: 64cqh;
+        display: flex;
+        gap: 1.4cqw;
+      }
+      .d06-slot {
+        position: relative;
+        flex: 1 1 0;
+        height: 100%;
+      }
+      .d06-slot-ghost {
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        border: 1.5px dashed rgba(30, 43, 250, 0.2);
+      }
+      .d06-card {
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        padding: 2.4cqh 1.3cqw;
+        display: flex;
+        flex-direction: column;
+      }
+      .d06-card-head {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6cqh;
+      }
+      .d06-card-num {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.9cqw;
+        font-weight: 700;
+        line-height: 1;
+        color: #1e2bfa;
+        font-variant-numeric: tabular-nums;
+      }
+      .d06-card-label {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.45cqw;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #111111;
+        white-space: nowrap;
+      }
+      .d06-card-art {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .d06-card-art svg {
+        width: 100%;
+        height: auto;
+        display: block;
+        overflow: visible;
+      }
+      #d06-card-heater .d06-card-art svg { width: 86%; }
+      .d06-card-foot {
+        height: 5.2cqh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6cqw;
+        position: relative;
+      }
+      .d06-pill {
+        padding: 0.7cqh 0.9cqw;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.05cqw;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #1e2bfa;
+      }
+      .d06-pill-hot {
+        background: rgba(220, 38, 38, 0.08);
+        color: #dc2626;
+      }
+      #d06-pill-on, #d06-pill-off {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -2.2cqw;
+        margin-top: -1.55cqh;
+        width: 4.4cqw;
+        text-align: center;
+      }
+    </style>
+
+    <div id="d06-ground" class="clip" data-start="0" data-duration="8.71" data-track-index="0">
+      <!-- chrome -->
+      <div id="d06-eyebrow">
+        <div class="d06-accent-line"></div>
+        <div class="d06-eyebrow-text">Pipe Burst Playbook</div>
+      </div>
+      <div id="d06-tag">STEP 3 · DRAIN</div>
+
+      <!-- left column -->
+      <div id="d06-step-col">
+        <div id="d06-step-circle">3</div>
+        <div id="d06-step-eyebrow">Step 03 / 05</div>
+        <h2 id="d06-title">Drain the lines</h2>
+        <div id="d06-chips">
+          <div class="d06-chip" id="d06-chip-faucets"><span class="d06-chip-dot"></span>Faucets: hot + cold</div>
+          <div class="d06-chip" id="d06-chip-flush"><span class="d06-chip-dot"></span>Flush toilets</div>
+          <div class="d06-chip" id="d06-chip-heater"><span class="d06-chip-dot"></span>Water heater: <span class="d06-chip-strong">OFF</span></div>
+        </div>
+      </div>
+
+      <!-- right stage -->
+      <div id="d06-stage">
+        <div class="d06-slot">
+          <div class="d06-slot-ghost" id="d06-ghost-1"></div>
+          <div class="d06-card" id="d06-card-faucet">
+            <div class="d06-card-head">
+              <div class="d06-card-num">01</div>
+              <div class="d06-card-label">Faucets</div>
+            </div>
+            <div class="d06-card-art">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+                <path d="M30 214 H210" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="76" y="196" width="88" height="18" rx="9" fill="#1e2bfa" fill-opacity="0.12" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M120 196 V104 C120 44 196 44 196 104 V118" fill="none" stroke="#1e2bfa" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="d06-handle-hot"><path d="M100 150 H64" stroke="#dc2626" stroke-width="12" stroke-linecap="round"/>
+                  <circle cx="104" cy="150" r="9" fill="#fdfae7" stroke="#dc2626" stroke-width="6"/></g>
+                <g id="d06-handle-cold"><path d="M140 150 H176" stroke="#1e2bfa" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="136" cy="150" r="9" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+                <path id="d06-stream" d="M196 128 V192" stroke="#1e2bfa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.55" stroke-dasharray="10 12"/></svg>
+            </div>
+            <div class="d06-card-foot">
+              <div class="d06-pill d06-pill-hot" id="d06-pill-hot">HOT</div>
+              <div class="d06-pill" id="d06-pill-cold">COLD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d06-slot">
+          <div class="d06-slot-ghost" id="d06-ghost-2"></div>
+          <div class="d06-card" id="d06-card-toilet">
+            <div class="d06-card-head">
+              <div class="d06-card-num">02</div>
+              <div class="d06-card-label">Toilets</div>
+            </div>
+            <div class="d06-card-art">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+                <rect x="130" y="30" width="80" height="80" rx="12" fill="#1e2bfa" fill-opacity="0.08" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="d06-flush-lever" d="M150 50 h30" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M40 110 H210 a0 0 0 0 1 0 0 c0 40 -30 64 -80 64 h-30 c-40 0 -60 -30 -60 -64 z" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M100 174 l-8 40 h70 l-8 -40" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <g transform="translate(122 132) scale(1 0.45)">
+                  <g id="d06-swirl">
+                    <circle cx="0" cy="0" r="40" fill="none" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-dasharray="120 131.3"/>
+                    <circle cx="0" cy="0" r="22" fill="none" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="62 76.2"/>
+                  </g>
+                </g></svg>
+            </div>
+            <div class="d06-card-foot">
+              <div class="d06-pill" id="d06-pill-flush">FLUSH</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d06-slot">
+          <div class="d06-slot-ghost" id="d06-ghost-3"></div>
+          <div class="d06-card" id="d06-card-heater">
+            <div class="d06-card-head">
+              <div class="d06-card-num">03</div>
+              <div class="d06-card-label">Water heater</div>
+            </div>
+            <div class="d06-card-art">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260">
+                <rect x="40" y="30" width="120" height="200" rx="30" fill="#1e2bfa" fill-opacity="0.08" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M80 30 V10 M120 30 V10" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="100" cy="86" r="22" fill="#fdfae7" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="d06-dial-needle" d="M100 86 L112 72" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="70" y="170" width="60" height="34" rx="8" fill="#fdfae7" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="d06-flame" d="M100 198 c-10 -8 -8 -18 0 -24 c8 6 10 16 0 24 z" fill="#dc2626"/></svg>
+            </div>
+            <div class="d06-card-foot">
+              <div class="d06-pill d06-pill-hot" id="d06-pill-on">ON</div>
+              <div class="d06-pill" id="d06-pill-off">OFF</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="d06-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        // chrome (static across step frames) + progress 5/9 -> 6/9
+        tl.fromTo("#d06-progress", { scaleX: 5 / 6 }, { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 0);
+
+        // Scene 1 (0.0–1.9): step column + three empty slots
+        tl.fromTo("#d06-step-circle", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, 0.1);
+        tl.fromTo("#d06-step-eyebrow", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.25);
+        tl.fromTo("#d06-title", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.8);
+        tl.fromTo(["#d06-ghost-1", "#d06-ghost-2", "#d06-ghost-3"],
+          { opacity: 0, scale: 0.97 },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 0.3);
+
+        // card hidden states
+        tl.set(["#d06-card-faucet", "#d06-card-toilet", "#d06-card-heater"], { opacity: 0 }, 0);
+        tl.set(["#d06-pill-hot", "#d06-pill-cold", "#d06-pill-flush", "#d06-pill-on", "#d06-pill-off"], { opacity: 0 }, 0);
+        tl.set(["#d06-chip-faucets", "#d06-chip-flush", "#d06-chip-heater"], { opacity: 0 }, 0);
+        tl.set("#d06-stream", { opacity: 0 }, 0);
+        tl.set("#d06-swirl", { opacity: 0, svgOrigin: "0 0" }, 0);
+
+        function assemble(card, at) {
+          tl.fromTo(card, { opacity: 0, scale: 0.96, y: 22 },
+            { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "power3.out" }, at);
+        }
+        function chip(id, at) {
+          tl.fromTo(id, { opacity: 0, y: 27 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, at);
+        }
+        function pop(id, at) {
+          tl.fromTo(id, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, at);
+        }
+
+        // Scene 2 (1.9–3.9): faucet card, hot then cold, stream flows then tapers
+        assemble("#d06-card-faucet", 1.92);
+        chip("#d06-chip-faucets", 1.92);
+        tl.fromTo("#d06-handle-hot", { rotation: 0, svgOrigin: "104 150" },
+          { rotation: 35, svgOrigin: "104 150", duration: 0.45, ease: "power2.inOut" }, 2.95);
+        pop("#d06-pill-hot", 2.95);
+        tl.fromTo("#d06-handle-cold", { rotation: 0, svgOrigin: "136 150" },
+          { rotation: -35, svgOrigin: "136 150", duration: 0.45, ease: "power2.inOut" }, 3.32);
+        pop("#d06-pill-cold", 3.32);
+        tl.fromTo("#d06-stream", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 3.05);
+        tl.fromTo("#d06-stream", { strokeDashoffset: 0 },
+          { strokeDashoffset: -176, duration: 8.21 - 3.05, ease: "power1.out" }, 3.05);
+        tl.fromTo("#d06-stream", { attr: { "stroke-width": 8 } },
+          { attr: { "stroke-width": 3 }, duration: 1.6, ease: "power2.inOut" }, 4.4);
+        tl.to("#d06-stream", { opacity: 0.45, duration: 1.6, ease: "power2.inOut" }, 4.4);
+
+        // Scene 3 (3.9–6.3): toilet card, lever press, swirl spins down once
+        assemble("#d06-card-toilet", 3.91);
+        chip("#d06-chip-flush", 3.91);
+        tl.fromTo("#d06-flush-lever", { rotation: 0, svgOrigin: "150 50" },
+          { rotation: 22, svgOrigin: "150 50", duration: 0.25, ease: "power2.inOut" }, 4.05);
+        tl.to("#d06-flush-lever", { rotation: 0, svgOrigin: "150 50", duration: 0.35, ease: "power2.inOut" }, 4.35);
+        pop("#d06-pill-flush", 4.05);
+        tl.fromTo("#d06-swirl", { opacity: 0, svgOrigin: "0 0", rotation: 0, scale: 1 },
+          { opacity: 1, svgOrigin: "0 0", duration: 0.2, ease: "power2.out" }, 4.1);
+        tl.to("#d06-swirl", { svgOrigin: "0 0", rotation: -540, scale: 0.2, duration: 1.7, ease: "power2.in" }, 4.1);
+        tl.to("#d06-swirl", { opacity: 0, duration: 0.4, ease: "power2.in" }, 5.4);
+
+        // Scene 4 (6.3–8.21): water heater card, needle to OFF, flame out
+        assemble("#d06-card-heater", 6.38);
+        pop("#d06-pill-on", 6.55);
+        tl.fromTo("#d06-dial-needle", { rotation: 0, svgOrigin: "100 86" },
+          { rotation: -95, svgOrigin: "100 86", duration: 0.5, ease: "power2.inOut" }, 7.45);
+        tl.fromTo("#d06-flame", { scale: 1, svgOrigin: "100 198" },
+          { scale: 0, svgOrigin: "100 198", duration: 0.5, ease: "power2.in" }, 7.45);
+        tl.to("#d06-pill-on", { opacity: 0, scale: 0.8, duration: 0.2, ease: "power2.in" }, 7.45);
+        pop("#d06-pill-off", 7.6);
+        chip("#d06-chip-heater", 7.45);
+
+        tl.set({}, {}, 8.21);
+        window.__timelines["06-drain"] = tl;
+      })();
+    </script>
+  </div>
+</template>

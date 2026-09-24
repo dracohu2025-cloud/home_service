@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 160">
+  <path d="M60 20 H270 a14 14 0 0 1 14 14 V126 a14 14 0 0 1 -14 14 H60 L16 80 Z" fill="#1e2bfa"/>
+  <circle cx="52" cy="80" r="10" fill="#fdfae7"/>
+  <text x="170" y="74" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="28" letter-spacing="2" fill="#fdfae7">MAIN</text>
+  <text x="170" y="108" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="28" letter-spacing="2" fill="#fdfae7">SHUT-OFF</text></svg>

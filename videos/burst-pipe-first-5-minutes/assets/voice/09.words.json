@@ -1,0 +1,170 @@
+[
+  {
+    "text": "The",
+    "start": 0.11,
+    "end": 0.21,
+    "id": "w0"
+  },
+  {
+    "text": "best",
+    "start": 0.21,
+    "end": 0.42,
+    "id": "w1"
+  },
+  {
+    "text": "move?",
+    "start": 0.49,
+    "end": 1,
+    "id": "w2"
+  },
+  {
+    "text": "Do",
+    "start": 1.14,
+    "end": 1.22,
+    "id": "w3"
+  },
+  {
+    "text": "it",
+    "start": 1.22,
+    "end": 1.44,
+    "id": "w4"
+  },
+  {
+    "text": "today.",
+    "start": 1.44,
+    "end": 2.15,
+    "id": "w5"
+  },
+  {
+    "text": "Find",
+    "start": 2.15,
+    "end": 2.35,
+    "id": "w6"
+  },
+  {
+    "text": "your",
+    "start": 2.35,
+    "end": 2.55,
+    "id": "w7"
+  },
+  {
+    "text": "shutoff",
+    "start": 2.55,
+    "end": 2.9,
+    "id": "w8"
+  },
+  {
+    "text": "valve,",
+    "start": 2.9,
+    "end": 3.28,
+    "id": "w9"
+  },
+  {
+    "text": "tag",
+    "start": 3.34,
+    "end": 3.56,
+    "id": "w10"
+  },
+  {
+    "text": "it,",
+    "start": 3.56,
+    "end": 3.86,
+    "id": "w11"
+  },
+  {
+    "text": "and",
+    "start": 3.93,
+    "end": 4.02,
+    "id": "w12"
+  },
+  {
+    "text": "show",
+    "start": 4.02,
+    "end": 4.24,
+    "id": "w13"
+  },
+  {
+    "text": "everyone",
+    "start": 4.24,
+    "end": 4.87,
+    "id": "w14"
+  },
+  {
+    "text": "at",
+    "start": 4.87,
+    "end": 5.03,
+    "id": "w15"
+  },
+  {
+    "text": "home.",
+    "start": 5.03,
+    "end": 5.36,
+    "id": "w16"
+  },
+  {
+    "text": "Save",
+    "start": 5.47,
+    "end": 5.58,
+    "id": "w17"
+  },
+  {
+    "text": "this",
+    "start": 5.58,
+    "end": 5.78,
+    "id": "w18"
+  },
+  {
+    "text": "video",
+    "start": 5.85,
+    "end": 6.08,
+    "id": "w19"
+  },
+  {
+    "text": "and",
+    "start": 6.08,
+    "end": 6.1,
+    "id": "w20"
+  },
+  {
+    "text": "share",
+    "start": 6.5,
+    "end": 6.52,
+    "id": "w21"
+  },
+  {
+    "text": "it",
+    "start": 6.52,
+    "end": 6.63,
+    "id": "w22"
+  },
+  {
+    "text": "with",
+    "start": 6.63,
+    "end": 6.85,
+    "id": "w23"
+  },
+  {
+    "text": "someone",
+    "start": 6.85,
+    "end": 7.07,
+    "id": "w24"
+  },
+  {
+    "text": "who",
+    "start": 7.07,
+    "end": 7.47,
+    "id": "w25"
+  },
+  {
+    "text": "needs",
+    "start": 7.47,
+    "end": 7.68,
+    "id": "w26"
+  },
+  {
+    "text": "it.",
+    "start": 7.68,
+    "end": 8,
+    "id": "w27"
+  }
+]

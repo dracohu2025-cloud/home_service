@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1440, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" integrity="sha384-sG0Hv1tP1lZCk9KQmrIbY/XNwi+OY84GQqhMscbnsoBFqAz8KNCil1kvfL3Hbbk2" crossorigin="anonymous"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1440px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 1440px;
+        height: 1080px;
+        overflow: hidden;
+        background: #F5F0E6;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="60"
+      data-width="1440"
+      data-height="1080"
+    >
+      <div
+        id="el-01-hook-leak"
+        class="scene"
+        data-composition-id="01-hook-leak"
+        data-composition-src="compositions/frames/01-hook-leak.html"
+        data-start="0"
+        data-duration="5.5"
+        data-track-index="0"
+      ></div>
+
+      <div
+        id="el-02-stakes-cost"
+        class="scene"
+        data-composition-id="02-stakes-cost"
+        data-composition-src="compositions/frames/02-stakes-cost.html"
+        data-start="5"
+        data-duration="6.5"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-03-step1-diy"
+        class="scene"
+        data-composition-id="03-step1-diy"
+        data-composition-src="compositions/frames/03-step1-diy.html"
+        data-start="11"
+        data-duration="7.5"
+        data-track-index="0"
+      ></div>
+
+      <div
+        id="el-04-step2-neighbor"
+        class="scene"
+        data-composition-id="04-step2-neighbor"
+        data-composition-src="compositions/frames/04-step2-neighbor.html"
+        data-start="18"
+        data-duration="7.5"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-05-step3-phone"
+        class="scene"
+        data-composition-id="05-step3-phone"
+        data-composition-src="compositions/frames/05-step3-phone.html"
+        data-start="25"
+        data-duration="6.5"
+        data-track-index="0"
+      ></div>
+
+      <div
+        id="el-06-step4-quote"
+        class="scene"
+        data-composition-id="06-step4-quote"
+        data-composition-src="compositions/frames/06-step4-quote.html"
+        data-start="31"
+        data-duration="7.5"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-07-step5-choose"
+        class="scene"
+        data-composition-id="07-step5-choose"
+        data-composition-src="compositions/frames/07-step5-choose.html"
+        data-start="38"
+        data-duration="8.5"
+        data-track-index="0"
+      ></div>
+
+      <div
+        id="el-08-fixed-sunrise"
+        class="scene"
+        data-composition-id="08-fixed-sunrise"
+        data-composition-src="compositions/frames/08-fixed-sunrise.html"
+        data-start="46"
+        data-duration="6.5"
+        data-track-index="1"
+      ></div>
+
+      <div
+        id="el-09-thesis-trust"
+        class="scene"
+        data-composition-id="09-thesis-trust"
+        data-composition-src="compositions/frames/09-thesis-trust.html"
+        data-start="52"
+        data-duration="8"
+        data-track-index="0"
+      ></div>
+      <!-- procedural-audio -->
+      <audio id="el-bgm" src="assets/audio/bgm.wav" data-start="0" data-duration="60" data-track-index="11" data-volume="0.55"></audio>
+      <audio id="el-sfx" src="assets/audio/sfx.wav" data-start="0" data-duration="60" data-track-index="20" data-volume="0.9"></audio>
+      <!-- /procedural-audio -->
+
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+      // ── frame transitions (injected by transitions.mjs) ──
+      (function () { var tl = window.__timelines["main"];
+        tl.to("#el-01-hook-leak", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 5);
+        tl.fromTo("#el-02-stakes-cost", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 5);
+        tl.addLabel("hf:transition:01-hook-leak:02-stakes-cost:crossfade", 5);
+        tl.to("#el-02-stakes-cost", { x: -1440, duration: 0.5, ease: "power3.inOut" }, 11);
+        tl.fromTo("#el-03-step1-diy", { x: 1440, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 11);
+        tl.addLabel("hf:transition:02-stakes-cost:03-step1-diy:push-slide", 11);
+        tl.to("#el-03-step1-diy", { x: -1440, duration: 0.5, ease: "power3.inOut" }, 18);
+        tl.fromTo("#el-04-step2-neighbor", { x: 1440, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 18);
+        tl.addLabel("hf:transition:03-step1-diy:04-step2-neighbor:push-slide", 18);
+        tl.to("#el-04-step2-neighbor", { x: -1440, duration: 0.5, ease: "power3.inOut" }, 25);
+        tl.fromTo("#el-05-step3-phone", { x: 1440, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 25);
+        tl.addLabel("hf:transition:04-step2-neighbor:05-step3-phone:push-slide", 25);
+        tl.to("#el-05-step3-phone", { x: -1440, duration: 0.5, ease: "power3.inOut" }, 31);
+        tl.fromTo("#el-06-step4-quote", { x: 1440, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 31);
+        tl.addLabel("hf:transition:05-step3-phone:06-step4-quote:push-slide", 31);
+        tl.to("#el-06-step4-quote", { x: -1440, duration: 0.5, ease: "power3.inOut" }, 38);
+        tl.fromTo("#el-07-step5-choose", { x: 1440, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 38);
+        tl.addLabel("hf:transition:06-step4-quote:07-step5-choose:push-slide", 38);
+        tl.to("#el-07-step5-choose", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 46);
+        tl.fromTo("#el-08-fixed-sunrise", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 46);
+        tl.addLabel("hf:transition:07-step5-choose:08-fixed-sunrise:crossfade", 46);
+        tl.to("#el-08-fixed-sunrise", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 52);
+        tl.fromTo("#el-09-thesis-trust", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 52);
+        tl.addLabel("hf:transition:08-fixed-sunrise:09-thesis-trust:crossfade", 52);
+        tl.to({}, { duration: 60 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+      })();
+    </script>
+  </body>
+</html>

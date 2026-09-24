@@ -1,0 +1,314 @@
+<template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&family=ZCOOL+KuaiLe&display=swap">
+  <div id="root" data-composition-id="02-stakes-cost" data-width="1440" data-height="1080" data-start="0" data-duration="6.5">
+    <style>
+      #root {
+        position: relative;
+        width: 1440px;
+        height: 1080px;
+        overflow: hidden;
+        container-type: size;
+        font-family: "Quicksand", sans-serif;
+        color: #2D2D2D;
+      }
+      #root .clip { position: absolute; inset: 0; }
+      .s02-bg { background: #F5F0E6; }
+
+      /* ornaments */
+      .s02-orn { position: absolute; z-index: 1; overflow: visible; }
+      #s02-star { left: -2.4cqw; top: -3.2cqh; width: 12cqw; height: 12cqw; }
+      #s02-daisy { left: 88.5cqw; top: 63.5cqh; width: 13cqw; height: 13cqw; }
+
+      /* ground + character */
+      #s02-ground {
+        position: absolute; z-index: 2;
+        left: 2.5cqw; top: 73.6cqh; width: 38cqw; height: 2.4cqh;
+        background: #A8E6CF; border: 3px solid #2D2D2D; border-radius: 50px;
+        box-sizing: border-box;
+      }
+      #s02-housy {
+        position: absolute; z-index: 3;
+        left: 6cqw; top: 33.6cqh; width: 27cqw; aspect-ratio: 300 / 340;
+        transform-origin: 50% 100%;
+      }
+      #s02-housy svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+      /* framed-header card */
+      #s02-card {
+        position: absolute; z-index: 4;
+        left: 41cqw; top: 12cqh; width: 54cqw;
+        background: #FFFFFF; border: 3px solid #2D2D2D; border-radius: 28px;
+        box-shadow: 0.42cqw 0.42cqw 0 #2D2D2D;
+        box-sizing: border-box;
+      }
+      .s02-cap {
+        background: #F8635F; border-bottom: 3px solid #2D2D2D;
+        border-radius: 25px 25px 0 0;
+        padding: 2.2cqh 3cqw 2cqh;
+        display: flex; align-items: baseline; justify-content: center; gap: 1.4cqw;
+        color: #FFFFFF; text-shadow: 3px 3px 0 #2D2D2D; white-space: nowrap;
+      }
+      .s02-cap-zh { font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif; font-size: 3.4cqw; letter-spacing: 0.04em; }
+      .s02-cap-en { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 2.5cqw; letter-spacing: 0.02em; }
+      .s02-body {
+        padding: 4cqh 3cqw 3cqh;
+        display: flex; flex-direction: column; align-items: center; gap: 2.6cqh;
+      }
+      .s02-count-row { display: flex; align-items: baseline; justify-content: center; width: 48cqw; }
+      #s02-counter {
+        display: inline-block; width: 32cqw; text-align: right;
+        font-family: "Fredoka", sans-serif; font-weight: 600;
+        font-size: 9cqw; line-height: 1.1; letter-spacing: 0.02em;
+        font-variant-numeric: tabular-nums;
+        transform-origin: 100% 70%;
+        white-space: nowrap;
+      }
+      #s02-suffix {
+        display: inline-flex; align-items: baseline; gap: 0.6cqw;
+        margin-left: 1.2cqw; white-space: nowrap; color: #2D2D2D;
+      }
+      .s02-suf-zh { font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif; font-size: 2.6cqw; }
+      .s02-suf-en { font-family: "Quicksand", sans-serif; font-weight: 700; font-size: 1.9cqw; color: #6B6B6B; }
+      #s02-label {
+        font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+        font-size: 2.5cqw; line-height: 1.3; letter-spacing: 0.03em; white-space: nowrap;
+      }
+      #s02-chip {
+        display: inline-flex; align-items: baseline; gap: 0.9cqw;
+        background: #A8E6CF; border: 3px solid #2D2D2D; border-radius: 50px;
+        box-shadow: 4px 4px 0 #2D2D2D;
+        padding: 1.3cqh 2.2cqw; white-space: nowrap;
+      }
+      .s02-chip-zh { font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif; font-size: 1.75cqw; }
+      .s02-chip-num { font-family: "Fredoka", sans-serif; font-weight: 600; font-variant-numeric: tabular-nums; }
+      .s02-chip-dot { font-family: "Fredoka", sans-serif; font-size: 1.6cqw; color: #2D2D2D; }
+      .s02-chip-en { font-family: "Quicksand", sans-serif; font-weight: 700; font-size: 1.5cqw; }
+      #s02-meta {
+        font-family: "Quicksand", sans-serif; font-weight: 600;
+        font-size: 1.4cqw; color: #6B6B6B; letter-spacing: 0.02em; margin-top: 0.4cqh;
+      }
+      #s02-coin {
+        position: absolute; right: -2.4cqw; top: -3.6cqh;
+        width: 7cqw; height: 7cqw; border-radius: 50%;
+        background: #FDE68A; border: 3px solid #2D2D2D; box-shadow: 4px 4px 0 #2D2D2D;
+        box-sizing: border-box;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 3.8cqw; color: #2D2D2D;
+      }
+
+      /* subtitle band */
+      #s02-sub {
+        position: absolute; z-index: 10;
+        top: 85cqh; left: 0; right: 0; margin: 0 auto;
+        width: max-content; max-width: 86cqw; box-sizing: border-box;
+        padding: 1.4cqw 3cqw;
+        background: #FFFFFF; border: 3px solid #2D2D2D; border-radius: 50px;
+        box-shadow: 4px 4px 0 #2D2D2D;
+        text-align: center;
+      }
+      .s02-sub-zh { font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif; font-size: 3.3cqw; line-height: 1.25; color: #2D2D2D; }
+      .s02-sub-en { font-family: "Quicksand", sans-serif; font-weight: 600; font-size: 1.75cqw; line-height: 1.35; color: #6B6B6B; }
+    </style>
+
+    <div class="clip s02-bg" data-start="0" data-duration="6.5" data-track-index="0"></div>
+
+    <div class="clip" id="s02-stage" data-start="0" data-duration="6.5" data-track-index="1">
+      <!-- ornament: star (top-left, cropping) -->
+      <svg id="s02-star" class="s02-orn" viewBox="0 0 100 100">
+        <path d="M50 8 L61 36 L91 38 L68 57 L76 87 L50 70 L24 87 L32 57 L9 38 L39 36 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="2.6" stroke-linejoin="round"/>
+        <circle cx="42" cy="50" r="2.6" fill="#2D2D2D"/>
+        <circle cx="58" cy="50" r="2.6" fill="#2D2D2D"/>
+        <path d="M44 59 q6 5 12 0" fill="none" stroke="#2D2D2D" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+
+      <!-- ornament: daisy (right edge, behind card) -->
+      <svg id="s02-daisy" class="s02-orn" viewBox="0 0 100 100">
+        <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="2.4" stroke-linejoin="round">
+          <ellipse cx="50" cy="22" rx="11" ry="18"/>
+          <ellipse cx="50" cy="78" rx="11" ry="18"/>
+          <ellipse cx="22" cy="50" rx="18" ry="11"/>
+          <ellipse cx="78" cy="50" rx="18" ry="11"/>
+          <ellipse cx="30" cy="30" rx="11" ry="18" transform="rotate(-45 30 30)"/>
+          <ellipse cx="70" cy="30" rx="11" ry="18" transform="rotate(45 70 30)"/>
+          <ellipse cx="30" cy="70" rx="11" ry="18" transform="rotate(45 30 70)"/>
+          <ellipse cx="70" cy="70" rx="11" ry="18" transform="rotate(-45 70 70)"/>
+        </g>
+        <circle cx="50" cy="50" r="13" fill="#FDE68A" stroke="#2D2D2D" stroke-width="2.4"/>
+      </svg>
+
+      <div id="s02-ground"></div>
+
+      <!-- Housy (worried) + inline sky bucket + drops -->
+      <div id="s02-housy">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+          <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+          <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+          <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="108" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="192" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="108" cy="196" r="12" fill="#2D2D2D"/>
+          <circle cx="192" cy="196" r="12" fill="#2D2D2D"/>
+          <circle cx="112" cy="191" r="4" fill="#FFFFFF"/>
+          <circle cx="196" cy="191" r="4" fill="#FFFFFF"/>
+          <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+          <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+          <path d="M84 160 L126 150" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M216 160 L174 150" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M122 254 q7 -10 14 0 t14 0 t14 0 t14 0" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M244 176 q10 14 0 22 q-10 -8 0 -22 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+          <!-- drops (fall from the right eave into the bucket) -->
+          <g transform="translate(284 150)">
+            <path class="s02-drop" d="M0 0 q11 15 0 24 q-11 -9 0 -24 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+            <path class="s02-drop" d="M0 0 q11 15 0 24 q-11 -9 0 -24 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+            <path class="s02-drop" d="M0 0 q11 15 0 24 q-11 -9 0 -24 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+            <path class="s02-drop" d="M0 0 q11 15 0 24 q-11 -9 0 -24 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+            <path class="s02-drop" d="M0 0 q11 15 0 24 q-11 -9 0 -24 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+          </g>
+          <!-- sky bucket -->
+          <g id="s02-bucket">
+            <path d="M239 250 Q284 300 329 250" fill="none" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"/>
+            <path d="M236 240 L246 318 Q247 326 255 326 L313 326 Q321 326 322 318 L332 240 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M240 272 L328 272" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round"/>
+            <ellipse cx="284" cy="240" rx="48" ry="11" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="5"/>
+            <ellipse cx="284" cy="242" rx="38" ry="6" fill="#7ECDC0"/>
+          </g>
+          <!-- splashes -->
+          <g transform="translate(284 234)">
+            <g class="s02-splash">
+              <path d="M-10 0 q-6 -10 -14 -12 M10 0 q6 -10 14 -12 M0 -4 L0 -16" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <g class="s02-splash">
+              <path d="M-10 0 q-6 -10 -14 -12 M10 0 q6 -10 14 -12 M0 -4 L0 -16" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <g class="s02-splash">
+              <path d="M-10 0 q-6 -10 -14 -12 M10 0 q6 -10 14 -12 M0 -4 L0 -16" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <g class="s02-splash">
+              <path d="M-10 0 q-6 -10 -14 -12 M10 0 q6 -10 14 -12 M0 -4 L0 -16" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <g class="s02-splash">
+              <path d="M-10 0 q-6 -10 -14 -12 M10 0 q6 -10 14 -12 M0 -4 L0 -16" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- framed-header card (hero) -->
+      <div id="s02-card">
+        <div class="s02-cap">
+          <span class="s02-cap-zh">屋顶 + 天沟</span>
+          <span class="s02-cap-en">Roof &amp; Gutter</span>
+        </div>
+        <div class="s02-body">
+          <div class="s02-count-row">
+            <span id="s02-counter">$0</span>
+            <span id="s02-suffix"><span class="s02-suf-zh">/ 年</span><span class="s02-suf-en">per year</span></span>
+          </div>
+          <div id="s02-label">美国家庭年均保养花费最高的一项</div>
+          <div id="s02-chip">
+            <span class="s02-chip-zh">其中约 <span class="s02-chip-num">$1,200</span> 付给承包商</span>
+            <span class="s02-chip-dot">·</span>
+            <span class="s02-chip-en">~$1,200 to the pro</span>
+          </div>
+          <div id="s02-meta">HIRI Home Services Study 2024</div>
+        </div>
+        <div id="s02-coin">$</div>
+      </div>
+    </div>
+
+    <div class="clip" id="s02-subclip" data-start="0" data-duration="6.5" data-track-index="2">
+      <div id="s02-sub">
+        <div class="s02-sub-zh">屋顶和天沟，是美国家庭最烧钱的保养。</div>
+        <div class="s02-sub-en">Roofs &amp; gutters: the priciest upkeep in a US home.</div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var root = document.querySelector('[data-composition-id="02-stakes-cost"]');
+        var q = function (sel) { return root.querySelector(sel); };
+        var qa = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+
+        var tl = gsap.timeline({ paused: true });
+
+        var housy = q("#s02-housy");
+        var bucket = q("#s02-bucket");
+        var drops = qa(".s02-drop");
+        var splashes = qa(".s02-splash");
+        var card = q("#s02-card");
+        var counter = q("#s02-counter");
+
+        // Scene 1 (0.0–1.5s): ornaments + Housy with the bucket, drops land at 0.4 / 1.1
+        tl.fromTo(q("#s02-star"), { scale: 0.4, rotation: -30, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, 0.05);
+        tl.fromTo(q("#s02-daisy"), { scale: 0.4, rotation: 30, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, 0.15);
+        tl.fromTo(q("#s02-ground"), { scaleX: 0.6, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.4, ease: "power3.out" }, 0);
+        tl.fromTo(housy, { y: 40, scale: 0.9, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, 0);
+
+        tl.set(drops, { opacity: 0 }, 0);
+        tl.set(splashes, { opacity: 0 }, 0);
+
+        var landings = [0.4, 1.1, 2.4, 3.9, 5.2];
+        var FALL = 0.26;
+        landings.forEach(function (L, i) {
+          var drop = drops[i];
+          var splash = splashes[i];
+          var formStart = Math.max(0.02, L - FALL - 0.3);
+          var formDur = Math.max(0.08, L - FALL - formStart);
+          tl.fromTo(drop, { opacity: 1, scale: 0.2, y: 0, transformOrigin: "50% 0%" }, { scale: 1, duration: formDur, ease: "power2.out", immediateRender: false }, formStart);
+          tl.to(drop, { y: 76, duration: FALL, ease: "power2.in" }, L - FALL);
+          tl.set(drop, { opacity: 0 }, L);
+          tl.fromTo(splash, { opacity: 1, scale: 0.3, transformOrigin: "50% 100%" }, { opacity: 0, scale: 1.25, duration: 0.35, ease: "power2.out", immediateRender: false }, L);
+          tl.fromTo(bucket, { scaleY: 0.95, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.25, ease: "power3.out", immediateRender: false }, L);
+        });
+
+        // Subtitle band enters at +0.25s and stays
+        tl.fromTo(q("#s02-sub"), { y: 13, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.25);
+
+        // Scene 2 (1.5–3.6s): card slides in from the right; hero number counts $0 → $1,390
+        tl.fromTo(card, { x: 820, opacity: 0 }, { x: 0, opacity: 1, duration: 0.75, ease: "power3.out" }, 1.5);
+
+        var COUNT_AT = 1.9;
+        var COUNT_DUR = 1.7;
+        var state = { value: 0 };
+        tl.fromTo(state, { value: 0 }, {
+          value: 1390,
+          duration: COUNT_DUR,
+          ease: "power3.out",
+          onUpdate: function () {
+            counter.textContent = "$" + Math.round(state.value).toLocaleString("en-US");
+          }
+        }, COUNT_AT);
+        tl.fromTo(counter, { scale: 0.5 }, { scale: 1, duration: COUNT_DUR, ease: "power3.out" }, COUNT_AT);
+
+        // Count lands at 3.6s (coin-ding): suffix + coin sticker
+        tl.fromTo(q("#s02-suffix"), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.6);
+        tl.fromTo(q("#s02-coin"), { scale: 0, rotation: -25 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.4)" }, 3.6);
+
+        // Housy's worried jitter on the ding (finite, ≤ 0.4cqw)
+        tl.to(housy, { x: 5, duration: 0.06, ease: "none" }, 3.62);
+        tl.to(housy, { x: -5, duration: 0.08, ease: "none" }, 3.68);
+        tl.to(housy, { x: 4, duration: 0.08, ease: "none" }, 3.76);
+        tl.to(housy, { x: -3, duration: 0.08, ease: "none" }, 3.84);
+        tl.to(housy, { x: 0, duration: 0.1, ease: "power2.out" }, 3.92);
+
+        // Scene 3 (3.6–6.0s): label at 3.8, mint chip + source meta at 4.6, then hold
+        tl.fromTo(q("#s02-label"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.8);
+        tl.fromTo(q("#s02-chip"), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.6);
+        tl.fromTo(q("#s02-meta"), { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power2.out" }, 4.6);
+
+        tl.to({}, { duration: 0.01 }, 5.99);
+
+        window.__timelines["02-stakes-cost"] = tl;
+      })();
+    </script>
+  </div>
+</template>

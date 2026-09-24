@@ -1,0 +1,542 @@
+<template id="v04-template">
+  <div id="root" data-composition-id="04-valve" data-width="1920" data-height="1080" data-start="0" data-duration="15.74">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+    <style>
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      #v04-ground {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+      }
+      #v04-frame {
+        position: absolute;
+        inset: 0;
+        container-type: size;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+
+      /* shared chrome */
+      #v04-eyebrow {
+        position: absolute;
+        left: 5cqw;
+        top: 4.4cqh;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      #v04-eyebrow .v04-accent-line {
+        width: 60px;
+        height: 4px;
+        border-radius: 2px;
+        background: #1e2bfa;
+      }
+      .v04-eyebrow-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 0.8cqw;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+        line-height: 1;
+      }
+      #v04-tag {
+        position: absolute;
+        right: 5cqw;
+        top: 4cqh;
+        padding: 7px 14px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        color: #1e2bfa;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        line-height: 1;
+      }
+      #v04-progress {
+        position: absolute;
+        left: 0;
+        top: calc(100% - 3px);
+        width: 100%;
+        height: 3px;
+        background: #1e2bfa;
+      }
+
+      /* left step column */
+      #v04-col {
+        position: absolute;
+        left: 5cqw;
+        top: 16cqh;
+        width: 39cqw;
+        height: 64cqh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      #v04-step-row {
+        display: flex;
+        align-items: center;
+        gap: 1.1cqw;
+      }
+      #v04-step-circle {
+        width: 2.92cqw;
+        height: 2.92cqw;
+        border-radius: 50%;
+        background: #1e2bfa;
+        color: #fdfae7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 1.45cqw;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+      }
+      #v04-h2 {
+        margin: 2.6cqh 0 0 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 3.3cqw;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #111111;
+      }
+      .v04-word {
+        display: inline-block;
+        margin-right: 0.24em;
+      }
+      #v04-spots {
+        margin-top: 5.2cqh;
+      }
+      #v04-spots-label {
+        display: block;
+        margin-bottom: 1.8cqh;
+      }
+      #v04-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.4cqh 0.8cqw;
+      }
+      .v04-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6cqw;
+        padding: 1.05cqh 1.3cqw;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 1.4cqw;
+        line-height: 1.2;
+        color: #111111;
+        white-space: nowrap;
+      }
+      .v04-chip-dot {
+        width: 0.55cqw;
+        height: 0.55cqw;
+        border-radius: 50%;
+        background: #1e2bfa;
+        flex: none;
+      }
+
+      /* right stage */
+      #v04-stage {
+        position: absolute;
+        left: 50cqw;
+        top: 16cqh;
+        width: 45cqw;
+        height: 64cqh;
+      }
+      .v04-card {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        box-sizing: border-box;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      #v04-card-house {
+        left: 0;
+        width: 100%;
+        padding: 2cqw;
+      }
+      #v04-card-house svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      #v04-card-gate,
+      #v04-card-ball {
+        width: 21.8cqw;
+        padding: 2.2cqw 1.6cqw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #v04-card-gate { left: 0; }
+      #v04-card-ball { left: 23.2cqw; }
+      .v04-label-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5cqw;
+        padding: 1cqh 1.3cqw;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 1.4cqw;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        color: #111111;
+        white-space: nowrap;
+      }
+      .v04-label-chip .v04-accent-word {
+        color: #1e2bfa;
+        font-weight: 700;
+      }
+      .v04-label-chip .v04-arrow {
+        width: 1.1em;
+        height: 1.1em;
+        display: block;
+      }
+      .v04-valve-art {
+        width: 17.5cqw;
+        height: 17.5cqw;
+        flex: none;
+      }
+      .v04-valve-art svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .v04-off-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6cqw;
+        padding: 0.9cqh 1.4cqw 0.9cqh 1cqw;
+        border-radius: 100px;
+        background: #fdfae7;
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 1.4cqw;
+        letter-spacing: 0.08em;
+        line-height: 1.2;
+        color: #111111;
+      }
+      .v04-off-pill svg {
+        width: 1.6cqw;
+        height: 1.6cqw;
+        display: block;
+      }
+    </style>
+
+    <div id="v04-ground" class="clip" data-start="0" data-duration="15.74" data-track-index="0"></div>
+
+    <div id="v04-frame" class="clip" data-start="0" data-duration="15.74" data-track-index="1">
+      <!-- shared chrome -->
+      <div id="v04-eyebrow">
+        <div class="v04-accent-line"></div>
+        <span class="v04-eyebrow-text">Pipe Burst Playbook</span>
+      </div>
+      <div id="v04-tag">STEP 1 · VALVE</div>
+      <div id="v04-progress"></div>
+
+      <!-- left step column -->
+      <div id="v04-col">
+        <div id="v04-step-row">
+          <div id="v04-step-circle">1</div>
+          <span id="v04-step-eyebrow" class="v04-eyebrow-text">Step 01 / 05</span>
+        </div>
+        <h2 id="v04-h2"><span class="v04-word">Shut</span><span class="v04-word">off</span><span class="v04-word">the</span><span class="v04-word">main</span><br><span class="v04-word">water</span><span class="v04-word">valve</span></h2>
+        <div id="v04-spots">
+          <span id="v04-spots-label" class="v04-eyebrow-text">Common spots</span>
+          <div id="v04-chips">
+            <span id="v04-chip-basement" class="v04-chip"><span class="v04-chip-dot"></span>Basement</span>
+            <span id="v04-chip-crawl" class="v04-chip"><span class="v04-chip-dot"></span>Crawl space</span>
+            <span id="v04-chip-utility" class="v04-chip"><span class="v04-chip-dot"></span>Utility room</span>
+            <span id="v04-chip-meter" class="v04-chip"><span class="v04-chip-dot"></span>Near the water meter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- right stage -->
+      <div id="v04-stage">
+        <!-- Scene 1–2: house cutaway -->
+        <div id="v04-card-house" class="v04-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640">
+            <g id="v04-soil">
+              <rect x="0" y="470" width="800" height="170" fill="#1e2bfa" fill-opacity="0.06"/>
+              <path d="M20 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M70 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M120 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M170 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M220 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M270 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M320 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M370 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M420 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M470 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M520 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M570 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M620 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M670 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M720 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/><path d="M770 612 l18 -18" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
+              <path d="M0 470 H800" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g id="v04-shell">
+              <path d="M90 204 L400 44 L710 204" fill="none" stroke="#1e2bfa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="120" y="200" width="560" height="270" fill="#fdfae7" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="120" y="470" width="560" height="130" rx="4" fill="#1e2bfa" fill-opacity="0.05" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M120 332 H680" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M420 200 V332 M470 332 V470" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+              <rect x="610" y="100" width="36" height="78" rx="4" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g id="v04-windows" opacity="0.55">
+              <rect x="170" y="236" width="80" height="60" rx="6" fill="none" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M210 236 V296 M170 266 H250" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="510" y="236" width="80" height="60" rx="6" fill="none" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M550 236 V296 M510 266 H590" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="170" y="368" width="80" height="60" rx="6" fill="none" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M210 368 V428 M170 398 H250" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g id="v04-room-labels" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="15" letter-spacing="1.5" fill="#1e2bfa" opacity="0.7">
+              <text x="300" y="224">BATHROOM</text>
+              <text x="500" y="356">KITCHEN</text>
+              <text x="140" y="494">BASEMENT</text>
+            </g>
+            <g id="v04-fixtures">
+              <g id="v04-fx-tub"><path d="M300 300 h96 v14 a18 18 0 0 1 -18 18 h-60 a18 18 0 0 1 -18 -18 z" fill="#1e2bfa" fill-opacity="0.12" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+              <g id="v04-fx-sink"><path d="M540 420 h90 v12 a14 14 0 0 1 -14 14 h-62 a14 14 0 0 1 -14 -14 z" fill="#1e2bfa" fill-opacity="0.12" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M585 420 v-26 h18" fill="none" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+              <g id="v04-fx-heater"><rect x="560" y="492" width="64" height="98" rx="14" fill="#1e2bfa" fill-opacity="0.1" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="592" cy="520" r="10" fill="none" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+              <g id="v04-fx-breaker"><rect x="138" y="360" width="0" height="0"/></g>
+            </g>
+            <g id="v04-breaker-panel">
+              <rect x="620" y="360" width="44" height="64" rx="6" fill="#fdfae7" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M632 376 h20 M632 390 h20 M632 404 h20" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <path id="v04-pipe-glow" d="M0 566 H250" fill="none" stroke="#1e2bfa" stroke-width="28" stroke-linecap="round" stroke-opacity="0.16"/>
+            <g id="v04-pipes" fill="none">
+              <path id="v04-pipe-main" d="M0 566 H250" stroke="#1e2bfa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+              <path id="v04-pipe-riser" class="v04-pipe-side" d="M250 566 V316" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path id="v04-pipe-upper" class="v04-pipe-side" d="M250 316 H350" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path id="v04-pipe-kitchen" class="v04-pipe-side" d="M250 446 H585 V420" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path id="v04-pipe-heater" class="v04-pipe-side" d="M250 540 H560" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <g id="v04-flow" fill="none" stroke="#fdfae7" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="10 18">
+              <path class="v04-flow-path" d="M0 566 H250"/>
+              <path class="v04-flow-path v04-pipe-side" d="M250 566 V316"/>
+              <path class="v04-flow-path v04-pipe-side" d="M250 316 H350"/>
+              <path class="v04-flow-path v04-pipe-side" d="M250 446 H585 V420"/>
+              <path class="v04-flow-path v04-pipe-side" d="M250 540 H560"/>
+            </g>
+            <g id="v04-meter"><rect x="96" y="548" width="44" height="36" rx="8" fill="#fdfae7" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="118" cy="566" r="8" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+            <g id="v04-valve-main">
+              <circle cx="196" cy="566" r="16" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M196 550 V528" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="v04-valve-main-wheel"><circle cx="196" cy="522" r="18" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M178 522 H214 M196 504 V540" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>
+            </g>
+            <g id="v04-burst-point" transform="translate(338 316)">
+              <path d="M-10 -14 L0 -2 L10 -14 M-12 12 L0 2 L12 12" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
+            </g>
+            <g id="v04-spray" transform="translate(338 316)" fill="#1e2bfa">
+              <path d="M0 -8 C -26 -40 -40 -60 -44 -88" fill="none" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+              <path d="M0 -8 C 20 -44 34 -62 40 -92" fill="none" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+              <path d="M0 -8 C -4 -46 -2 -70 0 -100" fill="none" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+              <circle cx="-50" cy="-96" r="5"/><circle cx="46" cy="-100" r="5"/><circle cx="2" cy="-110" r="5"/>
+            </g>
+            <g id="v04-puddle"><ellipse cx="338" cy="326" rx="70" ry="7" fill="#1e2bfa" fill-opacity="0.25"/></g>
+            <g id="v04-rings" fill="none" stroke="#1e2bfa" stroke-linecap="round">
+              <circle id="v04-ring-valve-echo" cx="196" cy="543" r="50" stroke-width="3"/>
+              <circle id="v04-ring-valve" cx="196" cy="543" r="50" stroke-width="4.5"/>
+              <circle id="v04-ring-meter" cx="118" cy="566" r="28" stroke-width="4.5"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Scene 3: gate valve -->
+        <div id="v04-card-gate" class="v04-card">
+          <div id="v04-label-gate" class="v04-label-chip">
+            <span>Wheel</span>
+            <svg class="v04-arrow" viewBox="0 0 24 24" fill="none" stroke="#1e2bfa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 H19 M13.5 6.5 L19 12 L13.5 17.5"/></svg>
+            <span class="v04-accent-word">clockwise</span>
+          </div>
+          <div class="v04-valve-art">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+              <path d="M10 178 H230" stroke="#1e2bfa" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.14"/>
+              <path id="v04-gate-flow" d="M10 178 H230" fill="none" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 14"/>
+              <path d="M10 170 H80 M160 170 H230 M10 186 H80 M160 186 H230" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M80 150 H160 L172 178 L160 206 H80 L68 178 Z" fill="#1e2bfa" fill-opacity="0.1" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M120 150 V92" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="v04-wheel">
+                <circle cx="120" cy="70" r="52" fill="#fdfae7" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="120" cy="70" r="10" fill="#1e2bfa"/>
+                <path d="M120 22 V118 M72 70 H168 M86 36 L154 104 M154 36 L86 104" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <g id="v04-cw-arrow" fill="none" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                <path id="v04-cw-arc" d="M58 47.4 A66 66 0 0 1 182 47.4" stroke-dasharray="162" stroke-dashoffset="0"/>
+                <path id="v04-cw-head" d="M170.4 38.8 L182 47.4 L185.4 33.4"/>
+              </g>
+            </svg>
+          </div>
+          <div id="v04-off-gate" class="v04-off-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path class="v04-check" d="M7 12.5 L10.5 16 L17 8.5" stroke-dasharray="20" stroke-dashoffset="0"/></svg>
+            <span>OFF</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: ball valve -->
+        <div id="v04-card-ball" class="v04-card">
+          <div id="v04-label-ball" class="v04-label-chip">
+            <span>Lever</span>
+            <svg class="v04-arrow" viewBox="0 0 24 24" fill="none" stroke="#1e2bfa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 H19 M13.5 6.5 L19 12 L13.5 17.5"/></svg>
+            <span class="v04-accent-word">¼ turn</span>
+          </div>
+          <div class="v04-valve-art">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+              <path d="M10 150 H230" stroke="#1e2bfa" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.14"/>
+              <path id="v04-ball-flow" d="M10 150 H230" fill="none" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 14"/>
+              <path d="M10 142 H84 M156 142 H230 M10 158 H84 M156 158 H230" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="84" y="118" width="72" height="64" rx="16" fill="#1e2bfa" fill-opacity="0.1" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M120 118 V98" stroke="#1e2bfa" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="v04-lever">
+                <rect x="112" y="84" width="112" height="22" rx="11" fill="#1e2bfa"/>
+                <circle cx="120" cy="95" r="14" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </svg>
+          </div>
+          <div id="v04-off-ball" class="v04-off-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path class="v04-check" d="M7 12.5 L10.5 16 L17 8.5" stroke-dasharray="20" stroke-dashoffset="0"/></svg>
+            <span>OFF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var root = document.querySelector('[data-composition-id="04-valve"]');
+        var $ = gsap.utils.selector(root);
+        var D = 15.24;
+        var tl = gsap.timeline({ paused: true });
+
+        /* chrome: progress bar grows 3/9 -> 4/9 */
+        tl.fromTo($("#v04-progress"), { scaleX: 3 / 9, transformOrigin: "0% 50%" },
+          { scaleX: 4 / 9, duration: 0.6, ease: "power3.out", transformOrigin: "0% 50%" }, 0);
+
+        /* Scene 1 (0.0–2.6): step column + house stage */
+        tl.fromTo($("#v04-step-circle"), { opacity: 0, scale: 0.6 },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out" }, 0.1);
+        tl.fromTo($("#v04-step-eyebrow"), { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.18);
+        tl.fromTo($("#v04-card-house"), { opacity: 0, scale: 0.96 },
+          { opacity: 1, scale: 1, duration: 0.55, ease: "power3.out" }, 0.15);
+        tl.fromTo($(".v04-word"), { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.05 }, 0.43);
+
+        /* live water flow in the house pipes (finite, linear) */
+        tl.fromTo($(".v04-flow-path"), { strokeDashoffset: 0 },
+          { strokeDashoffset: -517, duration: 9.4, ease: "none" }, 0);
+
+        /* Scene 2 (2.6–9.2): on "enters" 4.08 — main pipe lights, ring on the valve */
+        tl.fromTo($("#v04-pipe-glow"), { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.08);
+        tl.fromTo($(".v04-pipe-side"), { opacity: 1 },
+          { opacity: 0.35, duration: 0.5, ease: "power2.out" }, 4.08);
+        tl.fromTo($("#v04-ring-valve"), { opacity: 0, scale: 0.6, svgOrigin: "196 543" },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out", svgOrigin: "196 543" }, 4.08);
+        tl.fromTo($("#v04-spots-label"), { opacity: 0, y: 22 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.08);
+
+        tl.fromTo($("#v04-ring-valve-echo"), { opacity: 0, scale: 1, svgOrigin: "196 543" },
+          { opacity: 0.55, scale: 1, svgOrigin: "196 543", duration: 0.27, ease: "none" }, 4.08);
+        var pulses = [4.35, 5.45, 6.55, 7.65];
+        pulses.forEach(function (t) {
+          tl.fromTo($("#v04-ring-valve-echo"), { opacity: 0.55, scale: 1, svgOrigin: "196 543" },
+            { opacity: 0, scale: 1.55, svgOrigin: "196 543", duration: 1.0, ease: "power2.out", immediateRender: false }, t);
+        });
+
+        /* location chips on their spoken cues */
+        var chips = [
+          ["#v04-chip-basement", 5.06],
+          ["#v04-chip-crawl", 5.76],
+          ["#v04-chip-utility", 6.77],
+          ["#v04-chip-meter", 7.91]
+        ];
+        chips.forEach(function (c) {
+          tl.fromTo($(c[0]), { opacity: 0, y: 20, scale: 0.96 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" }, c[1]);
+        });
+
+        /* on "meter" 8.80 — second ring marks the meter */
+        tl.fromTo($("#v04-ring-meter"), { opacity: 0, scale: 0.6, svgOrigin: "118 566" },
+          { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out", svgOrigin: "118 566" }, 8.8);
+
+        /* Scene 3 (9.2–11.1): zoom-through cut house -> gate valve */
+        tl.fromTo($("#v04-card-house"), { scale: 1, filter: "blur(0px)" },
+          { scale: 1.08, filter: "blur(10px)", duration: 0.2, ease: "power3.in", immediateRender: false }, 9.0);
+        tl.fromTo($("#v04-card-house"), { opacity: 1 },
+          { opacity: 0.15, duration: 0.2, ease: "none", immediateRender: false }, 9.0);
+        tl.set($("#v04-card-house"), { opacity: 0 }, 9.2);
+
+        tl.fromTo($("#v04-card-gate"), { opacity: 0 },
+          { opacity: 0.15, duration: 0.01, ease: "none" }, 9.19);
+        tl.fromTo($("#v04-card-gate"), { scale: 0.75, xPercent: 53.21, filter: "blur(10px)" },
+          { scale: 1, xPercent: 53.21, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 9.2);
+        tl.fromTo($("#v04-card-gate"), { opacity: 0.15 },
+          { opacity: 1, duration: 0.5, ease: "expo.out", immediateRender: false }, 9.2);
+        tl.fromTo($("#v04-label-gate"), { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.5);
+        tl.fromTo($("#v04-cw-arc"), { strokeDashoffset: 162 },
+          { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 9.65);
+        tl.fromTo($("#v04-cw-head"), { opacity: 0 },
+          { opacity: 1, duration: 0.15, ease: "none" }, 10.05);
+
+        /* gate pipe flow: steady, then decelerates to a stop as the wheel closes */
+        tl.fromTo($("#v04-gate-flow"), { strokeDashoffset: 0 },
+          { strokeDashoffset: -60.5, duration: 1.21, ease: "none" }, 9.2);
+        tl.fromTo($("#v04-gate-flow"), { strokeDashoffset: -60.5 },
+          { strokeDashoffset: -81.75, duration: 0.85, ease: "power1.out", immediateRender: false }, 10.41);
+        tl.fromTo($("#v04-gate-flow"), { opacity: 1 },
+          { opacity: 0.35, duration: 0.5, ease: "power2.out", immediateRender: false }, 10.9);
+
+        /* on "clockwise" 10.41 — wheel turns 2 full turns clockwise */
+        tl.fromTo($("#v04-wheel"), { rotation: 0, svgOrigin: "120 70" },
+          { rotation: 720, svgOrigin: "120 70", duration: 0.85, ease: "power2.inOut" }, 10.41);
+
+        /* Scene 4 (11.1–15.24): ball card slides in beside the gate card */
+        tl.fromTo($("#v04-card-gate"), { xPercent: 53.21 },
+          { xPercent: 0, duration: 0.55, ease: "power3.out", immediateRender: false }, 11.12);
+        tl.fromTo($("#v04-card-ball"), { opacity: 0, xPercent: 30 },
+          { opacity: 1, xPercent: 0, duration: 0.55, ease: "power3.out" }, 11.12);
+        tl.fromTo($("#v04-label-ball"), { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.4);
+
+        tl.fromTo($("#v04-ball-flow"), { strokeDashoffset: 0 },
+          { strokeDashoffset: -49, duration: 0.98, ease: "none" }, 11.12);
+        tl.fromTo($("#v04-ball-flow"), { strokeDashoffset: -49 },
+          { strokeDashoffset: -64, duration: 0.6, ease: "power1.out", immediateRender: false }, 12.1);
+        tl.fromTo($("#v04-ball-flow"), { opacity: 1 },
+          { opacity: 0.35, duration: 0.5, ease: "power2.out", immediateRender: false }, 12.5);
+
+        /* on "quarter turn" 12.10 — lever rotates 90° to sit across the pipe */
+        tl.fromTo($("#v04-lever"), { rotation: 0, svgOrigin: "120 95" },
+          { rotation: 90, svgOrigin: "120 95", duration: 0.6, ease: "power2.inOut" }, 12.1);
+
+        /* on "across" 13.87 — OFF confirmations on both cards, then hold */
+        tl.fromTo($(".v04-off-pill"), { opacity: 0, scale: 0.6 },
+          { opacity: 1, scale: 1, duration: 0.45, ease: "expo.out", stagger: 0.08 }, 13.87);
+        tl.fromTo($(".v04-check"), { strokeDashoffset: 20 },
+          { strokeDashoffset: 0, duration: 0.35, ease: "power2.out", stagger: 0.08 }, 14.0);
+
+        tl.set({}, {}, D);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["04-valve"] = tl;
+      })();
+    </script>
+  </div>
+</template>

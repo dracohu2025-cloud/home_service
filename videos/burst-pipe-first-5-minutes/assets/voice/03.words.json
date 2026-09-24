@@ -1,0 +1,56 @@
+[
+  {
+    "text": "Here's",
+    "start": 0.16,
+    "end": 0.33,
+    "id": "w0"
+  },
+  {
+    "text": "your",
+    "start": 0.33,
+    "end": 0.55,
+    "id": "w1"
+  },
+  {
+    "text": "five-minute",
+    "start": 0.55,
+    "end": 1.15,
+    "id": "w2"
+  },
+  {
+    "text": "playbook,",
+    "start": 1.15,
+    "end": 1.71,
+    "id": "w3"
+  },
+  {
+    "text": "five",
+    "start": 1.72,
+    "end": 1.94,
+    "id": "w4"
+  },
+  {
+    "text": "moves",
+    "start": 1.94,
+    "end": 2.22,
+    "id": "w5"
+  },
+  {
+    "text": "in",
+    "start": 2.22,
+    "end": 2.27,
+    "id": "w6"
+  },
+  {
+    "text": "this",
+    "start": 2.44,
+    "end": 2.56,
+    "id": "w7"
+  },
+  {
+    "text": "order.",
+    "start": 2.56,
+    "end": 2.96,
+    "id": "w8"
+  }
+]

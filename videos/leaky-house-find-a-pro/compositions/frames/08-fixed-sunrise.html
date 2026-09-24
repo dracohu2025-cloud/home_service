@@ -1,0 +1,324 @@
+<template>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&family=ZCOOL+KuaiLe&display=swap">
+<div id="root" data-composition-id="08-fixed-sunrise" data-start="0" data-duration="6.5" data-width="1440" data-height="1080">
+  <style>
+    #root {
+      position: relative;
+      width: 1440px;
+      height: 1080px;
+      overflow: hidden;
+    }
+    [data-composition-id="08-fixed-sunrise"] .f08-ground {
+      position: absolute;
+      inset: 0;
+      container-type: size;
+      background: #A8D8F0;
+      overflow: hidden;
+    }
+    [data-composition-id="08-fixed-sunrise"] .f08-stage {
+      position: absolute;
+      inset: 0;
+      container-type: size;
+      overflow: hidden;
+    }
+    [data-composition-id="08-fixed-sunrise"] .f08-abs { position: absolute; display: block; }
+    [data-composition-id="08-fixed-sunrise"] .f08-abs > svg,
+    [data-composition-id="08-fixed-sunrise"] .f08-fill { width: 100%; height: 100%; display: block; overflow: visible; }
+
+    [data-composition-id="08-fixed-sunrise"] .f08-sun { left: 0.33cqw; top: 7.92cqw; width: 30cqw; height: 30cqw; z-index: 1; }
+    [data-composition-id="08-fixed-sunrise"] .f08-horizon {
+      position: absolute; left: -2cqw; right: -2cqw; top: 71.3cqh; bottom: -2cqh;
+      background: #A8E6CF; border-top: 3px solid #2D2D2D; z-index: 2;
+    }
+    [data-composition-id="08-fixed-sunrise"] .f08-cloud-a { left: -3cqw; top: 3.5cqw; width: 15cqw; height: 7.5cqw; z-index: 3; }
+    [data-composition-id="08-fixed-sunrise"] .f08-cloud-b { left: 86cqw; top: 2.5cqw; width: 18cqw; height: 9cqw; z-index: 3; }
+    [data-composition-id="08-fixed-sunrise"] .f08-star-orn { left: 74cqw; top: 8.5cqw; width: 4.5cqw; height: 4.5cqw; z-index: 3; }
+    [data-composition-id="08-fixed-sunrise"] .f08-daisy-a { left: 6cqw; top: 55.5cqw; width: 5.5cqw; height: 5.5cqw; z-index: 3; }
+    [data-composition-id="08-fixed-sunrise"] .f08-daisy-b { left: 88cqw; top: 56cqw; width: 4.5cqw; height: 4.5cqw; z-index: 3; }
+
+    [data-composition-id="08-fixed-sunrise"] .f08-housy { left: 33cqw; top: 16.32cqw; width: 34cqw; height: 38.53cqw; z-index: 4; }
+    [data-composition-id="08-fixed-sunrise"] .f08-housy-squash { position: absolute; inset: 0; }
+    [data-composition-id="08-fixed-sunrise"] .f08-face { position: absolute; inset: 0; }
+    [data-composition-id="08-fixed-sunrise"] .f08-face > svg { width: 100%; height: 100%; display: block; }
+    [data-composition-id="08-fixed-sunrise"] .f08-happy { opacity: 0; }
+    [data-composition-id="08-fixed-sunrise"] .f08-patch { left: 56.5%; top: 30.2%; width: 17%; height: 9%; }
+    [data-composition-id="08-fixed-sunrise"] .f08-burst { left: 53.24%; top: 24.3%; width: 23.5%; height: 20.75%; }
+    [data-composition-id="08-fixed-sunrise"] .f08-drop { left: 34.58cqw; top: 33.33cqw; width: 1.8cqw; height: 2.4cqw; z-index: 4; }
+
+    [data-composition-id="08-fixed-sunrise"] .f08-ladder { left: 66.67cqw; top: 38.89cqw; width: 8.68cqw; height: 15.97cqw; z-index: 5; }
+    [data-composition-id="08-fixed-sunrise"] .f08-hammer { left: 63.54cqw; top: 22.45cqw; width: 4.74cqw; height: 15cqw; z-index: 6; transform-origin: 50% 94.7%; }
+    [data-composition-id="08-fixed-sunrise"] .f08-pro { left: 61.11cqw; top: 17.36cqw; width: 20cqw; height: 24cqw; z-index: 7; }
+
+    [data-composition-id="08-fixed-sunrise"] .f08-sparkle { width: 3.5cqw; height: 3.5cqw; z-index: 8; }
+    [data-composition-id="08-fixed-sunrise"] .f08-sp1 { left: 28.12cqw; top: 19.1cqw; }
+    [data-composition-id="08-fixed-sunrise"] .f08-sp2 { left: 29.86cqw; top: 37.15cqw; }
+    [data-composition-id="08-fixed-sunrise"] .f08-sp3 { left: 25.34cqw; top: 48.26cqw; }
+    [data-composition-id="08-fixed-sunrise"] .f08-sp4 { left: 39.93cqw; top: 15.97cqw; }
+    [data-composition-id="08-fixed-sunrise"] .f08-sp5 { left: 58.68cqw; top: 15.62cqw; }
+
+    [data-composition-id="08-fixed-sunrise"] .f08-badge {
+      position: absolute; left: 0; right: 0; top: 7.4cqw; margin: 0 auto;
+      width: max-content; z-index: 9;
+      background: #FDE68A; border: 3px solid #2D2D2D; border-radius: 50px;
+      box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+      padding: 0.9cqw 2.6cqw; white-space: nowrap;
+      display: flex; align-items: baseline; gap: 1.2cqw; color: #2D2D2D;
+    }
+    [data-composition-id="08-fixed-sunrise"] .f08-badge-zh { font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif; font-size: 4cqw; line-height: 1.1; }
+    [data-composition-id="08-fixed-sunrise"] .f08-badge-en { font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 3.2cqw; line-height: 1.1; letter-spacing: 0.02em; }
+
+    [data-composition-id="08-fixed-sunrise"] .f08-subtitle {
+      position: absolute; left: 0; right: 0; top: 85cqh; margin: 0 auto;
+      width: max-content; max-width: 86cqw; z-index: 10;
+      background: #FFFFFF; border: 3px solid #2D2D2D; border-radius: 50px;
+      box-shadow: 4px 4px 0 #2D2D2D;
+      padding: 1.4cqw 3cqw; text-align: center; box-sizing: border-box;
+    }
+    [data-composition-id="08-fixed-sunrise"] .f08-sub-zh { font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif; font-size: 3.3cqw; line-height: 1.2; color: #2D2D2D; }
+    [data-composition-id="08-fixed-sunrise"] .f08-sub-en { font-family: "Quicksand", sans-serif; font-weight: 600; font-size: 1.75cqw; line-height: 1.35; color: #6B6B6B; }
+  </style>
+
+  <!-- background: sky + rising sun + mint horizon + ornaments -->
+  <div class="clip f08-ground" data-start="0" data-duration="6.5" data-track-index="0">
+    <div class="f08-abs f08-sun">
+      <svg viewBox="0 0 432 432">
+        <g stroke-linecap="round">
+          <g stroke="#2D2D2D" stroke-width="18">
+            <line x1="382" y1="216" x2="416" y2="216"/><line x1="333.4" y1="333.4" x2="357.4" y2="357.4"/>
+            <line x1="216" y1="382" x2="216" y2="416"/><line x1="98.6" y1="333.4" x2="74.6" y2="357.4"/>
+            <line x1="50" y1="216" x2="16" y2="216"/><line x1="98.6" y1="98.6" x2="74.6" y2="74.6"/>
+            <line x1="216" y1="50" x2="216" y2="16"/><line x1="333.4" y1="98.6" x2="357.4" y2="74.6"/>
+          </g>
+          <g stroke="#FDE68A" stroke-width="8">
+            <line x1="382" y1="216" x2="416" y2="216"/><line x1="333.4" y1="333.4" x2="357.4" y2="357.4"/>
+            <line x1="216" y1="382" x2="216" y2="416"/><line x1="98.6" y1="333.4" x2="74.6" y2="357.4"/>
+            <line x1="50" y1="216" x2="16" y2="216"/><line x1="98.6" y1="98.6" x2="74.6" y2="74.6"/>
+            <line x1="216" y1="50" x2="216" y2="16"/><line x1="333.4" y1="98.6" x2="357.4" y2="74.6"/>
+          </g>
+        </g>
+        <circle cx="216" cy="216" r="144" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6"/>
+        <ellipse cx="160" cy="236" rx="18" ry="10" fill="#F7C8D4"/>
+        <ellipse cx="272" cy="236" rx="18" ry="10" fill="#F7C8D4"/>
+        <path d="M168 204 Q180 190 192 204 M240 204 Q252 190 264 204" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round"/>
+        <path d="M196 240 Q216 258 236 240" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="f08-horizon"></div>
+    <div class="f08-abs f08-cloud-a f08-orn">
+      <svg viewBox="0 0 220 110"><path d="M40 90 Q10 90 14 66 Q16 44 42 46 Q48 18 82 20 Q104 4 130 22 Q162 14 172 44 Q206 44 206 70 Q206 92 178 92 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="f08-abs f08-cloud-b f08-orn">
+      <svg viewBox="0 0 220 110"><path d="M40 90 Q10 90 14 66 Q16 44 42 46 Q48 18 82 20 Q104 4 130 22 Q162 14 172 44 Q206 44 206 70 Q206 92 178 92 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="f08-abs f08-star-orn f08-orn">
+      <svg viewBox="0 0 60 60"><path d="M30 5 L37 22 L55 23 L41 35 L46 53 L30 43 L14 53 L19 35 L5 23 L23 22 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="3.5" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="f08-abs f08-daisy-a f08-orn">
+      <svg viewBox="0 0 80 80">
+        <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3.5">
+          <ellipse cx="40" cy="18" rx="10" ry="16"/><ellipse cx="40" cy="62" rx="10" ry="16"/>
+          <ellipse cx="18" cy="40" rx="16" ry="10"/><ellipse cx="62" cy="40" rx="16" ry="10"/>
+          <ellipse cx="24" cy="24" rx="10" ry="15" transform="rotate(-45 24 24)"/><ellipse cx="56" cy="56" rx="10" ry="15" transform="rotate(-45 56 56)"/>
+          <ellipse cx="56" cy="24" rx="10" ry="15" transform="rotate(45 56 24)"/><ellipse cx="24" cy="56" rx="10" ry="15" transform="rotate(45 24 56)"/>
+        </g>
+        <circle cx="40" cy="40" r="12" fill="#FDE68A" stroke="#2D2D2D" stroke-width="3.5"/>
+      </svg>
+    </div>
+    <div class="f08-abs f08-daisy-b f08-orn">
+      <svg viewBox="0 0 80 80">
+        <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3.5">
+          <ellipse cx="40" cy="18" rx="10" ry="16"/><ellipse cx="40" cy="62" rx="10" ry="16"/>
+          <ellipse cx="18" cy="40" rx="16" ry="10"/><ellipse cx="62" cy="40" rx="16" ry="10"/>
+          <ellipse cx="24" cy="24" rx="10" ry="15" transform="rotate(-45 24 24)"/><ellipse cx="56" cy="56" rx="10" ry="15" transform="rotate(-45 56 56)"/>
+          <ellipse cx="56" cy="24" rx="10" ry="15" transform="rotate(45 56 24)"/><ellipse cx="24" cy="56" rx="10" ry="15" transform="rotate(45 24 56)"/>
+        </g>
+        <circle cx="40" cy="40" r="12" fill="#FDE68A" stroke="#2D2D2D" stroke-width="3.5"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- foreground stage -->
+  <div class="clip f08-stage" data-start="0" data-duration="6.5" data-track-index="1">
+    <!-- the last drips (they stop once the roof is patched) -->
+    <div class="f08-abs f08-drop f08-drop1"><svg viewBox="0 0 26 34"><path d="M13 3 Q23 17 23 23 Q23 31 13 31 Q3 31 3 23 Q3 17 13 3 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+    <div class="f08-abs f08-drop f08-drop2"><svg viewBox="0 0 26 34"><path d="M13 3 Q23 17 23 23 Q23 31 13 31 Q3 31 3 23 Q3 17 13 3 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+    <div class="f08-abs f08-drop f08-drop3"><svg viewBox="0 0 26 34"><path d="M13 3 Q23 17 23 23 Q23 31 13 31 Q3 31 3 23 Q3 17 13 3 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+
+    <!-- Housy (hero) with roof patch + tap bursts -->
+    <div class="f08-abs f08-housy">
+      <div class="f08-housy-squash">
+        <div class="f08-face f08-worried">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+            <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+            <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+            <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <ellipse cx="108" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <ellipse cx="192" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="108" cy="196" r="12" fill="#2D2D2D"/>
+            <circle cx="192" cy="196" r="12" fill="#2D2D2D"/>
+            <circle cx="112" cy="191" r="4" fill="#FFFFFF"/>
+            <circle cx="196" cy="191" r="4" fill="#FFFFFF"/>
+            <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+            <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+            <path d="M84 160 L126 150" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M216 160 L174 150" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M122 254 q7 -10 14 0 t14 0 t14 0 t14 0" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M244 176 q10 14 0 22 q-10 -8 0 -22 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="f08-face f08-happy">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+            <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+            <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+            <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M86 206 Q108 180 130 206" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M170 206 Q192 180 214 206" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+            <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+            <path d="M118 234 Q150 234 182 234 Q178 276 150 276 Q122 276 118 234 Z" fill="#2D2D2D" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M132 262 Q150 250 168 262 Q162 274 150 274 Q138 274 132 262 Z" fill="#F7C8D4"/>
+          </svg>
+        </div>
+        <div class="f08-abs f08-patch">
+          <svg viewBox="0 0 100 60">
+            <rect x="4" y="4" width="92" height="52" rx="12" fill="#FDE68A" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M16 22 L84 22 M16 38 L84 38" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round" stroke-dasharray="7 7"/>
+          </svg>
+        </div>
+        <div class="f08-abs f08-burst f08-burst1"><svg viewBox="0 0 100 100"><g stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"><line x1="72" y1="50" x2="92" y2="50"/><line x1="61" y1="69.1" x2="71" y2="86.4"/><line x1="39" y1="69.1" x2="29" y2="86.4"/><line x1="28" y1="50" x2="8" y2="50"/><line x1="39" y1="30.9" x2="29" y2="13.6"/><line x1="61" y1="30.9" x2="71" y2="13.6"/></g><path d="M50 36 Q52 48 64 50 Q52 52 50 64 Q48 52 36 50 Q48 48 50 36 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+        <div class="f08-abs f08-burst f08-burst2"><svg viewBox="0 0 100 100"><g stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"><line x1="72" y1="50" x2="92" y2="50"/><line x1="61" y1="69.1" x2="71" y2="86.4"/><line x1="39" y1="69.1" x2="29" y2="86.4"/><line x1="28" y1="50" x2="8" y2="50"/><line x1="39" y1="30.9" x2="29" y2="13.6"/><line x1="61" y1="30.9" x2="71" y2="13.6"/></g><path d="M50 36 Q52 48 64 50 Q52 52 50 64 Q48 52 36 50 Q48 48 50 36 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+        <div class="f08-abs f08-burst f08-burst3"><svg viewBox="0 0 100 100"><g stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"><line x1="72" y1="50" x2="92" y2="50"/><line x1="61" y1="69.1" x2="71" y2="86.4"/><line x1="39" y1="69.1" x2="29" y2="86.4"/><line x1="28" y1="50" x2="8" y2="50"/><line x1="39" y1="30.9" x2="29" y2="13.6"/><line x1="61" y1="30.9" x2="71" y2="13.6"/></g><path d="M50 36 Q52 48 64 50 Q52 52 50 64 Q48 52 36 50 Q48 48 50 36 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <!-- ladder, hammer, pro -->
+    <div class="f08-abs f08-ladder">
+      <svg viewBox="0 0 125 230">
+        <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round">
+          <rect x="22" y="42" width="81" height="11" rx="5"/>
+          <rect x="22" y="92" width="81" height="11" rx="5"/>
+          <rect x="22" y="142" width="81" height="11" rx="5"/>
+          <rect x="22" y="192" width="81" height="11" rx="5"/>
+          <rect x="9" y="12" width="15" height="214" rx="7"/>
+          <rect x="101" y="12" width="15" height="214" rx="7"/>
+        </g>
+      </svg>
+    </div>
+    <div class="f08-abs f08-hammer">
+      <svg viewBox="0 0 60 190">
+        <rect x="24" y="36" width="12" height="150" rx="6" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+        <rect x="4" y="14" width="52" height="30" rx="8" fill="#6B6B6B" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="f08-abs f08-pro">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360">
+        <rect x="112" y="300" width="26" height="46" rx="10" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="162" y="300" width="26" height="46" rx="10" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="122" cy="350" rx="24" ry="9" fill="#2D2D2D"/>
+        <ellipse cx="178" cy="350" rx="24" ry="9" fill="#2D2D2D"/>
+        <path d="M86 196 Q60 250 72 290" fill="none" stroke="#2D2D2D" stroke-width="20" stroke-linecap="round"/>
+        <path d="M86 196 Q60 250 72 290" fill="none" stroke="#FFCBA4" stroke-width="10" stroke-linecap="round"/>
+        <rect x="84" y="176" width="132" height="140" rx="30" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="110" y="204" width="80" height="54" rx="12" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M136 222 l10 10 l20 -20" fill="none" stroke="#7ECDC0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="150" cy="118" r="54" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M94 104 Q98 52 150 50 Q202 52 206 104 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M188 104 L240 104 Q244 116 232 118 L188 118 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="130" cy="126" r="7" fill="#2D2D2D"/>
+        <circle cx="170" cy="126" r="7" fill="#2D2D2D"/>
+        <ellipse cx="112" cy="146" rx="11" ry="6" fill="#F7C8D4"/>
+        <ellipse cx="188" cy="146" rx="11" ry="6" fill="#F7C8D4"/>
+        <path d="M134 148 Q150 162 166 148" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M214 196 Q246 236 236 262" fill="none" stroke="#2D2D2D" stroke-width="20" stroke-linecap="round"/>
+        <path d="M214 196 Q246 236 236 262" fill="none" stroke="#FFCBA4" stroke-width="10" stroke-linecap="round"/>
+        <path d="M212 262 Q212 242 236 242 Q260 242 260 262" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="196" y="258" width="82" height="56" rx="10" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M196 280 L278 280" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- sparkles -->
+    <div class="f08-abs f08-sparkle f08-sp1"><svg viewBox="0 0 50 50"><path d="M25 3 Q28 22 47 25 Q28 28 25 47 Q22 28 3 25 Q22 22 25 3 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+    <div class="f08-abs f08-sparkle f08-sp2"><svg viewBox="0 0 50 50"><path d="M25 3 Q28 22 47 25 Q28 28 25 47 Q22 28 3 25 Q22 22 25 3 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+    <div class="f08-abs f08-sparkle f08-sp3"><svg viewBox="0 0 50 50"><path d="M25 3 Q28 22 47 25 Q28 28 25 47 Q22 28 3 25 Q22 22 25 3 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+    <div class="f08-abs f08-sparkle f08-sp4"><svg viewBox="0 0 50 50"><path d="M25 3 Q28 22 47 25 Q28 28 25 47 Q22 28 3 25 Q22 22 25 3 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+    <div class="f08-abs f08-sparkle f08-sp5"><svg viewBox="0 0 50 50"><path d="M25 3 Q28 22 47 25 Q28 28 25 47 Q22 28 3 25 Q22 22 25 3 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/></svg></div>
+
+    <!-- badge -->
+    <div class="f08-badge"><span class="f08-badge-zh">修好啦！</span><span class="f08-badge-en">Fixed!</span></div>
+
+    <!-- subtitle band -->
+    <div class="f08-subtitle">
+      <div class="f08-sub-zh">天亮了，屋顶也修好了。</div>
+      <div class="f08-sub-en">Morning. Roof fixed.</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="08-fixed-sunrise"]');
+      var q = function (s) { return root.querySelector(s); };
+      var qa = function (s) { return root.querySelectorAll(s); };
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–2.2s): sunrise, Housy worried, pro hammers
+      tl.fromTo(q(".f08-sun"), { y: 46.5 * 14.4 }, { y: 0, duration: 2.6, ease: "power2.out" }, 0);
+      tl.fromTo(qa(".f08-orn"), { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.05);
+      tl.fromTo(q(".f08-housy"), { y: 14 }, { y: 0, duration: 0.5, ease: "power3.out" }, 0);
+      tl.set(q(".f08-happy"), { opacity: 0 }, 0);
+      tl.set(q(".f08-worried"), { opacity: 1 }, 0);
+      tl.fromTo([q(".f08-ladder"), q(".f08-pro"), q(".f08-hammer")], { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.1);
+      tl.fromTo(q(".f08-hammer"), { rotation: -12 }, { rotation: -12, duration: 0.01 }, 0);
+
+      var drops = [".f08-drop1", ".f08-drop2", ".f08-drop3"];
+      var dropStarts = [0.1, 0.85, 1.6];
+      drops.forEach(function (sel, i) {
+        var d = q(sel);
+        var t = dropStarts[i];
+        tl.fromTo(d, { y: 0, opacity: 1, scale: 0.4 }, { y: 0, opacity: 1, scale: 1, duration: 0.15, ease: "power2.out", immediateRender: i === 0 }, t);
+        tl.fromTo(d, { y: 0 }, { y: 19.4 * 14.4, duration: 0.55, ease: "power2.in", immediateRender: false }, t + 0.15);
+        tl.to(d, { opacity: 0, duration: 0.08 }, t + 0.62);
+      });
+      tl.set([q(".f08-drop2"), q(".f08-drop3")], { opacity: 0 }, 0);
+
+      var taps = [1.2, 1.6, 2.0];
+      var bursts = [".f08-burst1", ".f08-burst2", ".f08-burst3"];
+      tl.set(qa(".f08-burst"), { opacity: 0 }, 0);
+      taps.forEach(function (t, i) {
+        tl.to(q(".f08-hammer"), { rotation: -47, duration: 0.14, ease: "power2.in" }, t - 0.14);
+        tl.to(q(".f08-hammer"), { rotation: -12, duration: 0.2, ease: "power2.out" }, t);
+        tl.fromTo(q(bursts[i]), { scale: 0.4, opacity: 1, rotation: i * 20 }, { scale: 1.15, opacity: 1, duration: 0.18, ease: "power3.out", immediateRender: false }, t);
+        tl.to(q(bursts[i]), { opacity: 0, duration: 0.14 }, t + 0.2);
+      });
+      tl.to(q(".f08-hammer"), { rotation: -2, duration: 0.4, ease: "power3.out" }, 2.25);
+
+      // Scene 2 (2.2–4.0s): patch sticker, swap to happy, sparkles
+      tl.fromTo(q(".f08-patch"), { scale: 0, rotation: -20 }, { scale: 1, rotation: -8, duration: 0.45, ease: "back.out(1.4)" }, 2.3);
+      tl.set(q(".f08-worried"), { opacity: 0 }, 3.4);
+      tl.set(q(".f08-happy"), { opacity: 1 }, 3.4);
+      tl.fromTo(q(".f08-housy-squash"), { scaleY: 0.94, scaleX: 1.03, transformOrigin: "50% 100%" }, { scaleY: 1, scaleX: 1, duration: 0.35, ease: "back.out(1.4)", immediateRender: false }, 3.4);
+      tl.fromTo(qa(".f08-sparkle"), { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(1.4)", stagger: 0.08 }, 3.45);
+
+      // Scene 3 (4.0–6.0s): badge springs in, then hold
+      tl.fromTo(q(".f08-badge"), { scale: 0.6, y: -12, opacity: 0 }, { scale: 1, y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, 4.0);
+
+      // Subtitle band
+      tl.fromTo(q(".f08-subtitle"), { y: 0.012 * 1080, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.25);
+
+      tl.set({}, {}, 6);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["08-fixed-sunrise"] = tl;
+    })();
+  </script>
+</div>
+</template>

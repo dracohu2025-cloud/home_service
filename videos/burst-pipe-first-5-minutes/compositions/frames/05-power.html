@@ -1,0 +1,336 @@
+<template>
+<div id="root" data-composition-id="05-power" data-width="1920" data-height="1080" data-duration="12.61">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+  <style>
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+    }
+    .p05-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+      container-type: size;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+    }
+
+    /* shared chrome */
+    .p05-eyebrow {
+      position: absolute;
+      left: 5cqw;
+      top: 4.4cqh;
+      display: flex;
+      align-items: center;
+      gap: 0.9cqw;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 0.8cqw;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .p05-accent-line {
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: #1e2bfa;
+    }
+    .p05-tag {
+      position: absolute;
+      right: 5cqw;
+      top: 4cqh;
+      padding: 0.55cqh 1cqw;
+      border-radius: 100px;
+      background: rgba(30,43,250,0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 0.78cqw;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .p05-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+
+    /* left column */
+    .p05-steprow {
+      position: absolute;
+      left: 5cqw;
+      top: 17cqh;
+      display: flex;
+      align-items: center;
+      gap: 1cqw;
+    }
+    .p05-circle {
+      width: 2.917cqw;
+      height: 2.917cqw;
+      border-radius: 50%;
+      background: #1e2bfa;
+      color: #fdfae7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 1.35cqw;
+      font-variant-numeric: tabular-nums;
+    }
+    .p05-stepeyebrow {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 0.9cqw;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      font-variant-numeric: tabular-nums;
+    }
+    .p05-h2 {
+      position: absolute;
+      left: 5cqw;
+      top: 25cqh;
+      width: 39cqw;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 3.3cqw;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .p05-row {
+      position: absolute;
+      left: 5cqw;
+      max-width: 39cqw;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      gap: 1.1cqw;
+      padding: 1.3cqh 1.6cqw 1.3cqh 1cqw;
+      background: rgba(30,43,250,0.04);
+      border: 1.5px solid rgba(30,43,250,0.2);
+      border-radius: 12px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 1.4cqw;
+      line-height: 1.3;
+      color: #111111;
+    }
+    #p05-row1 { top: 35cqh; }
+    #p05-row2 { top: 44cqh; }
+    #p05-row3 { top: 68.5cqh; }
+    .p05-ico {
+      flex: none;
+      width: 2.6cqw;
+      height: 2.6cqw;
+      border-radius: 50%;
+      background: rgba(30,43,250,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .p05-ico svg { width: 58%; height: 58%; display: block; }
+    .p05-muted { color: #6b6b6b; font-weight: 500; }
+    .p05-arrow { color: #1e2bfa; font-weight: 600; font-family: "Space Grotesk", sans-serif; }
+    .p05-strong { color: #111111; font-weight: 600; }
+    .p05-highlight {
+      position: absolute;
+      left: 5cqw;
+      top: 54cqh;
+      width: 39cqw;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      gap: 1.2cqw;
+      padding: 2.2cqh 1.8cqw 2.2cqh 1.5cqw;
+      background: rgba(30,43,250,0.08);
+      border-left: 4px solid #dc2626;
+      border-radius: 12px;
+    }
+    .p05-warn { flex: none; width: 2.5cqw; height: 2.5cqw; display: block; }
+    .p05-hltext {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 1.6cqw;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: #111111;
+    }
+
+    /* right stage */
+    .p05-stage {
+      position: absolute;
+      left: 50cqw;
+      top: 16cqh;
+      width: 45cqw;
+      height: 64cqh;
+      box-sizing: border-box;
+      background: rgba(30,43,250,0.04);
+      border: 1.5px solid rgba(30,43,250,0.2);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .p05-panelwrap {
+      position: absolute;
+      left: 12.6cqw;
+      top: 6cqh;
+      width: 24.4cqw;
+      height: 52cqh;
+    }
+    .p05-panelwrap svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    .p05-outlet {
+      position: absolute;
+      left: 2.2cqw;
+      bottom: 4cqh;
+      width: 8.8cqw;
+      height: 8.8cqw;
+    }
+    .p05-outlet svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  </style>
+
+  <div class="p05-ground clip" data-start="0" data-duration="12.61" data-track-index="0">
+
+    <!-- chrome -->
+    <div class="p05-eyebrow"><span class="p05-accent-line"></span><span>Pipe Burst Playbook</span></div>
+    <div class="p05-tag">STEP 2 · POWER</div>
+
+    <!-- left column -->
+    <div class="p05-steprow" id="p05-steprow">
+      <div class="p05-circle" id="p05-circle">2</div>
+      <div class="p05-stepeyebrow" id="p05-stepeyebrow">Step 02 / 05</div>
+    </div>
+    <h2 class="p05-h2" id="p05-h2">Cut the power — safely</h2>
+
+    <div class="p05-row" id="p05-row1">
+      <span class="p05-ico">
+        <svg viewBox="0 0 24 24"><path d="M12 3 C15 7.5 18 10.5 18 14 A6 6 0 0 1 6 14 C6 10.5 9 7.5 12 3 Z" fill="#1e2bfa" fill-opacity="0.15" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Water near outlets or appliances?</span>
+    </div>
+
+    <div class="p05-row" id="p05-row2">
+      <span class="p05-ico">
+        <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="5" fill="none" stroke="#1e2bfa" stroke-width="2"/><circle cx="16" cy="12" r="2.6" fill="#1e2bfa"/></svg>
+      </span>
+      <span>Switch that area off at the breaker</span>
+    </div>
+
+    <div class="p05-highlight" id="p05-highlight">
+      <svg class="p05-warn" id="p05-warn" viewBox="0 0 24 24"><path d="M12 3.5 L21.5 20 H2.5 Z" fill="#dc2626" fill-opacity="0.1" stroke="#dc2626" stroke-width="2" stroke-linejoin="round"/><path d="M12 9.5 V14" stroke="#dc2626" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17" r="1.3" fill="#dc2626"/></svg>
+      <span class="p05-hltext">Never stand in water to reach the panel.</span>
+    </div>
+
+    <div class="p05-row" id="p05-row3">
+      <span class="p05-ico">
+        <svg viewBox="0 0 24 24"><path d="M6.5 3.5 H9.5 L11 8 L8.8 9.4 C9.8 11.6 12.4 14.2 14.6 15.2 L16 13 L20.5 14.5 V17.5 C20.5 19 19.2 20.5 17.5 20.5 C9.8 20 4 14.2 3.5 6.5 C3.5 4.8 5 3.5 6.5 3.5 Z" fill="#1e2bfa" fill-opacity="0.15" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round"/></svg>
+      </span>
+      <span><span class="p05-muted">Can't reach it dry?</span> <span class="p05-arrow">→</span> <span class="p05-strong">Call an electrician</span></span>
+    </div>
+
+    <!-- right stage -->
+    <div class="p05-stage" id="p05-stage">
+      <div class="p05-panelwrap" id="p05-panelwrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+          <rect x="20" y="10" width="160" height="220" rx="18" fill="#fdfae7" stroke="#1e2bfa" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="40" y="30" width="120" height="180" rx="10" fill="#1e2bfa" fill-opacity="0.06" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="52" y="44" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="56" y="48" width="14" height="12" rx="3" fill="#1e2bfa"/>
+          <rect x="108" y="44" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="112" y="48" width="14" height="12" rx="3" fill="#1e2bfa"/><rect x="52" y="76" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="56" y="80" width="14" height="12" rx="3" fill="#1e2bfa"/>
+          <rect x="108" y="76" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="112" y="80" width="14" height="12" rx="3" fill="#1e2bfa"/><rect x="52" y="108" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="56" y="112" width="14" height="12" rx="3" fill="#1e2bfa"/>
+          <rect x="108" y="108" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="112" y="112" width="14" height="12" rx="3" fill="#1e2bfa"/><rect x="52" y="140" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="56" y="144" width="14" height="12" rx="3" fill="#1e2bfa"/>
+          <rect x="108" y="140" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="112" y="144" width="14" height="12" rx="3" fill="#1e2bfa"/><rect x="52" y="172" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="56" y="176" width="14" height="12" rx="3" fill="#1e2bfa"/>
+          <rect x="108" y="172" width="40" height="20" rx="5" fill="#fdfae7" stroke="#1e2bfa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="112" y="176" width="14" height="12" rx="3" fill="#1e2bfa"/>
+          <rect id="p05-halo" x="104" y="104" width="48" height="28" rx="7" fill="none" stroke="#dc2626" stroke-width="3" opacity="0"/>
+          <g id="p05-switch-target"><rect id="p05-switch-frame" x="104" y="104" width="48" height="28" rx="7" fill="none" stroke="#dc2626" stroke-width="4"/>
+            <rect id="p05-switch-toggle" x="112" y="112" width="14" height="12" rx="3" fill="#dc2626"/></g>
+          <path id="p05-check" d="M185 118 L190 123 L199 111" fill="none" stroke="#059669" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="24"/>
+        </svg>
+      </div>
+
+      <div class="p05-outlet" id="p05-outlet">
+        <svg viewBox="0 0 120 120">
+          <rect x="18" y="14" width="64" height="88" rx="14" fill="#1e2bfa" fill-opacity="0.06" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M40 38 V52 M60 38 V52" fill="none" stroke="#1e2bfa" stroke-width="5" stroke-linecap="round"/>
+          <path d="M45 72 A5 5 0 0 1 55 72 V76 H45 Z" fill="#1e2bfa"/>
+          <path id="p05-zigzag" d="M86 10 L98 22 L90 27 L104 40" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="50" stroke-dashoffset="50"/>
+          <g transform="translate(96 66)"><path id="p05-drop1" d="M0 -10 C4 -4 7 0 7 4 A7 7 0 0 1 -7 4 C-7 0 -4 -4 0 -10 Z" fill="#1e2bfa"/></g>
+          <g transform="translate(108 88)"><path id="p05-drop2" d="M0 -8 C3 -3 5.5 0 5.5 3 A5.5 5.5 0 0 1 -5.5 3 C-5.5 0 -3 -3 0 -8 Z" fill="#1e2bfa"/></g>
+          <path d="M72 112 Q80 107 88 112 T104 112 T120 112" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="p05-progress" id="p05-progress"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var D = 12.11;
+      var q = function (id) { return document.getElementById(id); };
+      var tl = gsap.timeline({ paused: true });
+
+      // chrome: progress 4/9 -> 5/9
+      tl.fromTo(q("p05-progress"), { scaleX: 4 / 9 }, { scaleX: 5 / 9, duration: 0.6, ease: "power2.out" }, 0);
+
+      // Scene 1 (0.0–2.6s): step header + stage card
+      tl.fromTo(q("p05-stage"), { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 0.1);
+      tl.fromTo(q("p05-panelwrap"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.2);
+      tl.fromTo(q("p05-circle"), { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 0.1);
+      tl.fromTo(q("p05-stepeyebrow"), { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.25);
+      tl.fromTo(q("p05-h2"), { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.79);
+
+      // Scene 2 (2.6–6.9s)
+      tl.fromTo(q("p05-row1"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.66);
+      tl.fromTo(q("p05-outlet"), { opacity: 0, scale: 0.85, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "expo.out" }, 3.49);
+      tl.fromTo(q("p05-zigzag"), { strokeDashoffset: 50 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 3.62);
+
+      // drips: finite, explicitly scheduled
+      function drip(el, t, fall) {
+        tl.fromTo(el, { y: 0, opacity: 1 }, { y: fall, opacity: 0, duration: 0.7, ease: "power1.in", immediateRender: false }, t);
+        tl.fromTo(el, { y: -5, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, t + 0.75);
+      }
+      for (var t = 3.95; t + 1.1 < D; t += 1.5) {
+        drip(q("p05-drop1"), t, 14);
+        if (t + 0.6 + 1.1 < D) drip(q("p05-drop2"), t + 0.6, 12);
+      }
+
+      tl.fromTo(q("p05-row2"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 5.26);
+      // switch-target pulses
+      tl.fromTo(q("p05-switch-target"), { scale: 1, svgOrigin: "128 118" }, { scale: 1.14, duration: 0.18, ease: "power2.out", svgOrigin: "128 118", immediateRender: false }, 5.26);
+      tl.to(q("p05-switch-target"), { scale: 1, duration: 0.25, ease: "power2.inOut", svgOrigin: "128 118" }, 5.44);
+      tl.fromTo(q("p05-halo"), { opacity: 0.9, scale: 1, svgOrigin: "128 118" }, { opacity: 0, scale: 1.7, duration: 0.6, ease: "power2.out", svgOrigin: "128 118", immediateRender: false }, 5.26);
+      tl.fromTo(q("p05-halo"), { opacity: 0.9, scale: 1, svgOrigin: "128 118" }, { opacity: 0, scale: 1.7, duration: 0.6, ease: "power2.out", svgOrigin: "128 118", immediateRender: false }, 5.78);
+
+      // on "breaker" (6.33): toggle slides to OFF, turns muted, green check
+      tl.fromTo(q("p05-switch-toggle"), { attr: { x: 112 } }, { attr: { x: 128 }, duration: 0.25, ease: "power2.inOut" }, 6.33);
+      tl.fromTo(q("p05-switch-toggle"), { fill: "#dc2626" }, { fill: "#6b6b6b", duration: 0.25, ease: "power2.inOut" }, 6.33);
+      tl.fromTo(q("p05-switch-frame"), { stroke: "#dc2626" }, { stroke: "#6b6b6b", duration: 0.3, ease: "power2.inOut" }, 6.4);
+      tl.fromTo(q("p05-check"), { strokeDashoffset: 24 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 6.5);
+
+      // Scene 3 (6.9–9.3s): danger rule
+      tl.fromTo(q("p05-highlight"), { opacity: 0, x: -58 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 7.06);
+      tl.fromTo(q("p05-warn"), { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 7.2);
+      tl.fromTo(q("p05-zigzag"), { opacity: 1 }, { opacity: 0.1, duration: 0.05, ease: "none", immediateRender: false }, 7.1);
+      tl.to(q("p05-zigzag"), { opacity: 1, duration: 0.05, ease: "none" }, 7.18);
+      tl.to(q("p05-zigzag"), { opacity: 0.2, duration: 0.05, ease: "none" }, 7.26);
+      tl.to(q("p05-zigzag"), { opacity: 1, duration: 0.08, ease: "none" }, 7.34);
+
+      // Scene 4 (9.3–12.11s): fallback
+      tl.fromTo(q("p05-row3"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 9.38);
+
+      tl.set({}, {}, D);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["05-power"] = tl;
+    })();
+  </script>
+</div>
+</template>

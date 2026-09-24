@@ -1,0 +1,651 @@
+<template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&family=ZCOOL+KuaiLe&display=swap">
+  <div id="root" data-composition-id="07-step5-choose" data-start="0" data-duration="8.5" data-width="1440" data-height="1080">
+    <style>
+      #root {
+        position: relative;
+        width: 1440px;
+        height: 1080px;
+        overflow: hidden;
+        container-type: size;
+        font-family: "Quicksand", sans-serif;
+        color: #2D2D2D;
+      }
+      .s7-bg {
+        position: absolute;
+        inset: 0;
+        background: #7ECDC0;
+        z-index: 0;
+      }
+      .s7-orn {
+        position: absolute;
+        z-index: 1;
+        overflow: visible;
+      }
+      .s7-orn-sun { right: -4cqw; top: -5cqh; width: 15cqw; height: 15cqw; }
+      .s7-orn-spark { left: 6cqw; top: 13cqh; width: 3.6cqw; height: 3.6cqw; }
+      .s7-orn-daisy { right: -3cqw; top: 55cqh; width: 8cqw; height: 8cqw; }
+
+      .s7-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+      }
+
+      /* shared step chrome */
+      .s7-badge {
+        position: absolute;
+        left: 3cqw;
+        top: 3cqh;
+        display: flex;
+        align-items: center;
+        gap: 1cqw;
+        padding: 0.6cqw 2cqw 0.6cqw 0.6cqw;
+        background: #FDE68A;
+        border: 3px solid #2D2D2D;
+        border-radius: 50px;
+        box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+        white-space: nowrap;
+      }
+      .s7-badge-num {
+        width: 3.4cqw;
+        height: 3.4cqw;
+        border-radius: 50%;
+        background: #F8635F;
+        border: 3px solid #2D2D2D;
+        box-shadow: 0.2cqw 0.2cqw 0 #2D2D2D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFFFFF;
+        font-family: "Fredoka", sans-serif;
+        font-weight: 600;
+        font-size: 2cqw;
+        line-height: 1;
+        box-sizing: border-box;
+      }
+      .s7-badge-label {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 600;
+        font-size: 2cqw;
+        letter-spacing: 0.02em;
+        line-height: 1;
+      }
+      .s7-badge-label .s7-zh { font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif; font-weight: 400; }
+
+      /* Housy */
+      .s7-housy {
+        position: absolute;
+        left: 2cqw;
+        top: 61cqh;
+        width: 12cqw;
+        height: 13.6cqw;
+      }
+      .s7-housy svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      /* cards */
+      .s7-slot {
+        position: absolute;
+        top: 22cqh;
+        width: 22cqw;
+        height: 42cqh;
+      }
+      .s7-slot-a { left: 22cqw; }
+      .s7-slot-b { left: 47cqw; }
+      .s7-slot-c { left: 72cqw; }
+      .s7-lift {
+        position: absolute;
+        inset: 0;
+      }
+      .s7-card {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: #FFFFFF;
+        border: 3px solid #2D2D2D;
+        border-radius: 20px;
+        box-shadow: 0.42cqw 0.42cqw 0 #2D2D2D;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2.6cqh 1.4cqw 3.2cqh;
+        text-align: center;
+      }
+      .s7-slot-b .s7-card { border-radius: 28px; }
+      .s7-card-zh {
+        font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+        font-size: 2.8cqw;
+        line-height: 1.15;
+      }
+      .s7-card-en {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        font-size: 1.5cqw;
+        color: #555555;
+        line-height: 1.3;
+      }
+      .s7-disc {
+        width: 11cqw;
+        height: 11cqw;
+        border-radius: 50%;
+        border: 3px solid #2D2D2D;
+        box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fredoka", sans-serif;
+        font-weight: 600;
+        font-size: 7cqw;
+        line-height: 1;
+        color: #2D2D2D;
+      }
+      .s7-disc-peach { background: #FFCBA4; }
+      .s7-disc-lav { background: #D4A5E8; }
+      .s7-stars {
+        display: flex;
+        gap: 0.35cqw;
+      }
+      .s7-stars svg { width: 2.6cqw; height: 2.6cqw; overflow: visible; }
+      .s7-stars-big { gap: 0.4cqw; }
+      .s7-stars-big svg { width: 3.3cqw; height: 3.3cqw; }
+      .s7-mint {
+        background: #A8E6CF;
+        border: 3px solid #2D2D2D;
+        border-radius: 50px;
+        box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+        padding: 0.7cqw 1.6cqw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        white-space: nowrap;
+      }
+      .s7-mint-zh {
+        font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+        font-size: 2cqw;
+        line-height: 1.15;
+      }
+      .s7-mint-en {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+        font-size: 1.4cqw;
+        line-height: 1.25;
+      }
+      .s7-pro {
+        position: absolute;
+        z-index: 0;
+        left: 4.5cqw;
+        top: -12cqh;
+        width: 13cqw;
+        height: 15.6cqw;
+      }
+      .s7-pro svg { width: 100%; height: 100%; overflow: visible; }
+      .s7-check {
+        position: absolute;
+        z-index: 2;
+        right: -2cqw;
+        top: -2.4cqw;
+        width: 5.6cqw;
+        height: 5.6cqw;
+        border-radius: 50%;
+        background: #F8635F;
+        border: 3px solid #2D2D2D;
+        box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+        box-sizing: border-box;
+      }
+      .s7-check svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+      .s7-arrow {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      /* ranking strip */
+      .s7-strip {
+        position: absolute;
+        left: 17cqw;
+        right: 2.5cqw;
+        top: 70cqh;
+        height: 11cqh;
+        background: #FFFFFF;
+        border: 3px solid #2D2D2D;
+        border-radius: 20px;
+        box-shadow: 0.42cqw 0.42cqw 0 #2D2D2D;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 1cqw;
+        padding: 0 1.6cqw;
+        white-space: nowrap;
+      }
+      .s7-item {
+        display: flex;
+        align-items: center;
+        gap: 0.7cqw;
+      }
+      .s7-dot {
+        width: 1.4cqw;
+        height: 1.4cqw;
+        border-radius: 50%;
+        background: #FDE68A;
+        border: 2px solid #2D2D2D;
+        box-sizing: border-box;
+        flex: none;
+      }
+      .s7-item-txt { display: flex; flex-direction: column; }
+      .s7-item-zh {
+        font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+        font-size: 2.1cqw;
+        line-height: 1.15;
+      }
+      .s7-item-en {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        font-size: 1.4cqw;
+        color: #555555;
+        line-height: 1.2;
+      }
+      .s7-pct {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 600;
+        font-size: 2.7cqw;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        margin-left: 0.3cqw;
+      }
+      .s7-sep {
+        font-family: "Fredoka", sans-serif;
+        font-weight: 600;
+        font-size: 2.6cqw;
+        line-height: 1;
+        color: #2D2D2D;
+      }
+      .s7-divider {
+        width: 0;
+        height: 6.5cqh;
+        border-left: 2px dashed #6B6B6B;
+        margin: 0 0.4cqw;
+      }
+      .s7-price .s7-item-zh { font-size: 1.7cqw; color: #555555; }
+      .s7-price .s7-item-en { font-size: 1.4cqw; }
+      .s7-price .s7-dot { background: #F5F0E6; border-color: #555555; width: 1.1cqw; height: 1.1cqw; }
+      .s7-tag {
+        border: 2px solid #6B6B6B;
+        border-radius: 50px;
+        background: #F5F0E6;
+        padding: 0.35cqw 1cqw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .s7-tag-zh {
+        font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+        font-size: 1.4cqw;
+        color: #555555;
+        line-height: 1.15;
+      }
+      .s7-tag-en {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        font-size: 1.4cqw;
+        color: #555555;
+        line-height: 1.15;
+      }
+      .s7-meta {
+        margin-left: auto;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+        font-size: 1.2cqw;
+        color: #555555;
+        letter-spacing: 0.04em;
+      }
+
+      /* subtitle band */
+      .s7-sub {
+        position: absolute;
+        top: 85cqh;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: fit-content;
+        max-width: 86cqw;
+        padding: 1.4cqw 3cqw;
+        background: #FFFFFF;
+        border: 3px solid #2D2D2D;
+        border-radius: 50px;
+        box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+        box-sizing: border-box;
+        text-align: center;
+        z-index: 3;
+      }
+      .s7-sub-zh {
+        font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+        font-size: 3.3cqw;
+        line-height: 1.2;
+        color: #2D2D2D;
+        white-space: nowrap;
+      }
+      .s7-sub-en {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        font-size: 1.75cqw;
+        line-height: 1.3;
+        color: #555555;
+        white-space: nowrap;
+      }
+    </style>
+
+    <div class="clip s7-bg" data-start="0" data-duration="8.5" data-track-index="0"></div>
+
+    <!-- ornaments -->
+    <svg id="07-step5-choose-orn-sun" class="s7-orn s7-orn-sun" viewBox="0 0 100 100">
+      <g stroke="#2D2D2D" stroke-width="2.1" stroke-linecap="round">
+        <line x1="50" y1="4" x2="50" y2="16"/><line x1="50" y1="84" x2="50" y2="96"/>
+        <line x1="4" y1="50" x2="16" y2="50"/><line x1="84" y1="50" x2="96" y2="50"/>
+        <line x1="17" y1="17" x2="26" y2="26"/><line x1="74" y1="74" x2="83" y2="83"/>
+        <line x1="17" y1="83" x2="26" y2="74"/><line x1="74" y1="26" x2="83" y2="17"/>
+      </g>
+      <circle cx="50" cy="50" r="26" fill="#FDE68A" stroke="#2D2D2D" stroke-width="2.1"/>
+    </svg>
+    <svg id="07-step5-choose-orn-spark" class="s7-orn s7-orn-spark" viewBox="0 0 40 40">
+      <path d="M20 2 Q23 17 38 20 Q23 23 20 38 Q17 23 2 20 Q17 17 20 2 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="2.1" stroke-linejoin="round"/>
+    </svg>
+    <svg id="07-step5-choose-orn-daisy" class="s7-orn s7-orn-daisy" viewBox="0 0 100 100">
+      <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="2.1">
+        <ellipse cx="50" cy="22" rx="11" ry="19"/>
+        <ellipse cx="50" cy="78" rx="11" ry="19"/>
+        <ellipse cx="22" cy="50" rx="19" ry="11"/>
+        <ellipse cx="78" cy="50" rx="19" ry="11"/>
+        <ellipse cx="30" cy="30" rx="11" ry="18" transform="rotate(-45 30 30)"/>
+        <ellipse cx="70" cy="70" rx="11" ry="18" transform="rotate(-45 70 70)"/>
+        <ellipse cx="70" cy="30" rx="11" ry="18" transform="rotate(45 70 30)"/>
+        <ellipse cx="30" cy="70" rx="11" ry="18" transform="rotate(45 30 70)"/>
+      </g>
+      <circle cx="50" cy="50" r="14" fill="#FDE68A" stroke="#2D2D2D" stroke-width="2.1"/>
+    </svg>
+
+    <div class="s7-layer">
+      <!-- step badge -->
+      <div id="07-step5-choose-badge" class="s7-badge">
+        <div class="s7-badge-num">5</div>
+        <div class="s7-badge-label">STEP 5 · <span class="s7-zh">挑师傅</span></div>
+      </div>
+
+      <!-- card A: cheapest -->
+      <div id="07-step5-choose-slot-a" class="s7-slot s7-slot-a">
+        <div id="07-step5-choose-lift-a" class="s7-lift">
+          <div class="s7-card">
+            <div>
+              <div class="s7-card-zh">最便宜</div>
+              <div class="s7-card-en">Cheapest</div>
+            </div>
+            <div class="s7-disc s7-disc-peach">$</div>
+            <div class="s7-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card B: top reviews (chosen) -->
+      <div id="07-step5-choose-slot-b" class="s7-slot s7-slot-b">
+        <div id="07-step5-choose-lift-b" class="s7-lift">
+          <div id="07-step5-choose-pro" class="s7-pro">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360">
+              <rect x="112" y="300" width="26" height="46" rx="10" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <rect x="162" y="300" width="26" height="46" rx="10" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <ellipse cx="122" cy="350" rx="24" ry="9" fill="#2D2D2D"/>
+              <ellipse cx="178" cy="350" rx="24" ry="9" fill="#2D2D2D"/>
+              <path d="M86 196 Q60 250 72 290" fill="none" stroke="#2D2D2D" stroke-width="20" stroke-linecap="round"/>
+              <path d="M86 196 Q60 250 72 290" fill="none" stroke="#FFCBA4" stroke-width="10" stroke-linecap="round"/>
+              <rect x="84" y="176" width="132" height="140" rx="30" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <rect x="110" y="204" width="80" height="54" rx="12" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M136 222 l10 10 l20 -20" fill="none" stroke="#7ECDC0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="150" cy="118" r="54" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M94 104 Q98 52 150 50 Q202 52 206 104 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M188 104 L240 104 Q244 116 232 118 L188 118 Z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="130" cy="126" r="7" fill="#2D2D2D"/>
+              <circle cx="170" cy="126" r="7" fill="#2D2D2D"/>
+              <ellipse cx="112" cy="146" rx="11" ry="6" fill="#F7C8D4"/>
+              <ellipse cx="188" cy="146" rx="11" ry="6" fill="#F7C8D4"/>
+              <path d="M134 148 Q150 162 166 148" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M214 196 Q246 236 236 262" fill="none" stroke="#2D2D2D" stroke-width="20" stroke-linecap="round"/>
+              <path d="M214 196 Q246 236 236 262" fill="none" stroke="#FFCBA4" stroke-width="10" stroke-linecap="round"/>
+              <path d="M212 262 Q212 242 236 242 Q260 242 260 262" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <rect x="196" y="258" width="82" height="56" rx="10" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M196 280 L278 280" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="s7-card">
+            <div>
+              <div class="s7-card-zh">口碑好</div>
+              <div class="s7-card-en">Top reviews</div>
+            </div>
+            <div class="s7-stars s7-stars-big">
+              <svg id="07-step5-choose-bstar-1" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <svg id="07-step5-choose-bstar-2" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <svg id="07-step5-choose-bstar-3" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <svg id="07-step5-choose-bstar-4" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              <svg id="07-step5-choose-bstar-5" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="#FDE68A" stroke="#2D2D2D" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <div id="07-step5-choose-mint" class="s7-mint">
+              <div class="s7-mint-zh">持证 + 保险</div>
+              <div class="s7-mint-en">Licensed &amp; insured</div>
+            </div>
+          </div>
+          <div id="07-step5-choose-check" class="s7-check">
+            <svg viewBox="0 0 40 40">
+              <path id="07-step5-choose-check-path" d="M11 21 L17.5 27.5 L29.5 14" pathLength="1" fill="none" stroke="#FFFFFF" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1" stroke-dashoffset="1"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- card C: no reviews -->
+      <div id="07-step5-choose-slot-c" class="s7-slot s7-slot-c">
+        <div id="07-step5-choose-lift-c" class="s7-lift">
+          <div class="s7-card">
+            <div>
+              <div class="s7-card-zh">没评价</div>
+              <div class="s7-card-en">No reviews</div>
+            </div>
+            <div class="s7-disc s7-disc-lav">?</div>
+            <div class="s7-stars">
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="1.6" stroke-dasharray="2 2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="1.6" stroke-dasharray="2 2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="1.6" stroke-dasharray="2 2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="1.6" stroke-dasharray="2 2" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.5 1.3 6.5L12 17.1l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z" fill="none" stroke="#6B6B6B" stroke-width="1.6" stroke-dasharray="2 2" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Housy (neutral → happy) -->
+      <div id="07-step5-choose-housy" class="s7-housy">
+        <svg id="07-step5-choose-housy-neutral" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+          <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+          <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+          <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="108" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="192" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="108" cy="202" r="12" fill="#2D2D2D"/>
+          <circle cx="192" cy="202" r="12" fill="#2D2D2D"/>
+          <circle cx="112" cy="197" r="4" fill="#FFFFFF"/>
+          <circle cx="196" cy="197" r="4" fill="#FFFFFF"/>
+          <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+          <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+          <path d="M128 244 Q150 262 172 244" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+        <svg id="07-step5-choose-housy-happy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" style="opacity:0">
+          <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+          <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+          <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M86 206 Q108 180 130 206" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M170 206 Q192 180 214 206" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+          <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+          <path d="M118 234 Q150 234 182 234 Q178 276 150 276 Q122 276 118 234 Z" fill="#2D2D2D" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M132 262 Q150 250 168 262 Q162 274 150 274 Q138 274 132 262 Z" fill="#F7C8D4"/>
+        </svg>
+      </div>
+
+      <!-- pointing arrow from Housy to the chosen card -->
+      <svg class="s7-arrow" viewBox="0 0 1440 1080">
+        <path id="07-step5-choose-arrow" d="M205 735 Q430 742 720 696" pathLength="1" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round" stroke-dasharray="1" stroke-dashoffset="1"/>
+        <path id="07-step5-choose-arrowhead" d="M696 687 L720 696 L700 712" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      <!-- ranking strip -->
+      <div id="07-step5-choose-strip" class="s7-strip">
+        <div id="07-step5-choose-r1" class="s7-item">
+          <div class="s7-dot"></div>
+          <div class="s7-item-txt">
+            <div class="s7-item-zh">施工质量</div>
+            <div class="s7-item-en">Quality</div>
+          </div>
+          <div class="s7-pct">96%</div>
+        </div>
+        <div id="07-step5-choose-sep1" class="s7-sep">›</div>
+        <div id="07-step5-choose-r2" class="s7-item">
+          <div class="s7-dot"></div>
+          <div class="s7-item-txt">
+            <div class="s7-item-zh">口碑</div>
+            <div class="s7-item-en">Reputation</div>
+          </div>
+        </div>
+        <div id="07-step5-choose-sep2" class="s7-sep">›</div>
+        <div id="07-step5-choose-r3" class="s7-item">
+          <div class="s7-dot"></div>
+          <div class="s7-item-txt">
+            <div class="s7-item-zh">持证保险</div>
+            <div class="s7-item-en">Licensed</div>
+          </div>
+        </div>
+        <div id="07-step5-choose-divider" class="s7-divider"></div>
+        <div id="07-step5-choose-r4" class="s7-item s7-price">
+          <div class="s7-dot"></div>
+          <div class="s7-item-txt">
+            <div class="s7-item-zh">价格</div>
+            <div class="s7-item-en">Price</div>
+          </div>
+        </div>
+        <div id="07-step5-choose-tag" class="s7-tag">
+          <div class="s7-tag-zh">排在后面</div>
+          <div class="s7-tag-en">comes later</div>
+        </div>
+        <div id="07-step5-choose-meta" class="s7-meta">HIRI 2024</div>
+      </div>
+    </div>
+
+    <!-- subtitle band -->
+    <div id="07-step5-choose-sub" class="s7-sub">
+      <div class="s7-sub-zh">最后挑的是口碑，不是最低价。</div>
+      <div class="s7-sub-en">They pick reputation — not the lowest price.</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        var P = "07-step5-choose-";
+        var $ = function (id) { return document.getElementById(P + id); };
+        var W = 1440, H = 1080;
+        var cw = function (v) { return v * W / 100; };
+        var ch = function (v) { return v * H / 100; };
+
+        var tl = gsap.timeline({ paused: true });
+
+        // Scene 1 (0.0–1.3s): ground, chrome, Housy looking at the empty stage
+        tl.fromTo([$("orn-sun"), $("orn-spark"), $("orn-daisy")],
+          { scale: 0.6, opacity: 0, transformOrigin: "50% 50%" },
+          { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.4)", stagger: 0.08 }, 0.05);
+        tl.fromTo($("badge"), { x: -cw(3), opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.1);
+        tl.fromTo($("housy"),
+          { y: ch(6), scale: 0.9, opacity: 0, transformOrigin: "50% 100%" },
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.4)" }, 0.2);
+        tl.fromTo($("sub"), { y: ch(1.2), opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.25);
+        tl.to($("housy"), { rotation: 4, duration: 0.5, ease: "power2.out" }, 0.9);
+
+        // Scene 2 (1.3–3.4s): three cards deal in left → right
+        [["slot-a", 1.4], ["slot-b", 1.7], ["slot-c", 2.0]].forEach(function (s) {
+          tl.fromTo($(s[0]),
+            { x: -cw(5), y: ch(6), rotation: -6, opacity: 0, transformOrigin: "50% 100%" },
+            { x: 0, y: 0, rotation: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, s[1]);
+        });
+        for (var i = 1; i <= 5; i++) {
+          tl.fromTo($("bstar-" + i),
+            { scale: 0.3, opacity: 0, transformOrigin: "50% 50%" },
+            { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.4)" }, 2.2 + (i - 1) * 0.08);
+        }
+        tl.fromTo($("mint"), { scale: 0.7, opacity: 0, transformOrigin: "50% 50%" },
+          { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.4)" }, 2.75);
+
+        // Scene 3 (3.4–5.0s): card B is chosen
+        tl.fromTo($("lift-b"), { y: 0, scale: 1, transformOrigin: "50% 50%" },
+          { y: -ch(2), scale: 1.06, duration: 0.5, ease: "power3.out" }, 3.4);
+        tl.fromTo($("check"), { scale: 0, rotation: -30, transformOrigin: "50% 50%" },
+          { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(1.4)" }, 3.6);
+        tl.fromTo($("check-path"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 3.72);
+        tl.fromTo([$("lift-a"), $("lift-c")], { opacity: 1, scale: 1, transformOrigin: "50% 50%" },
+          { opacity: 0.45, scale: 0.96, duration: 0.4, ease: "power3.out" }, 3.6);
+        tl.set($("housy-neutral"), { opacity: 0 }, 3.6);
+        tl.set($("housy-happy"), { opacity: 1 }, 3.6);
+        tl.fromTo($("housy"), { scaleY: 0.94 }, { scaleY: 1, duration: 0.3, ease: "back.out(1.4)", immediateRender: false }, 3.6);
+        tl.fromTo($("pro"), { y: ch(11), opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: "back.out(1.4)" }, 3.8);
+        tl.fromTo($("arrow"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.inOut" }, 3.9);
+        tl.fromTo($("arrowhead"), { opacity: 0, scale: 0.4, transformOrigin: "100% 50%" },
+          { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(1.4)" }, 4.3);
+        tl.to($("housy"), { y: -cw(0.4), duration: 0.18, ease: "power2.out" }, 4.45);
+        tl.to($("housy"), { y: 0, duration: 0.22, ease: "power2.in" }, 4.63);
+
+        // Scene 4 (5.0–8.0s): ranking strip builds, price set apart last
+        tl.fromTo($("strip"), { y: ch(2), opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 5.0);
+        var reveal = function (id, t) {
+          tl.fromTo($(id), { x: -cw(1.2), opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, t);
+        };
+        reveal("r1", 5.2);
+        reveal("sep1", 5.65);
+        reveal("r2", 5.8);
+        reveal("sep2", 6.25);
+        reveal("r3", 6.4);
+        tl.fromTo($("divider"), { scaleY: 0, transformOrigin: "50% 50%" }, { scaleY: 1, duration: 0.3, ease: "power3.out" }, 6.8);
+        reveal("r4", 7.0);
+        tl.fromTo($("tag"), { scale: 0.7, opacity: 0, transformOrigin: "0% 50%" },
+          { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.4)" }, 7.15);
+        tl.fromTo($("meta"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 7.3);
+        tl.to($("housy"), { x: cw(0.3), duration: 0.2, ease: "sine.inOut" }, 7.4);
+        tl.to($("housy"), { x: 0, duration: 0.25, ease: "sine.inOut" }, 7.6);
+
+        tl.set({}, {}, 8);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["07-step5-choose"] = tl;
+      })();
+    </script>
+  </div>
+</template>

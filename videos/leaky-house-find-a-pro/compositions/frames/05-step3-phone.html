@@ -1,0 +1,535 @@
+<template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&family=ZCOOL+KuaiLe&display=swap">
+  <style>
+    #root {
+      position: relative;
+      width: 1440px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      font-family: "Quicksand", sans-serif;
+      color: #2D2D2D;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-bg {
+      position: absolute;
+      inset: 0;
+      background: #A8D8F0;
+      z-index: 0;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-orn {
+      position: absolute;
+      z-index: 1;
+      overflow: visible;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-orn-sun { right: -4cqw; top: -5cqh; width: 15cqw; }
+    [data-composition-id="05-step3-phone"] .fr05-orn-cloud { left: 30cqw; top: 4cqh; width: 11cqw; }
+    [data-composition-id="05-step3-phone"] .fr05-orn-daisy { left: -2.5cqw; top: 66cqh; width: 9cqw; }
+    [data-composition-id="05-step3-phone"] .fr05-orn-star { left: 33.5cqw; top: 30cqh; width: 4.4cqw; }
+
+    /* shared step chrome */
+    [data-composition-id="05-step3-phone"] .fr05-badge {
+      position: absolute;
+      left: 3cqw;
+      top: 3cqh;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 1cqw;
+      padding: 0.55cqw 1.8cqw 0.55cqw 0.55cqw;
+      background: #FDE68A;
+      border: 3px solid #2D2D2D;
+      border-radius: 50px;
+      box-shadow: 4px 4px 0 #2D2D2D;
+      white-space: nowrap;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-badge-num {
+      width: 3.8cqw;
+      height: 3.8cqw;
+      border-radius: 50%;
+      background: #F8635F;
+      border: 3px solid #2D2D2D;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 2.2cqw;
+      line-height: 1;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-badge-label {
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 2cqw;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-badge-label .fr05-zh {
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-weight: 400;
+    }
+
+    /* Housy + phone */
+    [data-composition-id="05-step3-phone"] .fr05-housy {
+      position: absolute;
+      left: 3cqw;
+      top: 38.7cqh;
+      width: 26cqw;
+      height: 29.47cqw;
+      z-index: 3;
+      transform-origin: 50% 100%;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-housy svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-phone {
+      position: absolute;
+      left: 25.7cqw;
+      top: 65.9cqh;
+      width: 12cqw;
+      z-index: 4;
+      transform-origin: 50% 100%;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-phone svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    /* data card */
+    [data-composition-id="05-step3-phone"] .fr05-card {
+      position: absolute;
+      left: 40cqw;
+      top: 17cqh;
+      width: 56cqw;
+      height: 62cqh;
+      box-sizing: border-box;
+      z-index: 3;
+      background: #FFFFFF;
+      border: 3px solid #2D2D2D;
+      border-radius: 28px;
+      box-shadow: 0.42cqw 0.42cqw 0 #2D2D2D;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 3cqh;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-ringwrap {
+      position: relative;
+      width: 24cqw;
+      height: 24cqw;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-ringwrap svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-readout {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-frac {
+      position: relative;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 5.6cqw;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      font-variant-numeric: tabular-nums;
+      color: #2D2D2D;
+      padding-left: 2.6cqw;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-frac-step {
+      position: absolute;
+      left: 2.6cqw;
+      top: 0;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-frac-final {
+      position: relative;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-approx {
+      position: absolute;
+      left: -0.6cqw;
+      top: 0;
+      color: #F8635F;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-caption {
+      margin-top: 2cqh;
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-size: 2.7cqw;
+      line-height: 1.2;
+      color: #2D2D2D;
+      white-space: nowrap;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-chips {
+      margin-top: 3.4cqh;
+      display: flex;
+      gap: 2cqw;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-chip {
+      position: relative;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6cqw;
+      padding: 0.8cqw 1.9cqw;
+      border: 3px solid #2D2D2D;
+      border-radius: 50px;
+      box-shadow: 4px 4px 0 #2D2D2D;
+      white-space: nowrap;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-chip-a { background: #FDE68A; }
+    [data-composition-id="05-step3-phone"] .fr05-chip-b { background: #A8E6CF; }
+    [data-composition-id="05-step3-phone"] .fr05-chip-c { background: #D4A5E8; }
+    [data-composition-id="05-step3-phone"] .fr05-chip-text {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6cqw;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-chip-zh {
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-size: 2.2cqw;
+      line-height: 1;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-chip-en {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 700;
+      font-size: 1.8cqw;
+      line-height: 1;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-strike {
+      position: absolute;
+      left: -0.6cqw;
+      right: -0.6cqw;
+      top: 8%;
+      height: 84%;
+      width: calc(100% + 1.2cqw);
+      overflow: visible;
+      pointer-events: none;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-meta {
+      position: absolute;
+      right: 2cqw;
+      bottom: 1.8cqh;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      font-size: 1.4cqw;
+      color: #6B6B6B;
+      letter-spacing: 0.04em;
+    }
+
+    /* subtitle band */
+    [data-composition-id="05-step3-phone"] .fr05-sub {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 85cqh;
+      margin: 0 auto;
+      width: fit-content;
+      max-width: 86cqw;
+      box-sizing: border-box;
+      padding: 1.4cqw 3cqw;
+      background: #FFFFFF;
+      border: 3px solid #2D2D2D;
+      border-radius: 50px;
+      box-shadow: 4px 4px 0 #2D2D2D;
+      text-align: center;
+      z-index: 6;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-sub-zh {
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-size: 3.3cqw;
+      line-height: 1.2;
+      color: #2D2D2D;
+    }
+    [data-composition-id="05-step3-phone"] .fr05-sub-en {
+      margin-top: 0.3cqw;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      font-size: 1.75cqw;
+      line-height: 1.3;
+      color: #6B6B6B;
+    }
+  </style>
+
+  <div id="root" data-composition-id="05-step3-phone" data-width="1440" data-height="1080" data-start="0" data-duration="6.5">
+    <div class="clip fr05-bg" id="05-step3-phone-bg" data-start="0" data-duration="6.5" data-track-index="0"></div>
+
+    <!-- ornaments -->
+    <svg class="fr05-orn fr05-orn-sun" id="05-step3-phone-sun" viewBox="0 0 200 200">
+      <g stroke="#2D2D2D" stroke-width="5" stroke-linecap="round" fill="none">
+        <path d="M100 18 L100 2"/><path d="M100 198 L100 182"/><path d="M18 100 L2 100"/><path d="M198 100 L182 100"/>
+        <path d="M42 42 L30 30"/><path d="M158 158 L170 170"/><path d="M158 42 L170 30"/><path d="M42 158 L30 170"/>
+      </g>
+      <circle cx="100" cy="100" r="58" fill="#FDE68A" stroke="#2D2D2D" stroke-width="5"/>
+      <circle cx="82" cy="94" r="6" fill="#2D2D2D"/><circle cx="118" cy="94" r="6" fill="#2D2D2D"/>
+      <path d="M84 116 Q100 128 116 116" fill="none" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <svg class="fr05-orn fr05-orn-cloud" id="05-step3-phone-cloud" viewBox="0 0 160 90">
+      <path d="M30 80 Q6 80 8 60 Q10 42 30 44 Q34 18 62 20 Q80 4 102 20 Q128 14 132 40 Q154 42 152 62 Q150 80 128 80 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="4.5" stroke-linejoin="round"/>
+    </svg>
+    <svg class="fr05-orn fr05-orn-daisy" id="05-step3-phone-daisy" viewBox="0 0 120 120">
+      <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="4">
+        <ellipse cx="60" cy="26" rx="14" ry="22"/><ellipse cx="60" cy="94" rx="14" ry="22"/>
+        <ellipse cx="26" cy="60" rx="22" ry="14"/><ellipse cx="94" cy="60" rx="22" ry="14"/>
+        <ellipse cx="36" cy="36" rx="14" ry="20" transform="rotate(-45 36 36)"/><ellipse cx="84" cy="84" rx="14" ry="20" transform="rotate(-45 84 84)"/>
+        <ellipse cx="84" cy="36" rx="14" ry="20" transform="rotate(45 84 36)"/><ellipse cx="36" cy="84" rx="14" ry="20" transform="rotate(45 36 84)"/>
+      </g>
+      <circle cx="60" cy="60" r="16" fill="#FDE68A" stroke="#2D2D2D" stroke-width="4"/>
+    </svg>
+    <svg class="fr05-orn fr05-orn-star" id="05-step3-phone-star" viewBox="0 0 60 60">
+      <path d="M30 4 L37 22 L56 23 L41 35 L46 54 L30 43 L14 54 L19 35 L4 23 L23 22 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3.5" stroke-linejoin="round"/>
+    </svg>
+
+    <!-- shared step badge -->
+    <div class="fr05-badge" id="05-step3-phone-badge">
+      <div class="fr05-badge-num">3</div>
+      <div class="fr05-badge-label">STEP 3 · <span class="fr05-zh">打电话</span></div>
+    </div>
+
+    <!-- Housy (worried → neutral hard swap) -->
+    <div class="fr05-housy" id="05-step3-phone-housy">
+      <svg class="fr05-housy-worried" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+        <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+        <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+        <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="108" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="192" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="108" cy="196" r="12" fill="#2D2D2D"/>
+        <circle cx="192" cy="196" r="12" fill="#2D2D2D"/>
+        <circle cx="112" cy="191" r="4" fill="#FFFFFF"/>
+        <circle cx="196" cy="191" r="4" fill="#FFFFFF"/>
+        <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+        <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+        <path d="M84 160 L126 150" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M216 160 L174 150" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M122 254 q7 -10 14 0 t14 0 t14 0 t14 0" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M244 176 q10 14 0 22 q-10 -8 0 -22 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+      <svg class="fr05-housy-neutral" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+        <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+        <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+        <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="108" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <ellipse cx="192" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="108" cy="202" r="12" fill="#2D2D2D"/>
+        <circle cx="192" cy="202" r="12" fill="#2D2D2D"/>
+        <circle cx="112" cy="197" r="4" fill="#FFFFFF"/>
+        <circle cx="196" cy="197" r="4" fill="#FFFFFF"/>
+        <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+        <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+        <path d="M128 244 Q150 262 172 244" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- coral rotary phone -->
+    <div class="fr05-phone" id="05-step3-phone-phone">
+      <svg viewBox="-40 -20 280 210" xmlns="http://www.w3.org/2000/svg">
+        <g class="fr05-ring-lines" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round" fill="none">
+          <g class="fr05-rl fr05-rl-1"><path d="M-4 70 Q-16 92 -4 114"/><path d="M204 70 Q216 92 204 114"/></g>
+          <g class="fr05-rl fr05-rl-2"><path d="M-20 58 Q-38 92 -20 126"/><path d="M220 58 Q238 92 220 126"/></g>
+        </g>
+        <path d="M30 170 L50 82 Q54 66 70 66 L130 66 Q146 66 150 82 L170 170 Q172 180 160 180 L40 180 Q28 180 30 170 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round"/>
+        <circle cx="100" cy="128" r="36" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6"/>
+        <g fill="#A8D8F0" stroke="#2D2D2D" stroke-width="3">
+          <circle cx="100" cy="104" r="6"/><circle cx="117" cy="111" r="6"/><circle cx="124" cy="128" r="6"/>
+          <circle cx="117" cy="145" r="6"/><circle cx="100" cy="152" r="6"/><circle cx="83" cy="145" r="6"/>
+          <circle cx="76" cy="128" r="6"/><circle cx="83" cy="111" r="6"/>
+        </g>
+        <circle cx="100" cy="128" r="10" fill="#FDE68A" stroke="#2D2D2D" stroke-width="4"/>
+        <g class="fr05-handset">
+          <path d="M16 52 Q16 28 40 28 L160 28 Q184 28 184 52 L184 60 Q184 72 172 72 L150 72 Q138 72 138 62 L138 54 L62 54 L62 62 Q62 72 50 72 L28 72 Q16 72 16 60 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- white data card -->
+    <div class="fr05-card" id="05-step3-phone-card">
+      <div class="fr05-ringwrap">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="130" fill="none" stroke="#F5F0E6" stroke-width="30"/>
+          <circle cx="150" cy="150" r="146" fill="none" stroke="#2D2D2D" stroke-width="4"/>
+          <circle cx="150" cy="150" r="114" fill="none" stroke="#2D2D2D" stroke-width="4"/>
+          <circle class="fr05-ring" cx="150" cy="150" r="130" fill="none" stroke="#F8635F" stroke-width="26" stroke-linecap="round" transform="rotate(-90 150 150)"/>
+        </svg>
+        <div class="fr05-readout">
+          <div class="fr05-frac">
+            <span class="fr05-approx">≈</span>
+            <span class="fr05-frac-step fr05-f0">0/3</span>
+            <span class="fr05-frac-step fr05-f1">1/3</span>
+            <span class="fr05-frac-final fr05-f2">2/3</span>
+          </div>
+        </div>
+      </div>
+      <div class="fr05-caption">更愿意电话或当面预约</div>
+      <div class="fr05-chips">
+        <div class="fr05-chip fr05-chip-a">
+          <div class="fr05-chip-text"><span class="fr05-chip-zh">网站</span><span class="fr05-chip-en">Web</span></div>
+          <svg class="fr05-strike" viewBox="0 0 200 40" preserveAspectRatio="none">
+            <path class="fr05-strike-p" d="M4 30 Q50 16 100 22 T196 10" fill="none" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            <path class="fr05-strike-p2" d="M190 20 Q120 26 70 22 T8 24" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+        <div class="fr05-chip fr05-chip-b">
+          <div class="fr05-chip-text"><span class="fr05-chip-zh">短信</span><span class="fr05-chip-en">Text</span></div>
+          <svg class="fr05-strike" viewBox="0 0 200 40" preserveAspectRatio="none">
+            <path class="fr05-strike-p" d="M4 28 Q60 12 110 22 T196 12" fill="none" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            <path class="fr05-strike-p2" d="M192 22 Q130 28 80 20 T6 26" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+        <div class="fr05-chip fr05-chip-c">
+          <div class="fr05-chip-text"><span class="fr05-chip-en">App</span></div>
+          <svg class="fr05-strike" viewBox="0 0 200 40" preserveAspectRatio="none">
+            <path class="fr05-strike-p" d="M4 30 Q56 14 104 20 T196 8" fill="none" stroke="#2D2D2D" stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+            <path class="fr05-strike-p2" d="M194 18 Q124 26 76 22 T6 22" fill="none" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+      </div>
+      <div class="fr05-meta">HIRI 2024</div>
+    </div>
+
+    <!-- subtitle band -->
+    <div class="fr05-sub" id="05-step3-phone-sub">
+      <div class="fr05-sub-zh">约师傅，美国人还是爱打电话。</div>
+      <div class="fr05-sub-en">Most still book by phone — not an app.</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var ID = "05-step3-phone";
+      var roots = document.querySelectorAll('[data-composition-id="' + ID + '"]');
+      var root = roots[roots.length - 1];
+      var q = function (s) { return root.querySelector(s); };
+      var qa = function (s) { return root.querySelectorAll(s); };
+      var CQW = (root.clientWidth || 1440) / 100;
+      var CQH = (root.clientHeight || 1080) / 100;
+
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      var housy = q(".fr05-housy");
+      var worried = q(".fr05-housy-worried");
+      var neutral = q(".fr05-housy-neutral");
+      var phone = q(".fr05-phone");
+      var handset = q(".fr05-handset");
+      var rl1 = q(".fr05-rl-1");
+      var rl2 = q(".fr05-rl-2");
+      var card = q(".fr05-card");
+      var ring = q(".fr05-ring");
+      var frac = q(".fr05-frac");
+      var f0 = q(".fr05-f0"), f1 = q(".fr05-f1"), f2 = q(".fr05-f2");
+      var approx = q(".fr05-approx");
+      var caption = q(".fr05-caption");
+      var chips = qa(".fr05-chip");
+      var meta = q(".fr05-meta");
+      var sub = q(".fr05-sub");
+
+      gsap.set(neutral, { opacity: 0 });
+      gsap.set([rl1, rl2], { opacity: 0, transformOrigin: "50% 50%" });
+      gsap.set(handset, { transformOrigin: "50% 50%" });
+      gsap.set([f0, f1, f2, approx], { opacity: 0 });
+
+      // ---- Scene 1 (0.0–1.7s): badge, ornaments, Housy + ringing phone ----
+      tl.fromTo(q(".fr05-bg"), { opacity: 1 }, { opacity: 1, duration: 0.01 }, 0);
+      tl.fromTo(q(".fr05-badge"), { y: -2 * CQH, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0);
+      tl.fromTo(qa(".fr05-orn"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.4)", stagger: 0.06 }, 0.05);
+      tl.fromTo(housy, { y: 3 * CQH, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.4)" }, 0.05);
+      tl.fromTo(phone, { y: 3 * CQH, opacity: 0, rotation: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.4)" }, 0.12);
+
+      // ringing: phone shakes 0.4–1.6 (finite)
+      var shakeAngles = [6, -6, 6, -6, 5, -5, 6, -6, 5, -5, 4, 0];
+      shakeAngles.forEach(function (a, i) {
+        tl.to(phone, { rotation: a, duration: 0.1, ease: "sine.inOut" }, 0.4 + i * 0.1);
+      });
+      // ringing lines pulse 4× then fade out by 1.6
+      [0.4, 0.7, 1.0, 1.3].forEach(function (t) {
+        tl.fromTo(rl1, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, t);
+        tl.to(rl1, { opacity: 0, scale: 1.1, duration: 0.16, ease: "power1.in" }, t + 0.12);
+        tl.fromTo(rl2, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.12, ease: "power2.out" }, t + 0.05);
+        tl.to(rl2, { opacity: 0, scale: 1.1, duration: 0.16, ease: "power1.in" }, t + 0.17);
+      });
+      // Housy's worried jitter while it rings
+      [0.5, 0.75, 1.0, 1.25].forEach(function (t, i) {
+        tl.to(housy, { x: (i % 2 ? -0.3 : 0.3) * CQW, duration: 0.12, ease: "sine.inOut" }, t);
+      });
+      tl.to(housy, { x: 0, duration: 0.12, ease: "sine.inOut" }, 1.45);
+
+      // pickup at 1.7: handset lifts to Housy's side; hard swap worried → neutral + squash
+      tl.fromTo(handset, { x: 0, y: 0, rotation: 0 }, { x: -140, y: -185, rotation: -62, duration: 0.45, ease: "power3.out" }, 1.7);
+      tl.set(worried, { opacity: 0 }, 1.7);
+      tl.set(neutral, { opacity: 1 }, 1.7);
+      tl.fromTo(housy, { scaleY: 0.94 }, { scaleY: 1, duration: 0.25, ease: "power3.out", immediateRender: false }, 1.7);
+
+      // ---- Scene 2 (1.7–3.6s): card + 2/3 ring count-up ----
+      tl.fromTo(card, { y: 4 * CQH, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 1.75);
+
+      var LEN = (ring.getTotalLength && ring.getTotalLength()) || 2 * Math.PI * 130;
+      ring.style.strokeDasharray = LEN;
+      var PCT = 0.66;
+      gsap.set(ring, { opacity: 0 });
+      tl.set(ring, { opacity: 1 }, 2.0);
+      tl.fromTo(ring, { strokeDashoffset: LEN }, { strokeDashoffset: LEN * (1 - PCT), duration: 1.4, ease: "power1.inOut" }, 2.0);
+
+      // readout ticks 0/3 → 1/3 → 2/3 in step with the ring, scale grows with value
+      tl.set(f0, { opacity: 1 }, 2.0);
+      tl.fromTo(frac, { scale: 0.7 }, { scale: 0.82, duration: 0.3, ease: "power3.out" }, 2.0);
+      tl.set(f0, { opacity: 0 }, 2.7);
+      tl.set(f1, { opacity: 1 }, 2.7);
+      tl.to(frac, { scale: 0.9, duration: 0.3, ease: "power3.out" }, 2.7);
+      tl.set(f1, { opacity: 0 }, 3.4);
+      tl.set([f2, approx], { opacity: 1 }, 3.4);
+      tl.to(frac, { scale: 1, duration: 0.3, ease: "power3.out" }, 3.4);
+
+      tl.fromTo(caption, { y: 1.5 * CQH, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 2.9);
+
+      // ---- Scene 3 (3.6–6.0s): chips reveal, then get crossed out ----
+      tl.fromTo(chips, { y: 1.8 * CQH, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out", stagger: 0.08 }, 3.6);
+      tl.fromTo(meta, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 3.9);
+
+      [4.0, 4.5, 5.0].forEach(function (t, i) {
+        var chip = chips[i];
+        var p1 = chip.querySelector(".fr05-strike-p");
+        var p2 = chip.querySelector(".fr05-strike-p2");
+        var l1 = (p1.getTotalLength && p1.getTotalLength()) || 210;
+        var l2 = (p2.getTotalLength && p2.getTotalLength()) || 200;
+        p1.style.strokeDasharray = l1;
+        p2.style.strokeDasharray = l2;
+        tl.fromTo(p1, { strokeDashoffset: l1 }, { strokeDashoffset: 0, duration: 0.22, ease: "power2.out" }, t);
+        tl.fromTo(p2, { strokeDashoffset: l2 }, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out" }, t + 0.16);
+        tl.to(chip.querySelector(".fr05-chip-text"), { opacity: 0.5, duration: 0.2, ease: "power1.out" }, t + 0.1);
+      });
+
+      // subtle finite nod from Housy on the phone during the hold
+      tl.to(housy, { rotation: -1.5, duration: 0.3, ease: "sine.inOut" }, 5.3);
+      tl.to(housy, { rotation: 0, duration: 0.3, ease: "sine.inOut" }, 5.6);
+
+      // ---- subtitle band (+0.25s, stays) ----
+      tl.fromTo(sub, { y: 1.2 * CQH, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.25);
+
+      tl.set({}, {}, 6);
+      window.__timelines[ID] = tl;
+    })();
+  </script>
+</template>

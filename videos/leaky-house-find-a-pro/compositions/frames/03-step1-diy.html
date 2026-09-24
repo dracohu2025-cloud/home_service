@@ -1,0 +1,528 @@
+<template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&family=ZCOOL+KuaiLe&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1440px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      font-family: "Quicksand", sans-serif;
+      color: #2D2D2D;
+    }
+    #\30 3-step1-diy-bg {
+      position: absolute;
+      inset: 0;
+      background: #FDE68A;
+      container-type: size;
+      z-index: 0;
+    }
+    #\30 3-step1-diy-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    #\30 3-step1-diy-stage svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+    /* ornaments — behind content, cropping past edges */
+    .\30 3-step1-diy-orn { position: absolute; z-index: 1; }
+    #\30 3-step1-diy-orn-sun   { right: -4cqw; top: -5cqh; width: 17cqw; }
+    #\30 3-step1-diy-orn-cloud { left: 46cqw; top: 5cqh; width: 14cqw; }
+    #\30 3-step1-diy-orn-daisy { left: -3cqw; top: 22cqh; width: 9cqw; }
+    #\30 3-step1-diy-orn-star  { left: 38.5cqw; top: 14.5cqh; width: 5.2cqw; }
+    #\30 3-step1-diy-orn-daisy2 { right: -2.6cqw; top: 70cqh; width: 7cqw; }
+
+    /* shared step chrome */
+    #\30 3-step1-diy-badge {
+      position: absolute;
+      left: 3cqw;
+      top: 3cqh;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 1.1cqw;
+      padding: 0.7cqw 2.2cqw 0.7cqw 0.7cqw;
+      background: #FDE68A;
+      border: 3px solid #2D2D2D;
+      border-radius: 50px;
+      box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+      white-space: nowrap;
+    }
+    #\30 3-step1-diy-badge-num {
+      width: 4.4cqw;
+      height: 4.4cqw;
+      border-radius: 50%;
+      background: #F8635F;
+      border: 3px solid #2D2D2D;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 2.6cqw;
+      line-height: 1;
+      color: #FFFFFF;
+      font-variant-numeric: tabular-nums;
+    }
+    #\30 3-step1-diy-badge-label {
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 2.2cqw;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: #2D2D2D;
+    }
+    #\30 3-step1-diy-badge-label .\30 3-step1-diy-zh {
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-weight: 400;
+      font-size: 2.4cqw;
+      letter-spacing: 0;
+    }
+
+    /* Housy's corner: rug, Housy, toolbox, tools */
+    #\30 3-step1-diy-rug {
+      position: absolute;
+      left: 1.5cqw;
+      width: 41cqw;
+      top: 72.8cqh;
+      height: 7cqh;
+      background: #F5F0E6;
+      border: 3px solid #2D2D2D;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    #\30 3-step1-diy-housy {
+      position: absolute;
+      left: 6cqw;
+      bottom: 22cqh;
+      width: 26cqw;
+      z-index: 3;
+    }
+    #\30 3-step1-diy-housy-squash,
+    #\30 3-step1-diy-housy-jitter {
+      position: relative;
+      transform-origin: 50% 100%;
+    }
+    #\30 3-step1-diy-housy-neutral { position: relative; }
+    #\30 3-step1-diy-housy-confused { position: absolute; inset: 0; opacity: 0; }
+
+    #\30 3-step1-diy-question {
+      position: absolute;
+      left: 11.8cqw;
+      top: 25cqh;
+      width: 6.5cqw;
+      height: 6.5cqw;
+      z-index: 4;
+      box-sizing: border-box;
+      background: #FFFFFF;
+      border: 3px solid #2D2D2D;
+      border-radius: 50%;
+      box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 4.4cqw;
+      line-height: 1;
+      color: #2D2D2D;
+    }
+
+    #\30 3-step1-diy-toolbox {
+      position: absolute;
+      left: 31cqw;
+      bottom: 22cqh;
+      width: 8cqw;
+      z-index: 4;
+    }
+    #\30 3-step1-diy-toolbox-squash { transform-origin: 50% 100%; }
+
+    .\30 3-step1-diy-tool { position: absolute; width: 10cqw; z-index: 6; }
+    #\30 3-step1-diy-wrench { left: 3cqw; bottom: 21.5cqh; }
+    #\30 3-step1-diy-hammer { left: 17cqw; bottom: 20.5cqh; }
+
+    /* the one white data card */
+    #\30 3-step1-diy-card {
+      position: absolute;
+      left: 43cqw;
+      top: 21cqh;
+      width: 53cqw;
+      box-sizing: border-box;
+      padding: 2.6cqw 3cqw 2.2cqw;
+      background: #FFFFFF;
+      border: 3px solid #2D2D2D;
+      border-radius: 28px;
+      box-shadow: 0.42cqw 0.42cqw 0 #2D2D2D;
+      z-index: 3;
+    }
+    #\30 3-step1-diy-title {
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-size: 3.6cqw;
+      line-height: 1.2;
+      color: #2D2D2D;
+    }
+    #\30 3-step1-diy-title-bar {
+      width: 11cqw;
+      height: 1cqh;
+      margin: 1cqh 0 3cqh;
+      background: #FDE68A;
+      border: 2px solid #2D2D2D;
+      border-radius: 50px;
+      transform-origin: 0% 50%;
+    }
+    .\30 3-step1-diy-row {
+      display: flex;
+      align-items: center;
+      gap: 2.2cqw;
+      padding: 1.8cqh 2.2cqw;
+      margin-bottom: 2.4cqh;
+      background: #F5F0E6;
+      border: 2px solid #2D2D2D;
+      border-radius: 20px;
+    }
+    .\30 3-step1-diy-marker {
+      flex: 0 0 auto;
+      width: 6.6cqw;
+      height: 6.6cqw;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 3px solid #2D2D2D;
+      box-shadow: 0.28cqw 0.28cqw 0 #2D2D2D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      font-size: 3.6cqw;
+      line-height: 1;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 0 #2D2D2D;
+      font-variant-numeric: tabular-nums;
+    }
+    #\30 3-step1-diy-marker-1 { background: #F8635F; }
+    #\30 3-step1-diy-marker-2 { background: #A8E6CF; color: #2D2D2D; text-shadow: none; }
+    .\30 3-step1-diy-row-zh {
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-size: 4.4cqw;
+      line-height: 1.1;
+      color: #2D2D2D;
+    }
+    .\30 3-step1-diy-row-en {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      font-size: 2.1cqw;
+      line-height: 1.3;
+      color: #6B6B6B;
+    }
+    #\30 3-step1-diy-meta {
+      text-align: right;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      font-size: 1.5cqw;
+      letter-spacing: 0.04em;
+      color: #6B6B6B;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* subtitle band (fixed component) */
+    #\30 3-step1-diy-sub-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 85cqh;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+    #\30 3-step1-diy-sub {
+      max-width: 86cqw;
+      box-sizing: border-box;
+      padding: 1.4cqw 3cqw;
+      background: #FFFFFF;
+      border: 3px solid #2D2D2D;
+      border-radius: 50px;
+      box-shadow: 4px 4px 0 #2D2D2D;
+      text-align: center;
+    }
+    #\30 3-step1-diy-sub-zh {
+      font-family: "ZCOOL KuaiLe", "Fredoka", sans-serif;
+      font-size: 3.3cqw;
+      line-height: 1.2;
+      color: #2D2D2D;
+      white-space: nowrap;
+    }
+    #\30 3-step1-diy-sub-en {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      font-size: 1.75cqw;
+      line-height: 1.3;
+      color: #6B6B6B;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-step1-diy" data-width="1440" data-height="1080" data-duration="7.5">
+    <div id="03-step1-diy-bg" class="clip" data-start="0" data-duration="7.5" data-track-index="0"></div>
+
+    <div id="03-step1-diy-stage">
+      <!-- ornaments -->
+      <div id="03-step1-diy-orn-sun" class="03-step1-diy-orn">
+        <svg viewBox="0 0 120 120">
+          <g stroke="#2D2D2D" stroke-width="3" stroke-linecap="round">
+            <line x1="94" y1="60" x2="110" y2="60"/>
+            <line x1="84" y1="84" x2="95.4" y2="95.4"/>
+            <line x1="60" y1="94" x2="60" y2="110"/>
+            <line x1="36" y1="84" x2="24.6" y2="95.4"/>
+            <line x1="26" y1="60" x2="10" y2="60"/>
+            <line x1="36" y1="36" x2="24.6" y2="24.6"/>
+            <line x1="60" y1="26" x2="60" y2="10"/>
+            <line x1="84" y1="36" x2="95.4" y2="24.6"/>
+          </g>
+          <circle cx="60" cy="60" r="26" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="3"/>
+        </svg>
+      </div>
+      <div id="03-step1-diy-orn-cloud" class="03-step1-diy-orn">
+        <svg viewBox="0 0 140 80">
+          <path d="M30 66 H112 A20 20 0 0 0 108 28 A28 28 0 0 0 56 22 A22 22 0 0 0 26 42 A12 12 0 0 0 30 66 Z" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div id="03-step1-diy-orn-daisy" class="03-step1-diy-orn">
+        <svg viewBox="0 0 100 100">
+          <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3">
+            <ellipse cx="50" cy="24" rx="11" ry="18"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(45 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(90 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(135 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(180 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(225 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(270 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(315 50 50)"/>
+          </g>
+          <circle cx="50" cy="50" r="12" fill="#F8635F" stroke="#2D2D2D" stroke-width="3"/>
+        </svg>
+      </div>
+      <div id="03-step1-diy-orn-star" class="03-step1-diy-orn">
+        <svg viewBox="0 0 100 100">
+          <path d="M50 8 L61.8 35.8 L91.8 38.4 L69 58.2 L75.9 87.6 L50 72 L24.1 87.6 L31 58.2 L8.2 38.4 L38.2 35.8 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="4" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div id="03-step1-diy-orn-daisy2" class="03-step1-diy-orn">
+        <svg viewBox="0 0 100 100">
+          <g fill="#FFFFFF" stroke="#2D2D2D" stroke-width="3.5">
+            <ellipse cx="50" cy="24" rx="11" ry="18"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(60 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(120 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(180 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(240 50 50)"/>
+            <ellipse cx="50" cy="24" rx="11" ry="18" transform="rotate(300 50 50)"/>
+          </g>
+          <circle cx="50" cy="50" r="13" fill="#FDE68A" stroke="#2D2D2D" stroke-width="3.5"/>
+        </svg>
+      </div>
+
+      <!-- step badge -->
+      <div id="03-step1-diy-badge">
+        <div id="03-step1-diy-badge-num">1</div>
+        <div id="03-step1-diy-badge-label">STEP 1 · <span class="03-step1-diy-zh">自己修？</span></div>
+      </div>
+
+      <!-- rug / ground line -->
+      <div id="03-step1-diy-rug"></div>
+
+      <!-- Housy -->
+      <div id="03-step1-diy-housy">
+        <div id="03-step1-diy-housy-squash">
+          <div id="03-step1-diy-housy-jitter">
+            <div id="03-step1-diy-housy-neutral">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+                <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+                <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+                <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <ellipse cx="108" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <ellipse cx="192" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="108" cy="202" r="12" fill="#2D2D2D"/>
+                <circle cx="192" cy="202" r="12" fill="#2D2D2D"/>
+                <circle cx="112" cy="197" r="4" fill="#FFFFFF"/>
+                <circle cx="196" cy="197" r="4" fill="#FFFFFF"/>
+                <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+                <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+                <path d="M128 244 Q150 262 172 244" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div id="03-step1-diy-housy-confused">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340">
+                <rect x="200" y="52" width="34" height="70" rx="6" fill="#FDE68A" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <rect x="96" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <rect x="184" y="292" width="20" height="30" rx="8" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <ellipse cx="102" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+                <ellipse cx="198" cy="326" rx="22" ry="9" fill="#2D2D2D"/>
+                <rect x="44" y="128" width="212" height="172" rx="24" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M22 146 L150 30 L278 146 Z" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <ellipse cx="108" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <ellipse cx="192" cy="198" rx="24" ry="28" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M108 200 m-12 0 a12 12 0 1 1 12 12 a7 7 0 1 1 -7 -7" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M192 200 m-12 0 a12 12 0 1 1 12 12 a7 7 0 1 1 -7 -7" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <ellipse cx="78" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+                <ellipse cx="222" cy="238" rx="17" ry="9" fill="#F7C8D4"/>
+                <path d="M84 158 L128 162" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M172 150 L214 142" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+                <path d="M130 252 L172 244" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- "?" sticker above the roof -->
+      <div id="03-step1-diy-question">?</div>
+
+      <!-- coral toolbox -->
+      <div id="03-step1-diy-toolbox">
+        <div id="03-step1-diy-toolbox-squash">
+          <svg viewBox="0 0 120 96">
+            <path d="M42 26 V14 Q42 8 48 8 H72 Q78 8 78 14 V26" fill="none" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="8" y="26" width="104" height="62" rx="12" fill="#F8635F" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round"/>
+            <path d="M8 46 H112" stroke="#2D2D2D" stroke-width="6" stroke-linecap="round"/>
+            <rect x="50" y="38" width="20" height="16" rx="4" fill="#FDE68A" stroke="#2D2D2D" stroke-width="5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- tools -->
+      <div id="03-step1-diy-wrench" class="03-step1-diy-tool">
+        <svg viewBox="0 0 160 56">
+          <rect x="40" y="20" width="114" height="16" rx="8" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M17.9 13.9 A20 20 0 1 1 17.9 42.1 L28 33 L28 23 Z" fill="#A8D8F0" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round"/>
+          <circle cx="142" cy="28" r="3.5" fill="#2D2D2D"/>
+        </svg>
+      </div>
+      <div id="03-step1-diy-hammer" class="03-step1-diy-tool">
+        <svg viewBox="0 0 160 70">
+          <rect x="40" y="28" width="116" height="14" rx="7" fill="#FFCBA4" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round"/>
+          <rect x="16" y="6" width="32" height="58" rx="8" fill="#D4A5E8" stroke="#2D2D2D" stroke-width="6" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- the white data card -->
+      <div id="03-step1-diy-card">
+        <div id="03-step1-diy-title">请人的前两大原因</div>
+        <div id="03-step1-diy-title-bar"></div>
+        <div id="03-step1-diy-row-1" class="03-step1-diy-row">
+          <div id="03-step1-diy-marker-1" class="03-step1-diy-marker">1</div>
+          <div>
+            <div class="03-step1-diy-row-zh">缺技能</div>
+            <div class="03-step1-diy-row-en">No skills</div>
+          </div>
+        </div>
+        <div id="03-step1-diy-row-2" class="03-step1-diy-row">
+          <div id="03-step1-diy-marker-2" class="03-step1-diy-marker">2</div>
+          <div>
+            <div class="03-step1-diy-row-zh">缺工具</div>
+            <div class="03-step1-diy-row-en">No tools</div>
+          </div>
+        </div>
+        <div id="03-step1-diy-meta">HIRI 2024</div>
+      </div>
+    </div>
+
+    <!-- subtitle band -->
+    <div id="03-step1-diy-sub-wrap">
+      <div id="03-step1-diy-sub">
+        <div id="03-step1-diy-sub-zh">自己修？不会，也没工具。</div>
+        <div id="03-step1-diy-sub-en">DIY? No skills, no tools.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var P = "03-step1-diy-";
+      var $ = function (k) { return document.getElementById(P + k); };
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–1.6s): ground dressing, badge, Housy walks in, toolbox drops
+      ["orn-sun", "orn-cloud", "orn-daisy", "orn-star", "orn-daisy2"].forEach(function (k, i) {
+        tl.fromTo($(k), { scale: 0, rotation: -20, opacity: 0 },
+          { scale: 1, rotation: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, 0.1 + i * 0.08);
+      });
+
+      tl.fromTo($("badge"), { x: -320, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.2);
+      tl.fromTo($("badge-num"), { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.4)" }, 0.35);
+
+      tl.fromTo($("sub"), { y: 13, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.25);
+
+      tl.fromTo($("rug"), { scaleX: 0.3, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.2);
+
+      tl.set($("housy-neutral"), { opacity: 1 }, 0);
+      tl.set($("housy-confused"), { opacity: 0 }, 0);
+      tl.fromTo($("housy"), { x: -560 }, { x: 0, duration: 0.85, ease: "power3.out" }, 0.25);
+      tl.fromTo($("housy-squash"), { scaleY: 0.94, scaleX: 1.04 },
+        { scaleY: 1, scaleX: 1, duration: 0.22, ease: "back.out(1.4)", immediateRender: false }, 1.08);
+
+      tl.fromTo($("toolbox"), { y: -900 }, { y: 0, duration: 0.38, ease: "power2.in" }, 1.0);
+      tl.fromTo($("toolbox-squash"), { scaleY: 0.8, scaleX: 1.12 },
+        { scaleY: 1, scaleX: 1, duration: 0.28, ease: "back.out(1.4)", immediateRender: false }, 1.38);
+
+      // Scene 2 (1.6–3.6s): tools pop out, spin over Housy, clatter at 2.3s; confused swap at 3.0s
+      tl.fromTo($("toolbox-squash"), { scaleY: 0.86, scaleX: 1.08 },
+        { scaleY: 1, scaleX: 1, duration: 0.25, ease: "back.out(1.4)", immediateRender: false }, 1.6);
+
+      function toss(el, t0, up, down, dx, dy, apexY, rotFrom, rotTo) {
+        var land = t0 + up + down;
+        tl.set(el, { opacity: 0 }, 0);
+        tl.set(el, { opacity: 1 }, t0);
+        tl.fromTo(el, { x: dx }, { x: 0, duration: up + down, ease: "none" }, t0);
+        tl.fromTo(el, { y: dy }, { y: apexY, duration: up, ease: "power2.out" }, t0);
+        tl.fromTo(el, { y: apexY }, { y: 0, duration: down, ease: "power2.in", immediateRender: false }, t0 + up);
+        tl.fromTo(el, { rotation: rotFrom, scale: 0.6 },
+          { rotation: rotTo, scale: 1, duration: up + down, ease: "none" }, t0);
+        tl.fromTo(el, { y: 0, rotation: rotTo }, { y: -18, rotation: rotTo - 8, duration: 0.1, ease: "power2.out", immediateRender: false }, land);
+        tl.fromTo(el, { y: -18, rotation: rotTo - 8 }, { y: 0, rotation: rotTo, duration: 0.12, ease: "power2.in", immediateRender: false }, land + 0.1);
+      }
+      toss($("wrench"), 1.6, 0.35, 0.35, 389, -63, -533, 540, -6);
+      toss($("hammer"), 1.68, 0.32, 0.33, 187, -67, -577, -480, 8);
+
+      tl.fromTo($("housy-squash"), { scaleY: 0.95, scaleX: 1.03 },
+        { scaleY: 1, scaleX: 1, duration: 0.2, ease: "power3.out", immediateRender: false }, 2.3);
+
+      tl.set($("housy-neutral"), { opacity: 0 }, 3.0);
+      tl.set($("housy-confused"), { opacity: 1 }, 3.0);
+      tl.fromTo($("housy-squash"), { scaleY: 0.9, scaleX: 1.06 },
+        { scaleY: 1, scaleX: 1, duration: 0.3, ease: "back.out(1.4)", immediateRender: false }, 3.0);
+
+      tl.fromTo($("question"), { scale: 0, rotation: -40, opacity: 0 },
+        { scale: 1, rotation: -8, opacity: 1, duration: 0.4, ease: "back.out(1.4)" }, 3.05);
+      tl.fromTo($("question"), { rotation: -8 }, { rotation: 6, duration: 0.3, ease: "sine.inOut", immediateRender: false }, 4.8);
+      tl.fromTo($("question"), { rotation: 6 }, { rotation: -8, duration: 0.3, ease: "sine.inOut", immediateRender: false }, 5.1);
+
+      // Scene 3 (3.6–7.0s): card, title, two reason rows, source meta; Housy jitters
+      tl.fromTo($("card"), { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 3.6);
+      tl.fromTo($("title"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 3.75);
+      tl.fromTo($("title-bar"), { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.out" }, 3.95);
+
+      tl.fromTo($("row-1"), { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 4.4);
+      tl.fromTo($("marker-1"), { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.4)" }, 4.4);
+      tl.fromTo($("row-2"), { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 5.6);
+      tl.fromTo($("marker-2"), { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(1.4)" }, 5.6);
+      tl.fromTo($("meta"), { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 6.1);
+
+      var jit = [0.8, -0.8, 0.6, -0.6, 0.5, -0.4, 0];
+      var prev = 0;
+      jit.forEach(function (r, i) {
+        tl.fromTo($("housy-jitter"), { rotation: prev },
+          { rotation: r, duration: 0.45, ease: "sine.inOut", immediateRender: false }, 3.6 + i * 0.45);
+        prev = r;
+      });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["03-step1-diy"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,270 @@
+<template>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+  <div id="root" data-composition-id="02-stakes" data-width="1920" data-height="1080" data-start="0" data-duration="11.41">
+    <style>
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        container-type: size;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+      #root .clip { position: absolute; inset: 0; }
+      .s02-bg { background: #fdfae7; }
+
+      /* shared chrome */
+      #s02-eyebrow {
+        position: absolute; left: 5cqw; top: 4.4cqh;
+        display: flex; align-items: center; gap: 0.8cqw;
+      }
+      .s02-accent-line { width: 60px; height: 4px; border-radius: 2px; background: #1e2bfa; }
+      .s02-eyebrow-text, #s02-tag {
+        font-family: "Space Grotesk", sans-serif; font-weight: 600;
+        font-size: 0.8cqw; letter-spacing: 0.08em; text-transform: uppercase;
+        color: #1e2bfa; white-space: nowrap;
+      }
+      #s02-tag {
+        position: absolute; right: 5cqw; top: 4cqh;
+        font-weight: 500;
+        background: rgba(30,43,250,0.08);
+        border-radius: 100px;
+        padding: 0.75cqh 0.95cqw;
+      }
+      #s02-progress {
+        position: absolute; left: 0; bottom: 0;
+        width: 100%; height: 3px;
+        background: #1e2bfa;
+        transform-origin: 0% 50%;
+      }
+
+      /* headline: two lines that start centered-large, then lift into the header */
+      .s02-line {
+        position: absolute; left: 5cqw;
+        width: max-content;
+        transform-origin: 0% 50%;
+        font-family: "Space Grotesk", sans-serif; font-weight: 600;
+        font-size: 5.72cqw; line-height: 1.1; letter-spacing: -0.02em;
+        color: #111111; white-space: nowrap;
+      }
+      #s02-line-1 { top: 6.9cqh; }
+      #s02-line-2 { top: 12cqh; }
+      .s02-w { display: inline-block; }
+      .s02-w + .s02-w { margin-left: 0.26em; }
+      .s02-w-accent { color: #1e2bfa; }
+
+      /* metric cards */
+      .s02-card {
+        position: absolute; top: 25cqh;
+        width: 44.3cqw; height: 52cqh;
+        box-sizing: border-box;
+        padding: 2.6cqw;
+        background: rgba(30,43,250,0.04);
+        border: 1.5px solid rgba(30,43,250,0.2);
+        border-radius: 14px;
+      }
+      #s02-card-a { left: 5cqw; }
+      #s02-card-b { left: 50.7cqw; }
+      .s02-metric {
+        display: flex; align-items: baseline; gap: 0.25em;
+        width: max-content;
+        transform-origin: 0% 100%;
+        font-family: "Space Grotesk", sans-serif; font-weight: 700;
+        font-size: 7cqw; line-height: 1;
+        color: #1e2bfa;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .s02-in { font-size: 0.5em; font-weight: 600; }
+      .s02-label {
+        margin-top: 2.6cqh;
+        max-width: 34cqw;
+        font-family: "Inter", sans-serif; font-weight: 500;
+        font-size: 1.45cqw; line-height: 1.4;
+        color: #6b6b6b;
+      }
+
+      #s02-grid {
+        position: absolute; left: 2.6cqw; right: 2.6cqw; bottom: 2.6cqw;
+        display: grid;
+        grid-template-columns: repeat(17, 1.6cqw);
+        justify-content: space-between;
+        row-gap: 0.7cqw;
+      }
+      .s02-house {
+        width: 1.6cqw; height: 1.6cqw;
+        background: rgba(30,43,250,0.15);
+        clip-path: polygon(50% 0%, 100% 46%, 100% 100%, 0% 100%, 0% 46%);
+      }
+      .s02-house-on { background: #1e2bfa; }
+
+      #s02-blocks {
+        position: absolute; left: 2.6cqw; right: 2.6cqw; bottom: 2.6cqw;
+      }
+      #s02-blocks svg { display: block; width: 100%; height: 2.5cqw; overflow: visible; }
+      .s02-legend {
+        margin-top: 1.4cqh;
+        font-family: "Inter", sans-serif; font-weight: 500;
+        font-size: 1cqw; line-height: 1.3;
+        color: #6b6b6b;
+      }
+      .s02-legend-num { font-variant-numeric: tabular-nums; }
+
+      #s02-source {
+        position: absolute; left: 5cqw; top: 79.5cqh;
+        font-family: "Inter", sans-serif; font-weight: 400;
+        font-size: 1cqw; line-height: 1.3;
+        color: #6b6b6b; white-space: nowrap;
+      }
+    </style>
+
+    <div class="clip s02-bg" data-start="0" data-duration="11.41" data-track-index="0"></div>
+
+    <div class="clip" id="s02-stage" data-start="0" data-duration="11.41" data-track-index="1">
+      <div id="s02-eyebrow">
+        <div class="s02-accent-line"></div>
+        <div class="s02-eyebrow-text">Pipe Burst Playbook</div>
+      </div>
+      <div id="s02-tag">The Stakes</div>
+
+      <div class="s02-line" id="s02-line-1">
+        <span class="s02-w" id="s02-w-dont">Don't</span><span class="s02-w" id="s02-w-panic">panic.</span>
+      </div>
+      <div class="s02-line" id="s02-line-2">
+        <span class="s02-w" id="s02-w-move">Move</span><span class="s02-w s02-w-accent" id="s02-w-fast">fast.</span>
+      </div>
+
+      <div class="s02-card" id="s02-card-a">
+        <div class="s02-metric" id="s02-metric-a">
+          <span>1</span><span class="s02-in">in</span><span id="s02-count-a">1</span>
+        </div>
+        <div class="s02-label" id="s02-label-a">insured U.S. homes file a water-damage claim every year</div>
+        <div id="s02-grid"></div>
+      </div>
+
+      <div class="s02-card" id="s02-card-b">
+        <div class="s02-metric" id="s02-metric-b">
+          <span id="s02-count-b">$0</span>
+        </div>
+        <div class="s02-label" id="s02-label-b">Average claim</div>
+        <div id="s02-blocks">
+          <svg viewBox="0 0 750 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="s02-seg-clip"></clipPath>
+            </defs>
+            <g id="s02-seg-track"></g>
+            <g clip-path="url(#s02-seg-clip)">
+              <rect id="s02-seg-fill" x="0" y="0" width="750" height="48" fill="#1e2bfa"></rect>
+            </g>
+          </svg>
+          <div class="s02-legend" id="s02-legend">1 block = <span class="s02-legend-num">$1,000</span></div>
+        </div>
+      </div>
+
+      <div id="s02-source">Source: Triple-I / ISO, homeowners claims 2019–2023</div>
+
+      <div id="s02-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var root = document.querySelector('[data-composition-id="02-stakes"]');
+        var q = function (sel) { return root.querySelector(sel); };
+        var SVGNS = "http://www.w3.org/2000/svg";
+
+        // 67 house glyphs: one cobalt, 66 at 15%
+        var grid = q("#s02-grid");
+        var houses = [];
+        for (var i = 0; i < 67; i++) {
+          var h = document.createElement("div");
+          h.className = i === 0 ? "s02-house s02-house-on" : "s02-house";
+          grid.appendChild(h);
+          houses.push(h);
+        }
+
+        // 16 segments, $1,000 each; fill reaches 15.4 of them
+        var SEG_N = 16, SEG_GAP = 8, SEG_W = (750 - SEG_GAP * (SEG_N - 1)) / SEG_N;
+        var clip = q("#s02-seg-clip");
+        var track = q("#s02-seg-track");
+        for (var s = 0; s < SEG_N; s++) {
+          var sx = s * (SEG_W + SEG_GAP);
+          var c = document.createElementNS(SVGNS, "rect");
+          c.setAttribute("x", sx); c.setAttribute("y", 0);
+          c.setAttribute("width", SEG_W); c.setAttribute("height", 48);
+          c.setAttribute("rx", 6);
+          clip.appendChild(c);
+          var t = document.createElementNS(SVGNS, "rect");
+          t.setAttribute("x", sx); t.setAttribute("y", 0);
+          t.setAttribute("width", SEG_W); t.setAttribute("height", 48);
+          t.setAttribute("rx", 6);
+          t.setAttribute("fill", "rgba(30,43,250,0.08)");
+          track.appendChild(t);
+        }
+        var FILL_END = (15 * (SEG_W + SEG_GAP) + 0.4 * SEG_W) / 750;
+
+        var tl = gsap.timeline({ paused: true });
+
+        // chrome: progress bar grows from 1/9 to 2/9
+        tl.fromTo(q("#s02-progress"), { scaleX: 1 / 9 }, { scaleX: 2 / 9, duration: 0.6, ease: "power3.out" }, 0);
+
+        // Scene 1 (0.0–2.2s): centered headline, word by word
+        var rise = function (el, at) {
+          tl.fromTo(el, { y: 32, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, at);
+        };
+        rise(q("#s02-w-dont"), 0.14);
+        rise(q("#s02-w-panic"), 0.44);
+        rise(q("#s02-w-move"), 1.29);
+        rise(q("#s02-w-fast"), 1.63);
+
+        // Scene 2 (2.2–7.0s): headline lifts into the header; card A arrives
+        var HEADER_SCALE = 2.6 / 5.72;
+        tl.fromTo(q("#s02-line-1"),
+          { x: 864, xPercent: -50, y: 265, scale: 1 },
+          { x: 0, xPercent: 0, y: 0, scale: HEADER_SCALE, duration: 0.75, ease: "power3.inOut" }, 2.22);
+        tl.fromTo(q("#s02-line-2"),
+          { x: 864, xPercent: -50, y: 335, scale: 1 },
+          { x: 0, xPercent: 0, y: 0, scale: HEADER_SCALE, duration: 0.75, ease: "power3.inOut" }, 2.25);
+
+        tl.fromTo(q("#s02-card-a"), { y: 60, scale: 0.96, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 2.45);
+
+        var countA = q("#s02-count-a");
+        var stateA = { v: 1 };
+        tl.fromTo(stateA, { v: 1 }, {
+          v: 67, duration: 0.52, ease: "power3.out",
+          onUpdate: function () { countA.textContent = Math.round(stateA.v); }
+        }, 2.98);
+        tl.fromTo(q("#s02-metric-a"), { scale: 0.6 }, { scale: 1, duration: 0.52, ease: "power3.out" }, 2.98);
+
+        tl.fromTo(q("#s02-label-a"), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 4.24);
+
+        tl.fromTo(houses, { scale: 0.4, opacity: 0 }, {
+          scale: 1, opacity: 1, duration: 0.3, ease: "power3.out",
+          stagger: { amount: 0.45 }
+        }, 4.6);
+
+        // Scene 3 (7.0–10.81s): card B, label first, then the count-up
+        tl.fromTo(q("#s02-card-b"), { y: 60, scale: 0.96, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 7.14);
+        tl.fromTo(q("#s02-label-b"), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 7.44);
+        tl.fromTo(q("#s02-metric-b"), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 8.5);
+
+        var countB = q("#s02-count-b");
+        var stateB = { v: 0 };
+        tl.fromTo(stateB, { v: 0 }, {
+          v: 15400, duration: 0.98, ease: "power3.out",
+          onUpdate: function () { countB.textContent = "$" + Math.round(stateB.v).toLocaleString("en-US"); }
+        }, 9.12);
+        tl.fromTo(q("#s02-metric-b"), { scale: 0.55 }, { scale: 1, duration: 0.98, ease: "power3.out" }, 9.12);
+        tl.fromTo(q("#s02-seg-fill"), { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: FILL_END, duration: 0.98, ease: "power3.out", transformOrigin: "0% 50%" }, 9.12);
+
+        tl.fromTo(q("#s02-source"), { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 10.1);
+
+        tl.to({}, { duration: 0.01 }, 10.8);
+
+        window.__timelines["02-stakes"] = tl;
+      })();
+    </script>
+  </div>
+</template>
