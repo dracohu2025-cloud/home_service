@@ -1,40 +1,38 @@
 # Visual QA — Pipe Burst first 5 minutes
 
-## Findings (shipped once, then fixed)
+完整修复叙事见 [`CHANGELOG.md`](CHANGELOG.md)。技术硬规则见 [`../../docs/GSAP_SVG_PITFALLS.md`](../../docs/GSAP_SVG_PITFALLS.md)。
 
-| # | Symptom | Root cause | Fix |
-|---|---|---|---|
-| 1 | Clock hands wrong in final video | GSAP `fromTo` with mismatched `svgOrigin` / `transformOrigin` (pivot jumps on seek) | Prefer SVG `rotate(a cx cy)`; make from/to origins identical. Patched **18** asymmetries → 0 |
-| 2 | “Blue drip” segment unreadable | Abstract drip + GSAP `x/y/rotation` clobbering SVG `transform=` | Redrew pipe + crack + drops; animate outer `<g>` without attribute transform |
-| 3 | Faucet angle too extreme | Design choice | 50° → 35° |
-| 4 | Font lint | Fredoka One | Space Grotesk + Inter only |
+## 用户指出的问题
 
-Full technical rules: [`../../docs/GSAP_SVG_PITFALLS.md`](../../docs/GSAP_SVG_PITFALLS.md).
+1. **时钟指针错位** — `feedback/01-clock-hands-misaligned.png`  
+   根因：`svgOrigin` 只在 to-vars。  
+2. **蓝线语义不清** — `feedback/02-abstract-drip-incomprehensible.png`  
+   根因：抽象滴水缩略不可读（非单纯放错位）。
 
-## Prevention gate (run before every render)
+## 自查追加
+
+| # | 发现 | 修复 |
+|---|---|---|
+| 17 | origin 不对称（同时钟类），帧 1/2/4/5/9 | from/to 同源 |
+| 1 | 马桶漩涡无旋转原点 | 固定圆心 |
+| 1 | 水龙头 50° 挤弯管 | → 35° |
+
+`qa-scan.py`：18 → **0**。
+
+## 预防门禁（渲染前必过）
 
 ```bash
-python3 scripts/qa-scan.py
-# must report zero A/B/C issues
+python3 scripts/qa-scan.py   # TOTAL must be 0
+npm run check
 ```
 
-## Dense review method
+目检：每 0.5s 截帧拼联系表（归档：`qa-sheets/`）。不要只抽场景中点；不要把子任务自查当验收。
 
-1. Extract a frame every **0.5s** from the final MP4 (original run: ~184 PNGs under `/tmp/pipe-test/qa/`).
-2. Montage into contact sheets (10–12 thumbs per sheet).
-3. Review for empty beats, overlap, broken pivots, caption collisions, illegible icons.
+## Checklist
 
-### Archived contact sheets (this commit)
-
-`docs/qa-sheets/sheet-00.png` … `sheet-14.png` — full pass over the post-fix master. Use these to see what “good” looked like after clock + drip fixes.
-
-Mid-point snapshots used during production may also live under project `renders/` or asset folders from earlier commits.
-
-## Checklist for future edits
-
-- [ ] `qa-scan.py` clean
-- [ ] No GSAP transform props on nodes with `transform=`
-- [ ] Matching svgOrigin in every fromTo
-- [ ] Spot-check new dense sheets after re-encode
-- [ ] Caption vs VO spot-listen (esp. numbers and “2 a.m.”)
-- [ ] BGM still from fal path (not MiniMax music-3.0-free)
+- [ ] `qa-scan.py` clean  
+- [ ] 无 GSAP transform 打在带 `transform=` 的节点上  
+- [ ] fromTo 同源  
+- [ ] 重渲后扫联系表或至少抽起止帧  
+- [ ] 字幕 vs VO（数字、「2 a.m.」）  
+- [ ] BGM 走 `make-bgm-fal.py`  

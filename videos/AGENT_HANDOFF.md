@@ -1,137 +1,62 @@
-# Agent handoff — home_service video exploration
+# Agent handoff — home_service 视频探索
 
-This document captures the full process from HIRI topic research through two shipped HyperFrames videos, visual QA, and prevention rules. Goal: another agent can continue without re-discovering the same dead ends.
+后续 Agent **先读索引，再按需下钻**。完整时间线见 [`docs/TIMELINE.md`](docs/TIMELINE.md)。
 
-## 1. Research context (HIRI / DIFM)
+## 文档地图
 
-- No public “HIRI US home-service Top 100 questions” list was found.
-- Public DIFM / Project Decision themes that informed topics: water damage urgency, finding a pro, cost anxiety, “what do I do first.”
-- Chosen topics:
-  1. **Chinese**: leaky house → find a licensed pro (cartoon / daisy-days feel).
-  2. **English**: pipe burst — first 5 minutes (premium / blue-professional, YouTube/Facebook/X).
+| 文档 | 内容 |
+|---|---|
+| [`docs/HIRI_RESEARCH.md`](docs/HIRI_RESEARCH.md) | **完整** HIRI/DIFM 调研（无公开 Top 100；公开结论与来源链接） |
+| [`docs/TOPIC_SELECTION.md`](docs/TOPIC_SELECTION.md) | 5 方案、参考 X 帖、Video A/B 选题决策 |
+| [`docs/TIMELINE.md`](docs/TIMELINE.md) | 从调研到 push 的时序 |
+| [`docs/GSAP_SVG_PITFALLS.md`](docs/GSAP_SVG_PITFALLS.md) | SVG/GSAP 两类硬伤 + 门禁 |
+| [`burst-pipe-first-5-minutes/docs/PROCESS.md`](burst-pipe-first-5-minutes/docs/PROCESS.md) | 英文片制作流水线 |
+| [`burst-pipe-first-5-minutes/docs/QA.md`](burst-pipe-first-5-minutes/docs/QA.md) | QA 门禁与 checklist |
+| [`burst-pipe-first-5-minutes/docs/CHANGELOG.md`](burst-pipe-first-5-minutes/docs/CHANGELOG.md) | 用户反馈 → 根因 → 修复 → 验证 |
+| [`burst-pipe-first-5-minutes/docs/feedback/`](burst-pipe-first-5-minutes/docs/feedback/) | 用户原图（时钟 / 蓝线） |
+| [`burst-pipe-first-5-minutes/docs/qa-sheets/`](burst-pipe-first-5-minutes/docs/qa-sheets/) | 0.5s 密集质检联系表 ×15 |
+| [`leaky-house-find-a-pro/docs/PROCESS.md`](leaky-house-find-a-pro/docs/PROCESS.md) | 中文卡通片过程 |
 
-## 2. Repo layout
+## 两个成片
 
-```
-home_service/
-  videos/
-    README.md                 ← index
-    AGENT_HANDOFF.md          ← this file
-    docs/GSAP_SVG_PITFALLS.md ← must-read before editing frame HTML
-    leaky-house-find-a-pro/   ← Video A (zh, 4:3, no VO)
-    burst-pipe-first-5-minutes/ ← Video B (en, 16:9, VO+captions+BGM)
-```
-
-Remote: `dracohu2025-cloud/home_service` on branch `main`.
-
-## 3. Stack & APIs
-
-| Piece | Choice | Notes |
+| | Video A | Video B |
 |---|---|---|
-| Motion | HyperFrames + GSAP in frame HTML | Seek-safe timelines; prefer SVG `rotate(cx,cy)` over GSAP rotation for clock hands |
-| Style A | daisy-days preset | Cartoon leaky house |
-| Style B | blue-professional | Cobalt line-art, Space Grotesk + Inter (avoid Fredoka One — lint) |
-| TTS | MiniMax `speech-2.8-hd`, voice `English_expressive_narrator` | Bitrate 128000; word timings for captions |
-| BGM | **fal** ElevenLabs Music | MiniMax `music-3.0-free` → **HTTP 410 Gone**. Script: `scripts/make-bgm-fal.py` |
-| SFX | Procedural Python (`make-sfx.py`) | Water, dial, click, etc. |
-| Captions | Word-timed from TTS meta | Whisper sometimes mangles “2am.” — align to script words |
-| Keys | `book-space-time/.env` + `~/.mmx` | Never commit `.env*` |
+| 路径 | `leaky-house-find-a-pro/` | `burst-pipe-first-5-minutes/` |
+| 语言 | 中英字幕，无 VO | 英文 MiniMax VO + 字幕 |
+| 画幅 | 4:3 ~60s | 16:9 ~84.8s |
+| 风格 | daisy-days 卡通 | blue-professional |
+| MP4 | `renders/video.mp4` | `renders/pipe-burst-first-5-minutes.mp4` |
 
-## 4. Video A — leaky-house-find-a-pro
+远程：`dracohu2025-cloud/home_service`，分支 `main`。
 
-- Path: `videos/leaky-house-find-a-pro/`
-- ~60s, 4:3, Chinese on-screen text, no narration.
-- Automation flow, no storyboard gate.
-- Deliverable: `renders/video.mp4`
-- Process notes: `docs/PROCESS.md`
+## Stack 速查
 
-## 5. Video B — burst-pipe-first-5-minutes
+| 片 | 选择 | 注意 |
+|---|---|---|
+| 运动 | HyperFrames + GSAP | seek-safe；时钟优先 SVG `rotate(cx,cy)` |
+| TTS | MiniMax speech-2.8-hd | `English_expressive_narrator`；bitrate 128000 |
+| BGM | **fal** ElevenLabs Music | MiniMax music-3.0-free → **HTTP 410** |
+| SFX | 程序化 Python | |
+| 密钥 | book-space-time `.env` + `~/.mmx` | **永不提交** |
 
-- Path: `videos/burst-pipe-first-5-minutes/`
-- ~84.8s, 1920×1080, English VO + captions + BGM + SFX.
-- Message: five calm moves — valve → power → drain → document → call; CTA: find & tag main shut-off today.
-- Deliverable: `renders/pipe-burst-first-5-minutes.mp4`
-- Rebuild scripts under `scripts/`; pipeline notes in `docs/PROCESS.md`
-- Visual QA: `docs/QA.md` + contact sheets in `docs/qa-sheets/`
-
-### Scene order (high level)
-
-1. Hook — pipe burst / urgency + $15,400 claim stat  
-2. Step 1 — shut main valve (gate vs ball)  
-3. Step 2 — power only if dry path  
-4. Step 3 — drain lines / water heater  
-5. Step 4 — document damage  
-6. Step 5 — call plumber + insurer  
-7. CTA — tag the valve today  
-
-Facts cited in `BRIEF.md` (Triple-I / Red Cross / Forbes Home). Deliberately avoided disputed “1/8-inch = 250 gal/day” claim.
-
-## 6. Bugs that shipped once (must not repeat)
-
-### 6.1 Clock hands misaligned (user-reported)
-
-- **Cause**: GSAP `fromTo` with **asymmetric** `svgOrigin` / `transformOrigin` between from-vars and to-vars. Under seek/render, the pivot jumps.
-- **Fix**: Prefer native SVG `transform="rotate(angle cx cy)"` on hands, or ensure from/to origins are identical.
-- **Prevention**: `scripts/qa-scan.py` flag A (origin asymmetry). Auto-patched 18 asymmetries → 0.
-
-### 6.2 Blue “drip” scene incomprehensible (user-reported)
-
-- **Cause**: Abstract drip + GSAP `x/y/rotation` on SVG nodes that already had `transform="..."` attributes → GSAP **clobbers** the attribute transform.
-- **Fix**: Rewrote as pipe + crack + drops; wrap animated nodes in `<g>` without competing `transform`; animate the group.
-- **Prevention**: `qa-scan.py` flags B (transform clobber) and C (rotate without origin).
-
-### 6.3 Other polish
-
-- Faucet tilt 50° → 35° (less extreme).
-- Font: dropped Fredoka One; Space Grotesk + Inter.
-
-## 7. QA process used
-
-1. Static: `python3 scripts/qa-scan.py` on all `compositions/frames/*.html`
-2. Dense visual: extract frames every **0.5s** from final MP4 → montage contact sheets (`docs/qa-sheets/sheet-00.png` … `sheet-14.png`, ~184 frames total in original `/tmp` run)
-3. Human/agent review of sheets for: empty beats, overlapping text, broken pivots, illegible icons, caption collisions
-
-When changing any frame HTML, re-run qa-scan before re-render. After re-render, spot-check new dense sheets or at least mid-point snapshots already in the project.
-
-## 8. How to rebuild Video B (sketch)
-
-From `videos/burst-pipe-first-5-minutes/` (exact HyperFrames CLI may vary by installed version):
+## 必跑门禁（改帧后）
 
 ```bash
-# Voice (needs MINIMAX_API_KEY)
-python3 scripts/make-voice.py
-
-# BGM via fal (needs FAL_API_KEY) — do NOT use retired MiniMax music-3.0-free
-python3 scripts/make-bgm-fal.py
-
-# SFX
-python3 scripts/make-sfx.py
-
-# Illustrations if regenerating assets
-node scripts/make-illustrations.mjs
-
-# Then HyperFrames compose + render per project BRIEF / frame.md
-# Finally:
-python3 scripts/qa-scan.py
+cd videos/burst-pipe-first-5-minutes
+python3 scripts/qa-scan.py   # TOTAL 0
+npm run check
+# 重渲后建议 0.5s 联系表目检
 ```
 
-Keys: load from `../../book-space-time/.env` or export from `~/.mmx` — see script headers.
+## 刻意未入库
 
-## 9. What was intentionally not committed
+- `/tmp` 下原始 169 张单帧 PNG（联系表已入库）  
+- API keys / `.env`  
+- 修复前中间 MP4 二进制历史（叙事在 CHANGELOG；git 只有终态为主）
 
-- Raw per-frame PNGs under `/tmp/pipe-test/qa/` (~184 files) — **contact sheets only** are in-repo.
-- One-off throwaway fix scripts that lived only in `/tmp` — logic preserved in `docs/QA.md` and `qa-scan.py`.
-- API keys / `.env` files.
+## 建议下一步
 
-## 10. Suggested next work for a following agent
-
-- Apply `qa-scan.py` (or extract it) to Video A frames.
-- Package a shared `videos/scripts/qa-scan.py` used by both projects.
-- Optional: Cursor rule pointing at `docs/GSAP_SVG_PITFALLS.md` for any SVG/GSAP edit.
-- Platform export variants (square / vertical) from the 16:9 master if needed for X/Reels.
-- BGM volume ducking vs VO if platform mixes feel loud.
-
-## 11. Key commit history (this repo)
-
-- Initial research / Video A + Video B deliverables and mid QA snapshots were committed earlier on `main`.
-- Follow-up commit(s) add this handoff doc set, dense QA contact sheets, and process/QA writeups so the **full process** is recoverable from git alone.
+- 把 `qa-scan.py` 抽到 `videos/scripts/` 供两项目共用  
+- Video A 跑同源扫描  
+- 需要时做竖版/方版从 16:9 master 裁切  
+- BGM 相对 VO 的 ducking
