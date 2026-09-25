@@ -1,0 +1,18 @@
+---
+description: GSAP + SVG pitfalls for HyperFrames video compositions in this repo
+globs: videos/**/compositions/**/*.html
+alwaysApply: false
+---
+
+# HyperFrames SVG / GSAP
+
+Before editing frame HTML under `videos/**/compositions/`:
+
+1. Read `videos/docs/GSAP_SVG_PITFALLS.md` and the project `docs/QA.md` if present.
+2. Never mismatch `svgOrigin` / `transformOrigin` between from-vars and to-vars of a `tl.fromTo`.
+3. Never tween GSAP `x|y|scale|rotation` on a node that already has a SVG `transform="..."` attribute — wrap in a clean `<g>` instead.
+4. Prefer SVG `rotate(angle cx cy)` for clock hands and similar pivots.
+5. After edits in `burst-pipe-first-5-minutes`, run `python3 scripts/qa-scan.py` and require TOTAL 0 before render.
+6. BGM for the English pipe video: `make-bgm-fal.py` only (MiniMax music-3.0-free is retired).
+
+Handoff for the full production story: `videos/AGENT_HANDOFF.md`.

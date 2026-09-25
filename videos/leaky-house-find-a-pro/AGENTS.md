@@ -101,3 +101,7 @@ Fix all errors before presenting the result. Warnings should be reviewed before 
 4. Videos use `muted` with a separate `<audio>` element for the audio track
 5. Sub-compositions use `data-composition-src="compositions/file.html"` to reference other HTML files
 6. Only deterministic logic — no `Date.now()`, no `Math.random()`, no network fetches
+
+## Project-specific (this repo)
+
+Handoff context: `../AGENT_HANDOFF.md`, `docs/PROCESS.md`. Sibling English cut with full QA lessons: `../burst-pipe-first-5-minutes/`. SVG/GSAP rules: `../docs/GSAP_SVG_PITFALLS.md`.

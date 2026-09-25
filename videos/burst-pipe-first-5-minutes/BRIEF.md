@@ -20,7 +20,7 @@ An English, premium, upbeat know-how explainer: "Pipe Burst? Your First 5 Minute
 ## Customizations
 
 - English voiceover via MiniMax TTS (`speech-2.8-hd`, `English_expressive_narrator`), word-timed captions.
-- Upbeat instrumental BGM via MiniMax music generation.
+- Upbeat instrumental BGM via **fal ElevenLabs Music** (`scripts/make-bgm-fal.py`). MiniMax `music-3.0-free` is retired (HTTP 410) — do not use `make-bgm.py` for new renders.
 - Refined SFX synthesized procedurally.
 - Hero visual: a clean cobalt line-art house cross-section with water in motion; count-up on the $15,400 stat.
 

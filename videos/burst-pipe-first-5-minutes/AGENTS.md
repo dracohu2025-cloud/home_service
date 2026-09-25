@@ -101,3 +101,15 @@ Fix all errors before presenting the result. Warnings should be reviewed before 
 4. Videos use `muted` with a separate `<audio>` element for the audio track
 5. Sub-compositions use `data-composition-src="compositions/file.html"` to reference other HTML files
 6. Only deterministic logic — no `Date.now()`, no `Math.random()`, no network fetches
+
+## Project-specific (this repo)
+
+Before editing SVG/GSAP in `compositions/frames/*.html`, read:
+
+- `../AGENT_HANDOFF.md`
+- `../docs/GSAP_SVG_PITFALLS.md`
+- `docs/PROCESS.md` and `docs/QA.md`
+
+Then run `python3 scripts/qa-scan.py` (must be TOTAL 0) before `npm run render`.
+
+BGM: use `scripts/make-bgm-fal.py` (fal). Do **not** use retired MiniMax `music-3.0-free` via `make-bgm.py`.

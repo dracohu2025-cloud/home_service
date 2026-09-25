@@ -1,7 +1,10 @@
-"""Generate the upbeat instrumental bed with MiniMax music-3.0-free (direct API).
+"""DEPRECATED — MiniMax music-3.0-free returns HTTP 410 Gone.
+
+Use scripts/make-bgm-fal.py (fal ElevenLabs Music + FAL_API_KEY) instead.
+This file is kept only as a historical reference of the original prompt/API shape.
 
 Reads MINIMAX_API_KEY from the environment, else from ~/.mmx/config.json.
-Usage: python3 scripts/make-bgm.py [out.mp3]
+Usage: python3 scripts/make-bgm.py [out.mp3]  # will fail until MiniMax restores music
 """
 
 import json
